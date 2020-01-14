@@ -1,0 +1,1 @@
+Assignment for Thema Opdracht Software Architecture and Design made by Team 2 - 2020
