@@ -1,0 +1,175 @@
+##############################
+## Java
+##############################
+.mtj.tmp/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+
+##############################
+## Maven
+##############################
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+##############################
+## Gradle
+##############################
+bin/
+build/
+.gradle
+.gradletasknamecache
+gradle-app.setting
+!gradle-wrapper.jar
+
+##############################
+## IntelliJ
+##############################
+out/
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
+
+##############################
+## Eclipse
+##############################
+.settings/
+bin/
+tmp/
+.metadata
+.classpath
+.project
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+
+##############################
+## NetBeans
+##############################
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+##############################
+## OS X
+##############################
+.DS_Store
+
+# Maven build folders
+target/
+
+# Node.js (npm and typings) cached dependencies
+node_modules/
+typings/
+
+# Ant build folders
+build/
+dist/
+lib/
+user.build.properties
+
+# MacOSX files
+.DS_Store
+
+## Python, selected lines from https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+## CSharp and VisualStudio, selected lines from https://raw.githubusercontent.com/github/gitignore/master/VisualStudio.gitignore
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+*.user
+.vs/
+project.lock.json
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Visual Studio 2015 cache/options directory
+.vs/
+
+# NetBeans user configuration files
+nbactions*.xml
+/nbproject/private/
+*/nbproject/private/
+
+# IntelliJ projects
+*.iws
+*.iml
+.idea/
+
+# Eclipse projects
+.classpath
+.project
+.settings/
+.metadata
+
+# Profiler results
+*.hprof
+
+# parrt's bash prompt data
+.fetch_time_cache
+
+# Playground
+#/tool/playground/
+
+# Generated files
+/out/
+/gen/
+/gen3/
+/gen4/
+/tool/playground/
+tmp/
+
+# Configurable build files
+bilder.py
+bilder.pyc
+bild.log
+
+bild_output.txt
+runtime/Cpp/demo/generated
+xcuserdata
+*.jar
+.vscode
+
+# VSCode Java plugin temporary files
+javac-services.0.log
+javac-services.0.log.lck
+test/

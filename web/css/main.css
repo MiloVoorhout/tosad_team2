@@ -1,0 +1,13 @@
+.list-group-item.active {
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+a {
+    color: #9B59B6;
+}
+
+.card-header {
+    background-color: #9B59B6;
+    color: white;
+}
