@@ -9,7 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 
-@Path("/TestServlet")
+@Path("/testservlet")
 public class TestServlet extends HttpServlet {
     @GET
     @Produces("application/json")

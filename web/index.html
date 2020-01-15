@@ -28,7 +28,7 @@
         <meta name="theme-color" content="#9B59B6">
     </head>
 
-    <body onload="test()">
+    <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
             <a class="navbar-brand" href="#">
                 <img src="img/logo_color.svg" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -69,7 +69,7 @@
                             <div id="properties">
                                 <div class="form-group">
                                     <label for="rule_name">Choose a name</label>
-                                    <input type="email" class="form-control" id="rule_name">
+                                    <input type="text" class="form-control" id="rule_name">
                                 </div>
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     <li class="nav-item">
@@ -184,8 +184,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="submit" class="btn btn-success float-right" value="Create">
                                 </form>
+                                <button onclick="add_button()"  class="btn btn-success float-right">Create</button>
                                 <button class="btn btn-secondary" data-toggle="modal" data-target="#help_modal">Help
                                 </button>
                             </div>
@@ -216,4 +216,5 @@
     </body>
     <script src="js/main.js"></script>
     <script src="js/test.js"></script>
+    <script src="js/addBusinessRule.js"></script>
 </html>
