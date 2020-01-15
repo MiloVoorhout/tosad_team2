@@ -6,8 +6,14 @@ public class FailureHandling implements FailureHandlingImpl {
     private String message;
     private int businessRuleID;
 
-    public FailureHandling createFailureHandling(String name, String message, int businessRuleID){
+    private FailureHandling(String name, String message, int businessRuleID) {
+        this.name = name;
+        this.message = message;
+        this.businessRuleID = businessRuleID;
+    }
 
+    @Override
+    public FailureHandling createFailureHandling() {
         return new FailureHandling(this.name, this.message, this.businessRuleID);
     }
 }
