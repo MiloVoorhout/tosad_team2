@@ -28,7 +28,7 @@
     <meta name="theme-color" content="#9B59B6">
 </head>
 
-<body>
+<body onload="initPage()">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5 ">
     <a class="navbar-brand" href="#">
         <img src="img/logo_color.svg" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -60,56 +60,56 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="list-group" id="list-tab" role="tablist">
-                                <a class="list-group-item list-group-item-action active" id="list-home-list"
-                                   data-toggle="list" href="#list-home" role="tab"
-                                   aria-controls="home">#1 - Rule name</a>
+<!--                                <a class="list-group-item list-group-item-action active" id="list-home-list"-->
+<!--                                   data-toggle="list" href="#list-home" role="tab"-->
+<!--                                   aria-controls="home">#1 - Rule name</a>-->
                             </div>
                         </div>
                         <div class="col-8">
                             <div class="tab-content" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="list-home" role="tabpanel"
-                                     aria-labelledby="list-home-list">
-                                    <table class="table table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Value</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <th scope="row">Rule Type</th>
-                                            <td>tosad.attribute.Attribute</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">tosad.attribute.Attribute</th>
-                                            <td>tosad.attribute.Attribute</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">tosad.productManagement.Operator</th>
-                                            <td>tosad.attribute.Attribute</td>
-                                        </tr>
-                                        <!-- In case of Compare -->
-                                        <tr>
-                                            <th scope="row">Compare with</th>
-                                            <td>tosad.attribute.Attribute</td>
-                                        </tr>
-                                        <!-- end -->
-                                        <tr>
-                                            <th scope="row">Value</th>
-                                            <td>tosad.attribute.Attribute</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Validation Failure Severity</th>
-                                            <td>tosad.attribute.Attribute</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Failure Message</th>
-                                            <td>tosad.attribute.Attribute</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+<!--                                <div class="tab-pane fade show active" id="list-home" role="tabpanel"-->
+<!--                                     aria-labelledby="list-home-list">-->
+<!--                                    <table class="table table-striped">-->
+<!--                                        <thead>-->
+<!--                                        <tr>-->
+<!--                                            <th scope="col">Name</th>-->
+<!--                                            <th scope="col">Value</th>-->
+<!--                                        </tr>-->
+<!--                                        </thead>-->
+<!--                                        <tbody>-->
+<!--                                        <tr>-->
+<!--                                            <th scope="row">Rule Type</th>-->
+<!--                                            <td>tosad.attribute.Attribute</td>-->
+<!--                                        </tr>-->
+<!--                                        <tr>-->
+<!--                                            <th scope="row">tosad.attribute.Attribute</th>-->
+<!--                                            <td>tosad.attribute.Attribute</td>-->
+<!--                                        </tr>-->
+<!--                                        <tr>-->
+<!--                                            <th scope="row">tosad.productManagement.Operator</th>-->
+<!--                                            <td>tosad.attribute.Attribute</td>-->
+<!--                                        </tr>-->
+<!--                                        &lt;!&ndash; In case of Compare &ndash;&gt;-->
+<!--                                        <tr>-->
+<!--                                            <th scope="row">Compare with</th>-->
+<!--                                            <td>tosad.attribute.Attribute</td>-->
+<!--                                        </tr>-->
+<!--                                        &lt;!&ndash; end &ndash;&gt;-->
+<!--                                        <tr>-->
+<!--                                            <th scope="row">Value</th>-->
+<!--                                            <td>tosad.attribute.Attribute</td>-->
+<!--                                        </tr>-->
+<!--                                        <tr>-->
+<!--                                            <th scope="row">Validation Failure Severity</th>-->
+<!--                                            <td>tosad.attribute.Attribute</td>-->
+<!--                                        </tr>-->
+<!--                                        <tr>-->
+<!--                                            <th scope="row">Failure Message</th>-->
+<!--                                            <td>tosad.attribute.Attribute</td>-->
+<!--                                        </tr>-->
+<!--                                        </tbody>-->
+<!--                                    </table>-->
+<!--                                </div>-->
                             </div>
                         </div>
                     </div>
@@ -122,4 +122,5 @@
 
 </body>
 <script src="js/main.js"></script>
+<script src="js/loadBusinessRules.js"></script>
 </html>
