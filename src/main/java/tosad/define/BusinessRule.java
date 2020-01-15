@@ -1,5 +1,6 @@
 package tosad.define;
 
+<<<<<<< HEAD
 public class BusinessRule implements BusinessRulePrototype, Cloneable {
     private int CompareStatus;
     private int OperatorID;
@@ -89,4 +90,8 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
     public void setBusinessRuleTypeID(int businessRuleTypeID) {
         BusinessRuleTypeID = businessRuleTypeID;
     }
+=======
+public class BusinessRule {
+    
+>>>>>>> master
 }

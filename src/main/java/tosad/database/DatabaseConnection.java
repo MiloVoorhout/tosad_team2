@@ -10,8 +10,8 @@ public class DatabaseConnection {
     private static Connection conn;
     private static final String DB_DRIV = "oracle.jdbc.driver.OracleDriver";
     private static final String DB_URL = "jdbc:oracle:thin:@//ondora04.hu.nl:8521/EDUC19";
-    private static final String DB_USER = "milo";
-    private static final String DB_PASS = "milo";
+    private static final String DB_USER = "stefan";
+    private static final String DB_PASS = "stefan";
 
     protected static Connection getConnection() throws SQLException {
         try {
@@ -23,14 +23,12 @@ public class DatabaseConnection {
 
         conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
 
-        if (conn != null) {
-            return conn;
-        } else {
-            return null;
-        }
+        if (conn != null) return conn;
+
+        return null;
     }
 
-    public void closeConnection() throws SQLException{
+    public static void closeConnection() throws SQLException{
         conn.close();
     }
 }
