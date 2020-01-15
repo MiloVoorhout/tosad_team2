@@ -1,6 +1,9 @@
 package tosad.define;
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 public class BusinessRule implements BusinessRulePrototype, Cloneable {
     private int CompareStatus;
     private int OperatorID;
@@ -90,4 +93,8 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
     public void setBusinessRuleTypeID(int businessRuleTypeID) {
         BusinessRuleTypeID = businessRuleTypeID;
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes

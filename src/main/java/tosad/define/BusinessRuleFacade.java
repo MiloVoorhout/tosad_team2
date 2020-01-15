@@ -28,7 +28,6 @@ public class BusinessRuleFacade {
     public boolean createBusinessRule() {
         BusinessRule businessRule = businessRuleFactory.buildRule();
 
-
         return true;
     }
 

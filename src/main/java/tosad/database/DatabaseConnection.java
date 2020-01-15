@@ -13,7 +13,7 @@ public class DatabaseConnection {
     private static final String DB_USER = "stefan";
     private static final String DB_PASS = "stefan";
 
-    protected static Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws SQLException {
         try {
             Class.forName(DB_DRIV);
         }
@@ -31,4 +31,5 @@ public class DatabaseConnection {
     public static void closeConnection() throws SQLException{
         conn.close();
     }
+
 }

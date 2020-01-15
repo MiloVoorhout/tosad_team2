@@ -1,5 +1,8 @@
 package tosad.database;
 
+import tosad.define.BusinessRule;
+import tosad.generate.Generator;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -54,6 +57,39 @@ public class DatabaseFacade extends DatabaseConnection {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
+    public static void getData(int id) throws SQLException {
+
+        int compareStatus = 0;
+        int operatorID = 0;
+        int litValue = 0;
+        int minValue = 0;
+        int attributeID = 0;
+        int subAttributeID = 0;
+        int businessRuleTypeID = 0;
+        int maxValue = 0;
+
+        try {
+            Connection conn = getConnection();
+            String query  = "SELECT * FROM TOSAD.BUSINESSRULE WHERE ID = "+id;
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                compareStatus = rs.getInt("COMPARESTATUS");
+                operatorID = rs.getInt("OPERATORID");
+                litValue = rs.getInt("LITVALUE");
+                minValue = rs.getInt("MINVALUE");
+                maxValue = rs.getInt("MAXVALUE");
+                attributeID = rs.getInt("ATTRIBUTEID");
+                subAttributeID = rs.getInt("SUBATTRIBUTEID");
+                businessRuleTypeID = rs.getInt("BUSINESSRULETYPEID");
+            }
+            Generator generator = new Generator();
+            BusinessRule newRule = new BusinessRule(compareStatus, operatorID, litValue, minValue, maxValue, attributeID, subAttributeID, businessRuleTypeID);
+            generator.generateCode(newRule);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
