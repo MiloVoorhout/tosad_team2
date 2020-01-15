@@ -6,9 +6,9 @@ function initPage() {
         console.log(storedArray['name']);
 
         if(i == 0) {
-            $('#list-tab').append('<a class="list-group-item list-group-item-action active" id="list-'+ i + '" data-toggle="list" href="#list-'+ i + '" role="tab" aria-controls="list-'+ i + '">' + storedKey + '</a>');
+            $('#list-tab').append('<a class="list-group-item list-group-item-action active" id="list-'+ i +'-list" data-toggle="list" href="#list-'+ i +'" role="tab" aria-controls="list-'+ i + '">' + storedKey + '</a>');
             $('#nav-tabContent').append(
-                '<div class="tab-pane fade show active" id="list-'+ i + '" role="tabpanel" aria-labelledby="list-'+ i + '">\n' +
+                '<div class="tab-pane fade show active" id="list-'+ i +'" role="tabpanel" aria-labelledby="list-'+ i + '">\n' +
                 '                                    <table class="table table-striped">\n' +
                 '                                        <thead>\n' +
                 '                                        <tr>\n' +
@@ -52,9 +52,9 @@ function initPage() {
                 '                                </div>'
             )
         } else {
-            $('#list-tab').append('<a class="list-group-item list-group-item-action" id="list-'+ i + '" data-toggle="list" href="#list-'+ i + '" role="tab" aria-controls="list-'+ i + '">' + storedKey + '</a>');
+            $('#list-tab').append('<a class="list-group-item list-group-item-action" id="list-'+ i +'-list" data-toggle="list" href="#list-'+ i +'" role="tab" aria-controls="list-'+ i +'">' + storedKey + '</a>');
             $('#nav-tabContent').append(
-                '<div class="tab-pane fade show" id="list-'+ i + '" role="tabpanel" aria-labelledby="list-'+ i + '">\n' +
+                '<div class="tab-pane fade show" id="list-'+ i +'" role="tabpanel" aria-labelledby="list-'+ i +'">\n' +
                 '                                    <table class="table table-striped">\n' +
                 '                                        <thead>\n' +
                 '                                        <tr>\n' +
