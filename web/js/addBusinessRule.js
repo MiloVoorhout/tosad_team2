@@ -1,17 +1,20 @@
 function add_button() {
     let rule_type_select = $('#rule_type_select').val();
+    let rule_type_text = $('#rule_type_select option:selected').html();
     let rule_name = $('#rule_name').val();
     let rule_attribute = $('#attribute_select option:selected').html();
-    let rule_operator = $('#operator_select option:selected').html();
     let failure_validation = $('#validation_failure_severity option:selected').html();
     let failure_message = $('#failure_message').val();
+    let rule_operator = "";
 
     if(rule_type_select == 1) {
+        rule_operator = $('#operator_select option:selected').html();
         let range_min_val = $('#minimum_value').val();
         let range_max_val = $('#maximum_value').val();
 
         const rangeArray = {'name': rule_name,
                             'type': rule_type_select,
+                            'typeText': rule_type_text,
                             'attribute': rule_attribute,
                             'operator': rule_operator,
                             'minVal':range_min_val,
@@ -22,6 +25,7 @@ function add_button() {
     }
 
     if(rule_type_select == 2) {
+        rule_operator = $('#operator_select_compare option:selected').html();
         let compare_with = $('#compare_with_select').val();
         let compare_text = $('#compare_with_select option:selected').html();
         let compare_val = "";
@@ -34,6 +38,7 @@ function add_button() {
 
         const rangeArray = {'name': rule_name,
             'type': rule_type_select,
+            'typeText': rule_type_text,
             'attribute': rule_attribute,
             'operator': rule_operator,
             'compareID':compare_with,
@@ -43,4 +48,8 @@ function add_button() {
             'failureMes': failure_message};
         window.sessionStorage.setItem(rule_name,JSON.stringify(rangeArray));
     }
+
+    let properties = $("#properties");
+    properties.hide();
+    $('#rule_type_select').val(0);
 }

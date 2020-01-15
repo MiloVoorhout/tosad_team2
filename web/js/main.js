@@ -8,6 +8,7 @@ let literalValue = $("#literalValue");
 let entityAttribute = $("#entityAttribute");
 let properties = $("#properties");
 
+$('#rule_type_select').val(0);
 properties.hide();
 
 rule_type_select.on('change', function (e) {

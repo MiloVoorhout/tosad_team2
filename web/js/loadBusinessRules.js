@@ -43,7 +43,7 @@ function loadRangeRuleData(number, key) {
         '                                        <tbody>\n' +
         '                                        <tr>\n' +
         '                                            <th scope="row">Rule Type</th>\n' +
-        '                                            <td>' + storedArray['type'] + '</td>\n' +
+        '                                            <td>' + storedArray['typeText'] + '</td>\n' +
         '                                        </tr>\n' +
         '                                        <tr>\n' +
         '                                            <th scope="row">tosad.attribute.Attribute</th>\n' +
@@ -92,7 +92,7 @@ function loadCompareRuleData(number, key) {
         '                                        <tbody>\n' +
         '                                        <tr>\n' +
         '                                            <th scope="row">Rule Type</th>\n' +
-        '                                            <td>' + storedArray['type'] + '</td>\n' +
+        '                                            <td>' + storedArray['typeText'] + '</td>\n' +
         '                                        </tr>\n' +
         '                                        <tr>\n' +
         '                                            <th scope="row">tosad.attribute.Attribute</th>\n' +
