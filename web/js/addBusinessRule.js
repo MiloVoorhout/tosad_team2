@@ -19,29 +19,28 @@ function add_button() {
                             'failureVal': failure_validation,
                             'failureMes': failure_message};
         window.sessionStorage.setItem(rule_name,JSON.stringify(rangeArray));
-
-        // var storedArray = JSON.parse(sessionStorage.getItem(rule_name));
     }
 
     if(rule_type_select == 2) {
         let compare_with = $('#compare_with_select').val();
+        let compare_text = $('#compare_with_select option:selected').html();
+        let compare_val = "";
 
         if(compare_with == 1) {
-            let compare_literal_val = $('#enter_literal_value_textbox').val();
-
-            console.log(rule_type_select, rule_name,
-                rule_attribute, rule_operator,
-                compare_with, compare_literal_val,
-                failure_validation, failure_message
-            );
+            compare_val = $('#enter_literal_value_textbox').val();
         } else if (compare_with == 2) {
-            let compare_attribute = $('#select_entity_attribute option:selected').html();
-
-            console.log(rule_type_select, rule_name,
-                rule_attribute, rule_operator,
-                compare_with, compare_attribute,
-                failure_validation, failure_message
-            );
+            compare_val = $('#select_entity_attribute option:selected').html();
         }
+
+        const rangeArray = {'name': rule_name,
+            'type': rule_type_select,
+            'attribute': rule_attribute,
+            'operator': rule_operator,
+            'compareID':compare_with,
+            'compareText':compare_text,
+            'compareVal': compare_val,
+            'failureVal': failure_validation,
+            'failureMes': failure_message};
+        window.sessionStorage.setItem(rule_name,JSON.stringify(rangeArray));
     }
 }
