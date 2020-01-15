@@ -50,6 +50,10 @@ function loadRangeRuleData(number, key) {
         '                                            <td>' + storedArray['attribute'] + '</td>\n' +
         '                                        </tr>\n' +
         '                                        <tr>\n' +
+        '                                            <th scope="row">tosad.attribute.Tabel</th>\n' +
+        '                                            <td>' + storedArray['tabel'] + '</td>\n' +
+        '                                        </tr>\n' +
+        '                                        <tr>\n' +
         '                                            <th scope="row">tosad.productManagement.Operator</th>\n' +
         '                                            <td>' + storedArray['operator'] + '</td>\n' +
         '                                        </tr>\n' +
@@ -97,6 +101,10 @@ function loadCompareRuleData(number, key) {
         '                                        <tr>\n' +
         '                                            <th scope="row">tosad.attribute.Attribute</th>\n' +
         '                                            <td>' + storedArray['attribute'] + '</td>\n' +
+        '                                        </tr>\n' +
+        '                                        <tr>\n' +
+        '                                            <th scope="row">tosad.attribute.Attribute</th>\n' +
+        '                                            <td>' + storedArray['tabel'] + '</td>\n' +
         '                                        </tr>\n' +
         '                                        <tr>\n' +
         '                                            <th scope="row">tosad.productManagement.Operator</th>\n' +

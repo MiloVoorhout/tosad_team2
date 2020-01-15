@@ -3,6 +3,7 @@ function add_button() {
     let rule_type_text = $('#rule_type_select option:selected').html();
     let rule_name = $('#rule_name').val();
     let rule_attribute = $('#attribute_select option:selected').html();
+    let rule_tabel = $('#tabel_select option:selected').html();
     let failure_validation = $('#validation_failure_severity option:selected').html();
     let failure_message = $('#failure_message').val();
     let rule_operator = "";
@@ -16,6 +17,7 @@ function add_button() {
                             'type': rule_type_select,
                             'typeText': rule_type_text,
                             'attribute': rule_attribute,
+                            'tabel': rule_tabel,
                             'operator': rule_operator,
                             'minVal':range_min_val,
                             'maxVal': range_max_val,
@@ -40,6 +42,7 @@ function add_button() {
             'type': rule_type_select,
             'typeText': rule_type_text,
             'attribute': rule_attribute,
+            'tabel': rule_tabel,
             'operator': rule_operator,
             'compareID':compare_with,
             'compareText':compare_text,
