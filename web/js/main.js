@@ -1,52 +1,46 @@
-let rule_type_select = $('#rule_type_select');
-let compareWith = $('#compare_with');
-let operator = $('#operator_select');
-let operatorCompare = $("#operator_select_compare");
-let compare_with_select = $("#compare_with_select");
-let operator_select_list = $("#operator_select_list");
-let range = $("#range");
-let literalValue = $("#literalValue");
-let entityAttribute = $("#entityAttribute");
-let properties = $("#properties");
-let list = $("#list");
-let listValue = $('#newListItemValue');
-let listItems = $('#listValues');
+const rule_type_select = $('#rule_type_select');
+const compareWith = $('#compare_with');
+const operator = $('#operator_select');
+const operatorCompare = $("#operator_select_compare");
+const compare_with_select = $("#compare_with_select");
+const operator_select_list = $("#operator_select_list");
+const range = $("#range");
+const literalValue = $("#literalValue");
+const entityAttribute = $("#entityAttribute");
+const properties = $("#properties");
+const list = $("#list");
+const listValue = $('#newListItemValue');
+const listItems = $('#listValues');
 
 rule_type_select.val(0);
 properties.hide();
 
+var arrayObj = [compareWith, operator, operatorCompare, compare_with_select, operator_select_list, range, literalValue, entityAttribute, list, listValue, listItems];
+
+function hideAllObj(){
+    arrayObj.forEach(function(item) { item.hide(); });
+    properties.show();
+}
+
 rule_type_select.on('change', function (e) {
     if (this.value === '1') {
-        compareWith.hide();
+        hideAllObj();
         operator.show();
-        operatorCompare.hide();
         range.show();
-        literalValue.hide();
-        entityAttribute.hide();
-        properties.show();
-        list.hide();
-        operator_select_list.hide();
     }
     else if (this.value === '2') {
+        hideAllObj();
         compareWith.show();
-        operator.hide();
+        compare_with_select.show();
         operatorCompare.show();
-        range.hide();
         literalValue.show();
-        entityAttribute.hide();
-        properties.show();
-        list.hide();
-        operator_select_list.hide();
     }
     else if (this.value === '3') {
-        compareWith.hide();
-        operator.hide();
-        operatorCompare.hide();
-        range.hide();
-        literalValue.hide();
-        entityAttribute.hide();
-        properties.show();
+        hideAllObj();
+        compare_with_select.show();
         list.show();
+        listItems.show();
+        listValue.show();
         operator_select_list.show();
 
     }
