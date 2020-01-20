@@ -32,7 +32,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
             <a class="navbar-brand" href="#">
                 <img src="img/logo_color.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-                Business Rule tosad.generate.Generator
+                TOSAD Business Rule Generator
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,8 +61,9 @@
                             <div class="form-group">
                                 <select class="form-control" id="rule_type_select">
                                     <option value="0" selected disabled>Please choose a Rule Type...</option>
-                                    <option value="1">Range</option>
-                                    <option value="2">Compare</option>
+                                    <option value="1">Attribute Range</option>
+                                    <option value="2">Attribute Compare</option>
+                                    <option value="3">Attribute List</option>
                                 </select>
                             </div>
 
@@ -90,7 +91,16 @@
                                              aria-labelledby="rule_definition-tab">
 
                                             <div class="form-group">
-                                                <label for="attribute_select">tosad.attribute.Attribute</label>
+                                                <label for="table_select">Table</label>
+                                                <select class="form-control" id="table_select">
+                                                    <option value="1">phonebook</option>
+                                                    <option value="2">creditcard</option>
+                                                    <option value="3">customer</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="attribute_select">Attribute</label>
                                                 <select class="form-control" id="attribute_select">
                                                     <option value="1">PhoneNumbers</option>
                                                     <option value="2">CreditLimit</option>
@@ -99,28 +109,24 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="tabel_select">tosad.attribute.Tabel</label>
-                                                <select class="form-control" id="tabel_select">
-                                                    <option value="1">phonebook</option>
-                                                    <option value="2">creditcard</option>
-                                                    <option value="3">customer</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="operator_select">tosad.productManagement.Operator</label>
+                                                <label for="operator_select">Operator</label>
                                                 <select class="form-control" id="operator_select">
                                                     <option value="1">Between</option>
                                                     <option value="2">NotBetween</option>
                                                 </select>
 
                                                 <select class="form-control" id="operator_select_compare">
-                                                    <option value="3">Equals</option>
-                                                    <option value="4">NotEquals</option>
-                                                    <option value="5">LessThan</option>
-                                                    <option value="6">GreaterThan</option>
-                                                    <option value="7">LessOrEqualTo</option>
-                                                    <option value="8">GreaterOrEqualTo</option>
+                                                    <option value="3">Equals [=]</option>
+                                                    <option value="4">NotEquals [!=]</option>
+                                                    <option value="5">LessThan [<]</option>
+                                                    <option value="6">GreaterThan[>]</option>
+                                                    <option value="7">LessOrEqualTo[<=]</option>
+                                                    <option value="8">GreaterOrEqualTo[>=]</option>
+                                                </select>
+
+                                                <select class="form-control" id="operator_select_list">
+                                                    <option value="1">In</option>
+                                                    <option value="2">Not in</option>
                                                 </select>
 
                                             </div>
@@ -129,11 +135,25 @@
                                                 <label for="compare_with_select">Compare with</label>
                                                 <select class="form-control" id="compare_with_select">
                                                     <option value="1">Literal Value</option>
-                                                    <option value="2">Entity tosad.attribute.Attribute</option>
+                                                    <option value="2">Entity Attribute</option>
                                                 </select>
                                             </div>
 
                                             <hr>
+
+                                            <!-- List -->
+                                            <div id="list">
+                                                <div class="form-group">
+                                                    <label for="newListItemValue">Add a new list item</label>
+                                                    <input type="text" class="form-control" id="newListItemValue" placeholder="Example: list_item_name">
+                                                    <div class="blockquote-footer">Hint: Press enter to add the item into the list below</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="listValues">Current values in list</label>
+                                                    <select multiple class="form-control" id="listValues">
+                                                    </select>
+                                                </div>
+                                            </div>
 
                                             <!-- Range -->
                                             <div class="form-group" id="range">
@@ -186,8 +206,7 @@
                                             <div class="form-group">
                                                 <label for="failure_message">Failure Message</label>
                                                 <textarea class="form-control" id="failure_message" rows="3"
-                                                          placeholder="Enter text for the translatable validation failure messages"
-                                                ></textarea>
+                                                          placeholder="Enter text for the translatable validation failure messages"></textarea>
                                                 <div class="blockquote-footer">Hint: to add a token message expession,
                                                     include a token of the form {0} in your error message string</div>
                                             </div>

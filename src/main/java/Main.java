@@ -5,7 +5,7 @@ import java.sql.*;
 public class Main {
 
     public static void main(String[] arg) throws SQLException{
-        DatabaseFacade.getData(2);
+        DatabaseFacade.getData(1);
     }
 
 }
