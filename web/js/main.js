@@ -11,6 +11,7 @@ const properties = $("#properties");
 const list = $("#list");
 const listValue = $('#newListItemValue');
 const listItems = $('#listValues');
+const listActionsContainer = $('#listActions');
 
 rule_type_select.val(0);
 properties.hide();
@@ -63,9 +64,23 @@ listValue.bind("enterKey",function(e){
         $(this).val("");
     }
 });
+
 listValue.keyup(function(e){
     if(e.keyCode == 13)
     {
         $(this).trigger("enterKey");
+    }
+});
+
+listItems.on('change', function (e) {
+    alert(listItems.val());
+
+    if (listItems.val()) {
+        listActionsContainer.empty();
+        listActionsContainer.append('<button type="button" class="btn btn-danger btn-sm" id="clearAllList">Clear all</button>');
+        listActionsContainer.append('<button type="button" class="btn btn-danger btn-sm" id="clearAllList">Delete selected</button>');
+    } else {
+        listActionsContainer.empty();
+        listActionsContainer.append('<button type="button" class="btn btn-danger btn-sm" id="clearAllList">Clear all</button>');
     }
 });
