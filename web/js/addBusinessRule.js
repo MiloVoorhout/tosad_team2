@@ -3,7 +3,7 @@ function add_button() {
     let rule_type_text = $('#rule_type_select option:selected').html();
     let rule_name = $('#rule_name').val();
     let rule_attribute = $('#attribute_select option:selected').html();
-    let rule_tabel = $('#tabel_select option:selected').html();
+    let rule_table = $('#table_select option:selected').html();
     let failure_validation = $('#validation_failure_severity option:selected').html();
     let failure_message = $('#failure_message').val();
     let rule_operator = "";
@@ -17,13 +17,13 @@ function add_button() {
                             'type': rule_type_select,
                             'typeText': rule_type_text,
                             'attribute': rule_attribute,
-                            'tabel': rule_tabel,
+                            'table': rule_table,
                             'operator': rule_operator,
                             'minVal':range_min_val,
                             'maxVal': range_max_val,
                             'failureVal': failure_validation,
                             'failureMes': failure_message};
-        window.sessionStorage.setItem(rule_name,JSON.stringify(rangeArray));
+        console.log(rangeArray);
     }
 
     if(rule_type_select == 2) {
@@ -42,14 +42,34 @@ function add_button() {
             'type': rule_type_select,
             'typeText': rule_type_text,
             'attribute': rule_attribute,
-            'tabel': rule_tabel,
+            'table': rule_table,
             'operator': rule_operator,
             'compareID':compare_with,
             'compareText':compare_text,
             'compareVal': compare_val,
             'failureVal': failure_validation,
             'failureMes': failure_message};
-        window.sessionStorage.setItem(rule_name,JSON.stringify(rangeArray));
+        console.log(rangeArray);
+    }
+
+    if(rule_type_select == 3) {
+        rule_operator = $('#operator_select_list option:selected').html();
+        var optionValues = [];
+
+        $('#listValues option').each(function () {
+            optionValues.push($(this).val())
+        })
+
+        const rangeArray = {'name': rule_name,
+            'type': rule_type_select,
+            'typeText': rule_type_text,
+            'attribute': rule_attribute,
+            'table': rule_table,
+            'operator': rule_operator,
+            'listValues':optionValues,
+            'failureVal': failure_validation,
+            'failureMes': failure_message};
+        window.sessionStorage.setItem(rule_name, JSON.stringify(rangeArray));
     }
 
     let properties = $("#properties");
