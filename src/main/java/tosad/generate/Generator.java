@@ -9,7 +9,7 @@ public class Generator {
         System.out.println("CREATE OR REPLACE TRIGGER Testnaam " +
                 "BEFORE INSERT ON " + "Tabelnaam" + "FOR EACH ROW " +
                 "BEGIN " +
-                ":new. " + rule.getAttributeID() + " " + rule.getOperatorID() + " " + rule.getMinValue() + " AND " + rule.getMaxValue() +
+                ":new. " + rule.getAttributeID() + " " + rule.getOperatorID() + " " + rule.getValue() + " AND " + rule.getValue() +
                 "END;");
     }
 

@@ -63,12 +63,9 @@ public class DatabaseFacade extends DatabaseConnection {
 
         int compareStatus = 0;
         int operatorID = 0;
-        int litValue = 0;
-        int minValue = 0;
         int attributeID = 0;
         int subAttributeID = 0;
         int businessRuleTypeID = 0;
-        int maxValue = 0;
 
         try {
             Connection conn = getConnection();
@@ -78,15 +75,12 @@ public class DatabaseFacade extends DatabaseConnection {
             while (rs.next()) {
                 compareStatus = rs.getInt("COMPARESTATUS");
                 operatorID = rs.getInt("OPERATORID");
-                litValue = rs.getInt("LITVALUE");
-                minValue = rs.getInt("MINVALUE");
-                maxValue = rs.getInt("MAXVALUE");
                 attributeID = rs.getInt("ATTRIBUTEID");
                 subAttributeID = rs.getInt("SUBATTRIBUTEID");
                 businessRuleTypeID = rs.getInt("BUSINESSRULETYPEID");
             }
             Generator generator = new Generator();
-            BusinessRule newRule = new BusinessRule(compareStatus, operatorID, litValue, minValue, maxValue, attributeID, subAttributeID, businessRuleTypeID);
+            BusinessRule newRule = new BusinessRule(compareStatus, operatorID, attributeID, subAttributeID, businessRuleTypeID);
             generator.generateCode(newRule);
         } catch (Exception e) {
             e.printStackTrace();

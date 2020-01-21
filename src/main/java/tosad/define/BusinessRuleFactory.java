@@ -1,21 +1,20 @@
 package tosad.define;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BusinessRuleFactory implements BusinessRuleFactoryInterface {
     private int CompareStatus;
     private int OperatorID;
-    private int LitValue;
-    private int MinValue;
-    private int MaxValue;
+    private List<Integer> Value;
     private int AttributeID;
     private int SubAttributeID;
     private int BusinessRuleTypeID;
 
-    BusinessRuleFactory(int compareStatus, int operatorID, int litValue, int minValue, int maxValue, int attributeID, int subAttributeID, int businessRuleTypeID) {
+    public BusinessRuleFactory(int compareStatus, int operatorID, List<Integer> value, int attributeID, int subAttributeID, int businessRuleTypeID) {
         this.CompareStatus = compareStatus;
         this.OperatorID = operatorID;
-        this.LitValue = litValue;
-        this.MinValue = minValue;
-        this.MaxValue = maxValue;
+        this.Value = value;
         this.AttributeID = attributeID;
         this.SubAttributeID = subAttributeID;
         this.BusinessRuleTypeID = businessRuleTypeID;
@@ -23,6 +22,7 @@ public class BusinessRuleFactory implements BusinessRuleFactoryInterface {
 
     @Override
     public BusinessRule buildRule() {
-        return new BusinessRule(this.CompareStatus, this.OperatorID, this.LitValue, this.MinValue, this.MaxValue, this.AttributeID, this.SubAttributeID, this.BusinessRuleTypeID);
+        System.out.println("Checkpoint!!!");
+        return new BusinessRule(this.CompareStatus, this.OperatorID, this.Value, this.AttributeID, this.SubAttributeID, this.BusinessRuleTypeID);
     }
 }

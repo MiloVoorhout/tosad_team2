@@ -1,21 +1,29 @@
 package tosad.define;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BusinessRule implements BusinessRulePrototype, Cloneable {
     private int CompareStatus;
     private int OperatorID;
-    private int LitValue;
-    private int MinValue;
-    private int MaxValue;
+    private List<Integer> Value;
     private int AttributeID;
     private int SubAttributeID;
     private int BusinessRuleTypeID;
 
-    public BusinessRule(int compareStatus, int operatorID, int litValue, int minValue, int maxValue, int attributeID, int subAttributeID, int businessRuleTypeID) {
+
+    public BusinessRule(int compareStatus, int operatorID, int attributeID, int subAttributeID, int businessRuleTypeID) {
         CompareStatus = compareStatus;
         OperatorID = operatorID;
-        LitValue = litValue;
-        MinValue = minValue;
-        MaxValue = maxValue;
+        AttributeID = attributeID;
+        SubAttributeID = subAttributeID;
+        BusinessRuleTypeID = businessRuleTypeID;
+    }
+
+    public BusinessRule(int compareStatus, int operatorID, List<Integer> value, int attributeID, int subAttributeID, int businessRuleTypeID) {
+        CompareStatus = compareStatus;
+        OperatorID = operatorID;
+        Value = value;
         AttributeID = attributeID;
         SubAttributeID = subAttributeID;
         BusinessRuleTypeID = businessRuleTypeID;
@@ -42,29 +50,9 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
         OperatorID = operatorID;
     }
 
-    public int getLitValue() {
-        return LitValue;
-    }
+    public List<Integer> getValue() { return Value; }
 
-    public void setLitValue(int litValue) {
-        LitValue = litValue;
-    }
-
-    public int getMinValue() {
-        return MinValue;
-    }
-
-    public void setMinValue(int minValue) {
-        MinValue = minValue;
-    }
-
-    public int getMaxValue() {
-        return MaxValue;
-    }
-
-    public void setMaxValue(int maxValue) {
-        MaxValue = maxValue;
-    }
+    public void setValue(List<Integer> value) { Value = value; }
 
     public int getAttributeID() {
         return AttributeID;

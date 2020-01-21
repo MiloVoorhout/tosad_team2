@@ -1,28 +1,25 @@
 package tosad.define;
 
 import java.io.IOException;
+import java.util.List;
 
 public class BusinessRuleFacade {
     private BusinessRuleFactory businessRuleFactory;
     private int CompareStatus;
     private int OperatorID;
-    private int LitValue;
-    private int MinValue;
-    private int MaxValue;
+    private List<Integer> Value;
     private int AttributeID;
     private int SubAttributeID;
     private int BusinessRuleTypeID;
 
-    public BusinessRuleFacade(int compareStatus, int operatorID, int litValue, int minValue, int maxValue, int attributeID, int subAttributeID, int businessRuleTypeID) {
+    public BusinessRuleFacade(int compareStatus, int operatorID, List<Integer> value, int attributeID, int subAttributeID, int businessRuleTypeID) {
         this.CompareStatus = compareStatus;
         this.OperatorID = operatorID;
-        this.LitValue = litValue;
-        this.MinValue = minValue;
-        this.MaxValue = maxValue;
+        this.Value = value;
         this.AttributeID = attributeID;
         this.SubAttributeID = subAttributeID;
         this.BusinessRuleTypeID = businessRuleTypeID;
-        this.businessRuleFactory = new BusinessRuleFactory(this.CompareStatus, this.OperatorID, this.LitValue, this.MinValue, this.MaxValue, this.AttributeID, this.SubAttributeID, this.BusinessRuleTypeID);
+        this.businessRuleFactory = new BusinessRuleFactory(this.CompareStatus, this.OperatorID, this.Value, this.AttributeID, this.SubAttributeID, this.BusinessRuleTypeID);
     }
 
     public boolean createBusinessRule() {
