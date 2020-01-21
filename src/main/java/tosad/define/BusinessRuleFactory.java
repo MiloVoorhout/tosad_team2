@@ -1,6 +1,6 @@
 package tosad.define;
 
-public class BusinessRuleFactory implements BusinessRuleFactoryImpl {
+public class BusinessRuleFactory implements BusinessRuleFactoryInterface {
     private int CompareStatus;
     private int OperatorID;
     private int LitValue;

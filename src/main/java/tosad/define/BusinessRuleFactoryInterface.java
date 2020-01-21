@@ -1,5 +1,5 @@
 package tosad.define;
 
-public interface BusinessRuleFactoryImpl {
+public interface BusinessRuleFactoryInterface {
     BusinessRule buildRule();
 }

@@ -1,6 +1,6 @@
 package tosad.productManagement;
 
-public class FailureHandling implements FailureHandlingImpl {
+public class FailureHandling implements FailureHandlingInterface {
 
     private String name;
     private String message;
