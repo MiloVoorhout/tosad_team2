@@ -1,8 +1,4 @@
-import tosad.database.DatabaseFacade;
 import tosad.define.BusinessRuleFactory;
-import tosad.define.BusinessRuleFactoryInterface;
-import tosad.define.BusinessRulePrototype;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
