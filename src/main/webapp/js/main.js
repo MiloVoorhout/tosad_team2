@@ -12,6 +12,7 @@ const list = $("#list");
 const listValue = $('#newListItemValue');
 const listItems = $('#listValues');
 const listActionsContainer = $('#listActions');
+const tableSelect = $('#table_select')
 
 rule_type_select.val(0);
 properties.hide();
@@ -83,4 +84,12 @@ listItems.on('change', function (e) {
         listActionsContainer.empty();
         listActionsContainer.append('<button type="button" class="btn btn-danger btn-sm" id="clearAllList">Clear all</button>');
     }
+});
+
+
+
+$.get("rest/getAllTables", function(array){
+    $.each( array, function( i, val ) {
+        tableSelect.append('<option value="'+ val['id'] +'">'+ val['name'] +'</option>')
+    });
 });
