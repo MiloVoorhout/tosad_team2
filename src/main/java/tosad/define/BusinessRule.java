@@ -6,7 +6,7 @@ import java.util.List;
 public class BusinessRule implements BusinessRulePrototype, Cloneable {
     private int CompareStatus;
     private int OperatorID;
-    private List<Integer> Value;
+    private List<String> Value;
     private int AttributeID;
     private int SubAttributeID;
     private int BusinessRuleTypeID;
@@ -20,7 +20,7 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
         BusinessRuleTypeID = businessRuleTypeID;
     }
 
-    public BusinessRule(int compareStatus, int operatorID, List<Integer> value, int attributeID, int subAttributeID, int businessRuleTypeID) {
+    public BusinessRule(int compareStatus, int operatorID, List<String> value, int attributeID, int subAttributeID, int businessRuleTypeID) {
         CompareStatus = compareStatus;
         OperatorID = operatorID;
         Value = value;
@@ -50,9 +50,9 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
         OperatorID = operatorID;
     }
 
-    public List<Integer> getValue() { return Value; }
+    public List<String> getValue() { return Value; }
 
-    public void setValue(List<Integer> value) { Value = value; }
+    public void setValue(List<String> value) { Value = value; }
 
     public int getAttributeID() {
         return AttributeID;

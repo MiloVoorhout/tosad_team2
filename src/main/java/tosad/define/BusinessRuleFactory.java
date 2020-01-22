@@ -6,12 +6,12 @@ import java.util.List;
 public class BusinessRuleFactory implements BusinessRuleFactoryInterface {
     private int CompareStatus;
     private int OperatorID;
-    private List<Integer> Value;
+    private List<String> Value;
     private int AttributeID;
     private int SubAttributeID;
     private int BusinessRuleTypeID;
 
-    public BusinessRuleFactory(int compareStatus, int operatorID, List<Integer> value, int attributeID, int subAttributeID, int businessRuleTypeID) {
+    public BusinessRuleFactory(int compareStatus, int operatorID, List<String> value, int attributeID, int subAttributeID, int businessRuleTypeID) {
         this.CompareStatus = compareStatus;
         this.OperatorID = operatorID;
         this.Value = value;

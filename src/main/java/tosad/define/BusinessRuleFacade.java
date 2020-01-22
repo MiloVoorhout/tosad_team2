@@ -7,12 +7,12 @@ public class BusinessRuleFacade {
     private BusinessRuleFactory businessRuleFactory;
     private int CompareStatus;
     private int OperatorID;
-    private List<Integer> Value;
+    private List<String> Value;
     private int AttributeID;
     private int SubAttributeID;
     private int BusinessRuleTypeID;
 
-    public BusinessRuleFacade(int compareStatus, int operatorID, List<Integer> value, int attributeID, int subAttributeID, int businessRuleTypeID) {
+    public BusinessRuleFacade(int compareStatus, int operatorID, List<String> value, int attributeID, int subAttributeID, int businessRuleTypeID) {
         this.CompareStatus = compareStatus;
         this.OperatorID = operatorID;
         this.Value = value;
