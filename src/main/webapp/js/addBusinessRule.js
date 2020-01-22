@@ -1,11 +1,11 @@
 function add_button() {
-    let rule_type_select = $('#rule_type_select').val();
-    let rule_type_text = $('#rule_type_select option:selected').html();
-    let rule_name = $('#rule_name').val();
-    let rule_attribute = $('#attribute_select option:selected').html();
-    let rule_table = $('#table_select option:selected').html();
-    let failure_validation = $('#validation_failure_severity option:selected').html();
-    let failure_message = $('#failure_message').val();
+    const rule_type_select = $('#rule_type_select').val();
+    const rule_type_text = $('#rule_type_select option:selected').html();
+    const rule_name = $('#rule_name').val();
+    const rule_attribute = $('#attribute_select option:selected').html();
+    const rule_table = $('#table_select option:selected').html();
+    const failure_validation = $('#validation_failure_severity option:selected').html();
+    const failure_message = $('#failure_message').val();
     let rule_operator = "";
 
     if(rule_type_select == 1) {

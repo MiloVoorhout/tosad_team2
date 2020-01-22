@@ -13,6 +13,7 @@ const listValue = $('#newListItemValue');
 const listItems = $('#listValues');
 const tableSelect = $('#table_select')
 const attributeSelect = $('#attribute_select')
+const selectEntityAttribute = $('#select_entity_attribute')
 const clearAllListBtn = $('#clearAllList')
 
 properties.hide();
@@ -45,7 +46,6 @@ rule_type_select.on('change', function (e) {
         listItems.show();
         listValue.show();
         operator_select_list.show();
-
     }
 });
 
@@ -87,9 +87,10 @@ function getTables() {
 function setAttributes() {
     $.get("rest/getAttributes?table="+tableSelect.val(), function(array){
         attributeSelect.empty();
-
+        selectEntityAttribute.empty();
         $.each( array, function( i, val ) {
             attributeSelect.append('<option value="'+ val['name'] +'">'+ val['name'] +'</option>')
+            selectEntityAttribute.append('<option value="'+ val['name'] +'">'+ val['name'] +'</option>')
         });
     });
 }

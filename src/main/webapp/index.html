@@ -50,9 +50,7 @@
             </div>
         </nav>
 
-        <div class="result">
-
-        </div>
+        <div class="result"></div>
 
         <div class="container mb-5">
             <div class="row">
@@ -85,8 +83,7 @@
                                         <li class="nav-item">
                                             <a class="nav-link" id="failure_handling-tab" data-toggle="tab"
                                                href="#failure_handling" role="tab" aria-controls="failure_handling"
-                                               aria-selected="false">Failure Handling
-                                            </a>
+                                               aria-selected="false">Failure Handling</a>
                                         </li>
                                     </ul>
                                         <div class="tab-content" id="myTabContent">
@@ -96,14 +93,12 @@
                                                 <div class="form-group mt-3">
                                                     <label for="table_select">Table</label>
                                                     <select class="form-control" id="table_select">
-
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label for="attribute_select">Attribute</label>
                                                     <select class="form-control" id="attribute_select">
-
                                                     </select>
                                                 </div>
 
@@ -186,7 +181,7 @@
                                                 <div class="form-group" id="entityAttribute">
                                                     <label for="select_entity_attribute">Select Entity</label>
                                                     <select class="form-control" id="select_entity_attribute" required>
-                                                        <option selected disabled>Choose an attribute to compare with</option>
+
                                                     </select>
                                                     <div class="blockquote-footer">Hint: The selected entity attribute's
                                                         value will be used for comparison</div>
@@ -206,14 +201,16 @@
                                                 <div class="form-group">
                                                     <label for="failure_message">Failure Message</label>
                                                     <textarea class="form-control" id="failure_message" rows="3" required
-                                                              placeholder="Enter text for the translatable validation failure messages"></textarea>
+                                                              placeholder="Enter text for the translatable validation
+                                                              failure messages"></textarea>
                                                     <div class="blockquote-footer">Hint: to add a token message expession,
                                                         include a token of the form {0} in your error message string</div>
                                                 </div>
                                             </div>
                                         </div>
                                         <input type="submit" class="btn btn-success float-right" value="Create">
-                                    <button class="btn btn-secondary" data-toggle="modal" data-target="#help_modal">Help
+                                    <button class="btn btn-secondary" data-toggle="modal" data-target="#help_modal">
+                                        Help
                                     </button>
                                 </div>
                             </form>
