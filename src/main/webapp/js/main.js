@@ -13,6 +13,8 @@ const listValue = $('#newListItemValue');
 const listItems = $('#listValues');
 const listActionsContainer = $('#listActions');
 const tableSelect = $('#table_select')
+const attributeSelect = $('#attribute_select')
+const clearAllListBtn = $('#clearAllList')
 
 rule_type_select.val(0);
 properties.hide();
@@ -74,7 +76,6 @@ listValue.keyup(function(e){
 });
 
 listItems.on('change', function (e) {
-    alert(listItems.val());
 
     if (listItems.val()) {
         listActionsContainer.empty();
@@ -86,10 +87,23 @@ listItems.on('change', function (e) {
     }
 });
 
-
+clearAllListBtn.on('click', function (e) {
+    listItems.empty();
+});
 
 $.get("rest/getAllTables", function(array){
     $.each( array, function( i, val ) {
-        tableSelect.append('<option value="'+ val['id'] +'">'+ val['name'] +'</option>')
+        tableSelect.append('<option value="'+ val['name'] +'">'+ val['name'] +'</option>')
+    });
+});
+
+tableSelect.on('change', function(e) {
+    $.get("rest/getAttributes?table="+tableSelect.val(), function(array){
+        attributeSelect.empty();
+        attributeSelect.append('<option selected disabled>Choose an attribute</option>')
+
+        $.each( array, function( i, val ) {
+            attributeSelect.append('<option value="'+ val['name'] +'">'+ val['name'] +'</option>')
+        });
     });
 });

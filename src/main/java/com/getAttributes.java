@@ -11,15 +11,35 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-@Path("/getAllTables")
+@Path("/getAttributes")
 public class getAttributes extends DatabaseConnection {
-
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getTestService(
-            @DefaultValue("1") @QueryParam("table") String table
+            @DefaultValue("VBMG_KLANTEN") @QueryParam("table") String table
     ) throws SQLException {
 
-        return (table);
+        JSONObject obj = new JSONObject();
+        JSONArray arr = new JSONArray();
+
+        Connection conn = getConnection();
+        String query  = "SELECT column_name FROM all_tab_cols WHERE table_name = '"+ table +"'";
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        int i = 0;
+
+        while (rs.next()) {
+            i++;
+            obj.put("id", i);
+            obj.put("name", rs.getString("column_name"));
+            arr.put(obj);
+            obj = new JSONObject();
+        }
+
+        String result = arr.toString();
+
+        return (result);
+
     }
 }
