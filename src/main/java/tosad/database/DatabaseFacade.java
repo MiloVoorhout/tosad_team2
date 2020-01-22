@@ -153,4 +153,25 @@ public class DatabaseFacade extends DatabaseConnection {
         }
         return values;
     }
+
+    public static HashMap<Integer, String> getListValues(int id) {
+        String value;
+        int type;
+        HashMap<Integer, String> values = new HashMap<>();
+
+        try {
+            Connection conn = getConnection();
+            String query = "SELECT * FROM TOSAD.VALUE WHERE BUSINESSRULEID = " + id;
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                value = rs.getString("VALUE");
+                id = rs.getInt("ID");
+                values.put(id, value);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return values;
+    }
 }

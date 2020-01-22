@@ -14,24 +14,27 @@ public class ListRule {
         String attributeName;
         String operatorSymbol;
         ArrayList<String> listValues = new ArrayList<>();
+        System.out.println(values);
 
         attributeName = attribute.getName();
         operatorSymbol = operator.getSymbol();
         Iterator iterator = values.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry value = (Map.Entry) iterator.next();
-            if (value.getKey().equals(4)) {
-                listValues.add((String) value.getValue());
-            }
-        }
+            System.out.println(value);
+            listValues.add((String) value.getValue());
+         }
+        System.out.println(listValues);
 
         StringBuffer finalList = new StringBuffer();
+        finalList.append("(");
         for (int i = 0; i < listValues.size(); i++) {
-            finalList.append(listValues.get(i));
-            if (i != listValues.size()) {
+            finalList.append("'" + listValues.get(i) + "'");
+            if (i != listValues.size() - 1) {
                 finalList.append(", ");
             }
         }
+        finalList.append(")");
 
         return String.format("%s %s %s",
                 attributeName,

@@ -32,6 +32,7 @@ public class Generator {
                 }
                 break;
             case 3:
+                values = DatabaseFacade.getListValues(rule.getRuleID());
                 triggerCode = ListRule.triggerCodeListRule(operator, attribute, values);
                 break;
             default:
@@ -44,13 +45,14 @@ public class Generator {
     public String generateCode(BusinessRule rule, Attribute attribute, String triggerCode, String operation) {
         return String.format("CREATE OR REPLACE TRIGGER %s %n" +
                              "BEFORE %s %n" +
-                                "ON %s %n" +
+                                "ON %s.%s %n" +
                                 "FOR EACH ROW %n" +
                              "BEGIN %n" +
                                 ":new.%s %n" +
                              "END;",
                     rule.getName(),
                     operation,
+                    attribute.getDatabase(),
                     attribute.getTable(),
                     triggerCode
                 );

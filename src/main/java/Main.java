@@ -28,8 +28,11 @@ public class Main extends DatabaseConnection {
 //
 //        System.out.println(json.toString());
         Generator generator = new Generator();
+//        2, 1, 4, 3, null, 2, 'test_listval'
+//        3, 1, 4, 3, 2, null, 'test_attributeval'
+//        4, 1, 9, 4, null, 3, 'test_attributeval'
 
-        BusinessRule newBusinessRule = new BusinessRule(1, "test_trigger", 1, 1, 2, 1);
+        BusinessRule newBusinessRule = new BusinessRule(4, "test_listrule", 1, 9, 4, 3);
         System.out.println(generator.generatorInformation(newBusinessRule, "INSERT"));
     }
 

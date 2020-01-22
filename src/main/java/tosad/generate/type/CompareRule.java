@@ -37,7 +37,7 @@ public class CompareRule {
             litVal = (String) value.getValue();
         }
 
-        return String.format("%s %s %s AND %s",
+        return String.format("%s %s %s",
                 attributeName,
                 operatorSymbol,
                 litVal);
