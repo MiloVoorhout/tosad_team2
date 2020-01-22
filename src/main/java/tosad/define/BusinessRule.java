@@ -1,9 +1,9 @@
 package tosad.define;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BusinessRule implements BusinessRulePrototype, Cloneable {
+    private int RuleID;
     private String Name;
     private int CompareStatus;
     private int OperatorID;
@@ -32,10 +32,34 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
         BusinessRuleTypeID = businessRuleTypeID;
     }
 
+    public BusinessRule(int ruleID, String ruleName, int compareStatus, int operatorID, List<String> value, int attributeID, int subAttributeID, int businessRuleTypeID) {
+        RuleID = ruleID;
+        Name = ruleName;
+        CompareStatus = compareStatus;
+        OperatorID = operatorID;
+        Value = value;
+        AttributeID = attributeID;
+        SubAttributeID = subAttributeID;
+        BusinessRuleTypeID = businessRuleTypeID;
+    }
+
+    public BusinessRule(int ruleID, String ruleName, int compareStatus, int operatorID, int attributeID, int businessRuleTypeID) {
+        RuleID = ruleID;
+        Name = ruleName;
+        CompareStatus = compareStatus;
+        OperatorID = operatorID;
+        AttributeID = attributeID;
+        BusinessRuleTypeID = businessRuleTypeID;
+    }
+
     @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
+
+    public int getRuleID() {return RuleID;}
+
+    public int setRuleID(int ruleID) {return RuleID = ruleID;}
 
     public String getName() {return Name;}
 
@@ -61,9 +85,7 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
 
     public void setValue(List<String> value) { Value = value; }
 
-    public int getAttributeID() {
-        return AttributeID;
-    }
+    public int getAttributeID() { return AttributeID; }
 
     public void setAttributeID(int attributeID) {
         AttributeID = attributeID;

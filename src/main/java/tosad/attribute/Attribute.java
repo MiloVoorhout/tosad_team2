@@ -2,12 +2,12 @@ package tosad.attribute;
 
 public class Attribute {
     private String Name;
-    private String Tabel;
+    private String Table;
     private String Database;
 
-    public Attribute(String name, String tabel, String database) {
+    public Attribute(String name, String table, String database) {
         Name = name;
-        Tabel = tabel;
+        Table = table;
         Database = database;
     }
 
@@ -15,9 +15,9 @@ public class Attribute {
 
     public void setName(String name) { Name = name; }
 
-    public String getTabel() { return Tabel; }
+    public String getTable() { return Table; }
 
-    public void setTabel(String tabel) { Tabel = tabel; }
+    public void setTable(String table) { Table = table; }
 
     public String getDatabase() { return Database; }
 

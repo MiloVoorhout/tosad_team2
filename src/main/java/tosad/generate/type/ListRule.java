@@ -1,4 +1,42 @@
 package tosad.generate.type;
 
+import tosad.attribute.Attribute;
+import tosad.define.Operator;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 public class ListRule {
+
+    public static String triggerCodeListRule(Operator operator, Attribute attribute, HashMap values) {
+        String attributeName;
+        String operatorSymbol;
+        ArrayList<String> listValues = new ArrayList<>();
+
+        attributeName = attribute.getName();
+        operatorSymbol = operator.getSymbol();
+        Iterator iterator = values.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry value = (Map.Entry) iterator.next();
+            if (value.getKey().equals(4)) {
+                listValues.add((String) value.getValue());
+            }
+        }
+
+        StringBuffer finalList = new StringBuffer();
+        for (int i = 0; i < listValues.size(); i++) {
+            finalList.append(listValues.get(i));
+            if (i != listValues.size()) {
+                finalList.append(", ");
+            }
+        }
+
+        return String.format("%s %s %s",
+                attributeName,
+                operatorSymbol,
+                finalList);
+    }
+
 }

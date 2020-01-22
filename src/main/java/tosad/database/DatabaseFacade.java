@@ -2,10 +2,12 @@ package tosad.database;
 
 import tosad.attribute.Attribute;
 import tosad.define.BusinessRule;
+import tosad.define.Operator;
 import tosad.generate.Generator;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DatabaseFacade extends DatabaseConnection {
 
@@ -81,33 +83,74 @@ public class DatabaseFacade extends DatabaseConnection {
                 subAttributeID = rs.getInt("SUBATTRIBUTEID");
                 businessRuleTypeID = rs.getInt("BUSINESSRULETYPEID");
             }
-            Generator generator = new Generator();
             BusinessRule newRule = new BusinessRule(ruleName ,compareStatus, operatorID, attributeID, subAttributeID, businessRuleTypeID);
-            generator.generateCode(newRule);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void getAttributeData(int AttributeID) {
-
+    public static Attribute getAttributeData(int AttributeID) {
         String name = "";
-        String tabel = "";
+        String table = "";
         String database = "";
+        Attribute newAttribute = null;
 
         try {
             Connection conn = getConnection();
-            String query = "SELECT * FROM TOSAD.BUSINESSRULE WHERE ID = " + AttributeID;
+            String query = "SELECT * FROM TOSAD.ATTRIBUTE WHERE ID = " + AttributeID;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 name = rs.getString("NAME");
-                tabel = rs.getString("TABEL");
+                table = rs.getString("TABEL");
                 database = rs.getString("DATABASE");
             }
-            Attribute newAttribute = new Attribute(name, tabel, database);
+            newAttribute = new Attribute(name, table, database);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return newAttribute;
+    }
+
+    public static Operator getOperatorInformation(int OperatorID) {
+        String name = "";
+        String symbol = "";
+        Operator newOperator = null;
+
+        try {
+            Connection conn = getConnection();
+            String query = "SELECT * FROM TOSAD.OPERATOR WHERE ID = " + OperatorID;
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                name = rs.getString("NAME");
+                symbol = rs.getString("SYMBOL");
+            }
+            newOperator = new Operator(name, symbol);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return newOperator;
+    }
+
+    public static HashMap<Integer, String> getValues(int id) {
+        String value;
+        int type;
+        HashMap<Integer, String> values = new HashMap<>();
+
+        try {
+            Connection conn = getConnection();
+            String query = "SELECT * FROM TOSAD.VALUE WHERE BUSINESSRULEID = " + id;
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                value = rs.getString("VALUE");
+                type = rs.getInt("TYPE");
+                values.put(type, value);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return values;
     }
 }
