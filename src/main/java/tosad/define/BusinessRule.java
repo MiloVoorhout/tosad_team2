@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BusinessRule implements BusinessRulePrototype, Cloneable {
+    private String Name;
     private int CompareStatus;
     private int OperatorID;
     private List<String> Value;
@@ -12,7 +13,8 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
     private int BusinessRuleTypeID;
 
 
-    public BusinessRule(int compareStatus, int operatorID, int attributeID, int subAttributeID, int businessRuleTypeID) {
+    public BusinessRule(String ruleName, int compareStatus, int operatorID, int attributeID, int subAttributeID, int businessRuleTypeID) {
+        Name = ruleName;
         CompareStatus = compareStatus;
         OperatorID = operatorID;
         AttributeID = attributeID;
@@ -20,7 +22,8 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
         BusinessRuleTypeID = businessRuleTypeID;
     }
 
-    public BusinessRule(int compareStatus, int operatorID, List<String> value, int attributeID, int subAttributeID, int businessRuleTypeID) {
+    public BusinessRule(String ruleName, int compareStatus, int operatorID, List<String> value, int attributeID, int subAttributeID, int businessRuleTypeID) {
+        Name = ruleName;
         CompareStatus = compareStatus;
         OperatorID = operatorID;
         Value = value;
@@ -33,6 +36,10 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
+
+    public String getName() {return Name;}
+
+    public void setName(String ruleName) {Name = ruleName;}
 
     public int getCompareStatus() {
         return CompareStatus;

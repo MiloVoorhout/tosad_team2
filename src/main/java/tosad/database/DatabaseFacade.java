@@ -60,7 +60,7 @@ public class DatabaseFacade extends DatabaseConnection {
     }
 
     public static void getData(int id) throws SQLException {
-
+        String ruleName = "";
         int compareStatus = 0;
         int operatorID = 0;
         int attributeID = 0;
@@ -73,6 +73,7 @@ public class DatabaseFacade extends DatabaseConnection {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
+                ruleName = rs.getString("NAME");
                 compareStatus = rs.getInt("COMPARESTATUS");
                 operatorID = rs.getInt("OPERATORID");
                 attributeID = rs.getInt("ATTRIBUTEID");
@@ -80,7 +81,7 @@ public class DatabaseFacade extends DatabaseConnection {
                 businessRuleTypeID = rs.getInt("BUSINESSRULETYPEID");
             }
             Generator generator = new Generator();
-            BusinessRule newRule = new BusinessRule(compareStatus, operatorID, attributeID, subAttributeID, businessRuleTypeID);
+            BusinessRule newRule = new BusinessRule(ruleName ,compareStatus, operatorID, attributeID, subAttributeID, businessRuleTypeID);
             generator.generateCode(newRule);
         } catch (Exception e) {
             e.printStackTrace();
