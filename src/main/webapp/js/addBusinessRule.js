@@ -1,4 +1,5 @@
-function add_button() {
+$("#createBtn").on('change', function (e) {
+    alert("hello");
     const rule_type_select = $('#rule_type_select').val();
     const rule_type_text = $('#rule_type_select option:selected').html();
     const rule_name = $('#rule_name').val();
@@ -58,7 +59,7 @@ function add_button() {
 
         $('#listValues option').each(function () {
             optionValues.push($(this).val())
-        })
+        });
 
         const rangeArray = {'name': rule_name,
             'type': rule_type_select,
@@ -72,7 +73,5 @@ function add_button() {
         window.sessionStorage.setItem(rule_name, JSON.stringify(rangeArray));
     }
 
-    let properties = $("#properties");
-    properties.hide();
-    $('#rule_type_select').val(0);
-}
+    alert("done");
+});
