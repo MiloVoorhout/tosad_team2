@@ -60,167 +60,163 @@
                     <div class="card">
                         <h5 class="card-header">Add Validation Rule</h5>
                         <div class="card-body">
-                            <p class="card-text">Define the validation you want to perform with this rule and configure
-                                the Validation Failure response.</p>
-                            <div class="form-group">
-                                <select class="form-control" id="rule_type_select">
-                                    <option value="0" selected disabled>Please choose a Rule Type...</option>
-                                    <option value="1">Attribute Range</option>
-                                    <option value="2">Attribute Compare</option>
-                                    <option value="3">Attribute List</option>
-                                </select>
-                            </div>
-
-                            <div id="properties">
+                            <form>
+                                <p class="card-text">Define the validation you want to perform with this rule and configure
+                                    the Validation Failure response.</p>
                                 <div class="form-group">
-                                    <label for="rule_name">Choose a name</label>
-                                    <input type="text" class="form-control" id="rule_name">
+                                    <select class="form-control" id="rule_type_select" required>
+                                        <option value="" disabled selected>Choose a Rule Type</option>
+                                        <option value="1">Attribute Range</option>
+                                        <option value="2">Attribute Compare</option>
+                                        <option value="3">Attribute List</option>
+                                    </select>
                                 </div>
-                                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#rule_definition"
-                                           role="tab" aria-controls="rule_definition" aria-selected="true">Rule Definition
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="failure_handling-tab" data-toggle="tab"
-                                           href="#failure_handling" role="tab" aria-controls="failure_handling"
-                                           aria-selected="false">Failure Handling
-                                        </a>
-                                    </li>
-                                </ul>
-                                <form class="mt-3">
-                                    <div class="tab-content" id="myTabContent">
-                                        <div class="tab-pane fade show active" id="rule_definition" role="tabpanel"
-                                             aria-labelledby="rule_definition-tab">
+                                <div id="properties">
+                                    <div class="form-group">
+                                        <label for="rule_name">Choose a name</label>
+                                        <input type="text" class="form-control" id="rule_name" required>
+                                    </div>
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#rule_definition"
+                                               role="tab" aria-controls="rule_definition" aria-selected="true">Rule Definition
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="failure_handling-tab" data-toggle="tab"
+                                               href="#failure_handling" role="tab" aria-controls="failure_handling"
+                                               aria-selected="false">Failure Handling
+                                            </a>
+                                        </li>
+                                    </ul>
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="rule_definition" role="tabpanel"
+                                                 aria-labelledby="rule_definition-tab">
 
-                                            <div class="form-group">
-                                                <label for="table_select">Table</label>
-                                                <select class="form-control" id="table_select">
-                                                    <option selected disabled>Choose a table</option>
+                                                <div class="form-group mt-3">
+                                                    <label for="table_select">Table</label>
+                                                    <select class="form-control" id="table_select">
 
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="attribute_select">Attribute</label>
-                                                <select class="form-control" id="attribute_select">
-                                                    <option selected disabled>Choose an attribute</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="operator_select">Operator</label>
-                                                <select class="form-control" id="operator_select">
-                                                    <option value="1">Between</option>
-                                                    <option value="2">NotBetween</option>
-                                                </select>
-
-                                                <select class="form-control" id="operator_select_compare">
-                                                    <option value="3">Equals [=]</option>
-                                                    <option value="4">NotEquals [!=]</option>
-                                                    <option value="5">LessThan [<]</option>
-                                                    <option value="6">GreaterThan[>]</option>
-                                                    <option value="7">LessOrEqualTo[<=]</option>
-                                                    <option value="8">GreaterOrEqualTo[>=]</option>
-                                                </select>
-
-                                                <select class="form-control" id="operator_select_list">
-                                                    <option value="1">In</option>
-                                                    <option value="2">Not in</option>
-                                                </select>
-
-                                            </div>
-
-                                            <div class="form-group" id="compare_with">
-                                                <label for="compare_with_select">Compare with</label>
-                                                <select class="form-control" id="compare_with_select">
-                                                    <option value="1">Literal Value</option>
-                                                    <option value="2">Entity Attribute</option>
-                                                </select>
-                                            </div>
-
-                                            <hr>
-
-                                            <!-- List -->
-                                            <div id="list">
-                                                <div class="form-group">
-                                                    <label for="newListItemValue">Add a new list item</label>
-                                                    <input type="text" class="form-control" id="newListItemValue" placeholder="Example: list_item_name">
-                                                    <div class="blockquote-footer">Hint: Press enter to add the item into the list below</div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="listValues">Current values in list</label>
-                                                    <select multiple class="form-control" id="listValues">
                                                     </select>
                                                 </div>
-                                                <div id="listActions">
-                                                    <button type="button" class="btn btn-danger btn-sm" id="clearAllList">Clear all</button>
+
+                                                <div class="form-group">
+                                                    <label for="attribute_select">Attribute</label>
+                                                    <select class="form-control" id="attribute_select">
+
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="operator_select">Operator</label>
+                                                    <select class="form-control" id="operator_select">
+                                                        <option value="1">Between</option>
+                                                        <option value="2">NotBetween</option>
+                                                    </select>
+
+                                                    <select class="form-control" id="operator_select_compare">
+                                                        <option value="3">Equals [=]</option>
+                                                        <option value="4">NotEquals [!=]</option>
+                                                        <option value="5">LessThan [<]</option>
+                                                        <option value="6">GreaterThan[>]</option>
+                                                        <option value="7">LessOrEqualTo[<=]</option>
+                                                        <option value="8">GreaterOrEqualTo[>=]</option>
+                                                    </select>
+
+                                                    <select class="form-control" id="operator_select_list">
+                                                        <option value="1">In</option>
+                                                        <option value="2">Not in</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group" id="compare_with">
+                                                    <label for="compare_with_select">Compare with</label>
+                                                    <select class="form-control" id="compare_with_select">
+                                                        <option value="1">Literal Value</option>
+                                                        <option value="2">Entity Attribute</option>
+                                                    </select>
+                                                </div>
+
+                                                <hr>
+
+                                                <!-- List -->
+                                                <div id="list">
+                                                    <div class="form-group">
+                                                        <label for="newListItemValue">Add new list items</label>
+                                                        <input type="text" class="form-control" id="newListItemValue" placeholder="Example: list_item_name">
+                                                        <div class="blockquote-footer">Hint: Press enter to add the item into the list below</div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="listValues">Current values in list</label>
+                                                        <select multiple class="form-control" id="listValues" required>
+                                                        </select>
+                                                    </div>
+                                                    <div id="listActions">
+                                                        <button type="button" class="btn btn-danger btn-sm" id="clearAllList">Clear all</button>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Range -->
+                                                <div class="form-group" id="range">
+                                                    <label>Range</label>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <input type="number" class="form-control" id="minimum_value"
+                                                                   placeholder="Minimum value" required>
+                                                            <div class="blockquote-footer">Hint: Enter valid values for the
+                                                                selected attribute's type</div>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <input type="number" class="form-control" id="maximum_value"
+                                                                   placeholder="Maximum value" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Literal value -->
+                                                <div class="form-group" id="literalValue">
+                                                    <label for="enter_literal_value_textbox">Enter Literal Value</label>
+                                                    <textarea class="form-control" id="enter_literal_value_textbox"
+                                                              rows="3" required></textarea>
+                                                    <div class="blockquote-footer">Hint: Enter a valid value for the
+                                                        selected attribute's type</div>
+                                                </div>
+
+                                                <!-- Entity tosad.attribute.Attribute -->
+                                                <div class="form-group" id="entityAttribute">
+                                                    <label for="select_entity_attribute">Select Entity</label>
+                                                    <select class="form-control" id="select_entity_attribute" required>
+                                                        <option selected disabled>Choose an attribute to compare with</option>
+                                                    </select>
+                                                    <div class="blockquote-footer">Hint: The selected entity attribute's
+                                                        value will be used for comparison</div>
+                                                </div>
+                                                <hr>
+                                            </div>
+                                            <div class="tab-pane fade" id="failure_handling" role="tabpanel"
+                                                 aria-labelledby="failure_handling-tab">
+                                                <div class="form-group">
+                                                    <label for="validation_failure_severity">Validation Failure Severity
+                                                    </label>
+                                                    <select class="form-control" id="validation_failure_severity">
+                                                        <option value="1">Error</option>
+                                                        <option value="2">Informational Warning</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="failure_message">Failure Message</label>
+                                                    <textarea class="form-control" id="failure_message" rows="3" required
+                                                              placeholder="Enter text for the translatable validation failure messages"></textarea>
+                                                    <div class="blockquote-footer">Hint: to add a token message expession,
+                                                        include a token of the form {0} in your error message string</div>
                                                 </div>
                                             </div>
-
-                                            <!-- Range -->
-                                            <div class="form-group" id="range">
-                                                <label>Range</label>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-6">
-                                                        <input type="number" class="form-control" id="minimum_value"
-                                                               placeholder="Minimum value">
-                                                        <div class="blockquote-footer">Hint: Enter valid values for the
-                                                            selected attribute's type</div>
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <input type="number" class="form-control" id="maximum_value"
-                                                               placeholder="Maximum value">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Literal value -->
-                                            <div class="form-group" id="literalValue">
-                                                <label for="enter_literal_value_textbox">Enter Literal Value</label>
-                                                <textarea class="form-control" id="enter_literal_value_textbox"
-                                                          rows="3"></textarea>
-                                                <div class="blockquote-footer">Hint: Enter a valid value for the
-                                                    selected attribute's type</div>
-                                            </div>
-
-                                            <!-- Entity tosad.attribute.Attribute -->
-                                            <div class="form-group" id="entityAttribute">
-                                                <label for="select_entity_attribute">Select Entity tosad.attribute.Attribute</label>
-                                                <select class="form-control" id="select_entity_attribute">
-                                                    <option value="1">AccountMgrId</option>
-                                                    <option value="2">CreditLimit</option>
-                                                </select>
-                                                <div class="blockquote-footer">Hint: The selected entity attribute's
-                                                    value will be used for comparison</div>
-                                            </div>
-                                            <hr>
                                         </div>
-                                        <div class="tab-pane fade" id="failure_handling" role="tabpanel"
-                                             aria-labelledby="failure_handling-tab">
-                                            <div class="form-group">
-                                                <label for="validation_failure_severity">Validation Failure Severity
-                                                </label>
-                                                <select class="form-control" id="validation_failure_severity">
-                                                    <option value="1">Error</option>
-                                                    <option value="2">Informational Warning</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="failure_message">Failure Message</label>
-                                                <textarea class="form-control" id="failure_message" rows="3"
-                                                          placeholder="Enter text for the translatable validation failure messages"></textarea>
-                                                <div class="blockquote-footer">Hint: to add a token message expession,
-                                                    include a token of the form {0} in your error message string</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                                <button onclick="add_button()"  class="btn btn-success float-right">Create</button>
-                                <button class="btn btn-secondary" data-toggle="modal" data-target="#help_modal">Help
-                                </button>
-                            </div>
+                                        <input type="submit" class="btn btn-success float-right" value="Create">
+                                    <button class="btn btn-secondary" data-toggle="modal" data-target="#help_modal">Help
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
