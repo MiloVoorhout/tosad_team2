@@ -1,6 +1,5 @@
 package tosad.database;
 
-import tosad.attribute.Attribute;
 import tosad.define.BusinessRule;
 import tosad.generate.Generator;
 
@@ -84,28 +83,6 @@ public class DatabaseFacade extends DatabaseConnection {
             Generator generator = new Generator();
             BusinessRule newRule = new BusinessRule(ruleName ,compareStatus, operatorID, attributeID, subAttributeID, businessRuleTypeID);
             generator.generateCode(newRule);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void getAttributeData(int AttributeID) {
-
-        String name = "";
-        String tabel = "";
-        String database = "";
-
-        try {
-            Connection conn = getConnection();
-            String query = "SELECT * FROM TOSAD.BUSINESSRULE WHERE ID = " + AttributeID;
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                name = rs.getString("NAME");
-                tabel = rs.getString("TABEL");
-                database = rs.getString("DATABASE");
-            }
-            Attribute newAttribute = new Attribute(name, tabel, database);
         } catch (Exception e) {
             e.printStackTrace();
         }

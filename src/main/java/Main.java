@@ -1,23 +1,29 @@
+import tosad.database.DatabaseConnection;
 import tosad.define.BusinessRuleFactory;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class Main extends DatabaseConnection {
 
-    public static void main(String[] arg) throws SQLException{
-//        DatabaseFacade.getData(1);
-        int val1 = 1;
-        int val2 = 2;
-        int val3 = 3;
-        List<Integer> Data = new ArrayList<Integer>();
-        Data.add(val1);
-        Data.add(val2);
-        Data.add(val3);
+    public static void main(String[] arg) throws SQLException {
 
+        Connection conn = getConnection();
+        String query  = "SELECT table_name from all_tables where owner = 'VBMG'";
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        String tableName;
+        int i = 0;
 
-        BusinessRuleFactory BRF = new BusinessRuleFactory(1,1, Data, 1,1,1);
-        BRF.buildRule();
+        ArrayList<String> json = new ArrayList<>();
+
+        while (rs.next()) {
+            i++;
+            tableName = rs.getString("table_name");
+            json.add(i + ":" + tableName + ",");
+        }
+
+        System.out.println(json.toString());
     }
 
 }
