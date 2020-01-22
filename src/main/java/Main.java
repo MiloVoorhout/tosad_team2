@@ -11,6 +11,7 @@ public class Main extends DatabaseConnection {
 
     public static void main(String[] arg) throws SQLException {
 
+<<<<<<< HEAD
 //        Connection conn = getConnection();
 //        String query  = "SELECT table_name from all_tables where owner = 'VBMG'";
 //        Statement stmt = conn.createStatement();
@@ -34,6 +35,9 @@ public class Main extends DatabaseConnection {
 
         BusinessRule newBusinessRule = new BusinessRule(4, "test_listrule", 1, 9, 4, 3);
         System.out.println(generator.generatorInformation(newBusinessRule, "INSERT"));
+=======
+
+>>>>>>> testing
     }
 
 }
