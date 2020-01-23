@@ -1,13 +1,10 @@
 function generateRule() {
-    let selectedKey = $('.list-group-item.list-group-item-action.active').html();
+    let selectedKey = $('.list-group-item.list-group-item-action.active').attr("data-id");
     let jsonArray = JSON.parse(sessionStorage.getItem(selectedKey));
 
-    let code = '<a>CREATE OR REPLACE TRIGGER ' + jsonArray['name'] + '<br>' +
-    'BEFORE INSERT ON ' + jsonArray['tabel'] + ' FOR EACH ROW<br>' +
-    'BEGIN<br>' +
-        '&emsp;:new.' + jsonArray['attribute'] + ' ' + jsonArray['operator'] + ' ' + jsonArray['minVal'] + ' AND ' + jsonArray['maxVal'] + '<br>' +
-    'END;</a>';
-
-    $('#modal_code').html(code);
-    $('#generate_modal').modal('toggle');
+    $.get("rest/generate?array="+jsonArray["id"]+","+jsonArray["name"]+","+jsonArray["comparestatus"]+","+jsonArray["operatorID"]+","+jsonArray["attributeID"]+","+jsonArray["subAttributeID"]+","+jsonArray["businessRuleTypeID"], function(array){
+        let code = array[0]["code"];
+        $('#modal_code').html(code);
+        $('#generate_modal').modal('toggle');
+    });
 }

@@ -14,17 +14,15 @@ public class ListRule {
         String attributeName;
         String operatorSymbol;
         ArrayList<String> listValues = new ArrayList<>();
-        System.out.println(values);
 
         attributeName = attribute.getName();
         operatorSymbol = operator.getSymbol();
         Iterator iterator = values.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry value = (Map.Entry) iterator.next();
-            System.out.println(value);
             listValues.add((String) value.getValue());
          }
-        System.out.println(listValues);
+
 
         StringBuffer finalList = new StringBuffer();
         finalList.append("(");

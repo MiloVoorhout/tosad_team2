@@ -32,12 +32,11 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
         BusinessRuleTypeID = businessRuleTypeID;
     }
 
-    public BusinessRule(int ruleID, String ruleName, int compareStatus, int operatorID, List<String> value, int attributeID, int subAttributeID, int businessRuleTypeID) {
+    public BusinessRule(int ruleID, String ruleName, int compareStatus, int operatorID, int attributeID, int subAttributeID, int businessRuleTypeID) {
         RuleID = ruleID;
         Name = ruleName;
         CompareStatus = compareStatus;
         OperatorID = operatorID;
-        Value = value;
         AttributeID = attributeID;
         SubAttributeID = subAttributeID;
         BusinessRuleTypeID = businessRuleTypeID;

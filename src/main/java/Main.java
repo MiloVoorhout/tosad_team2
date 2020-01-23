@@ -1,3 +1,5 @@
+import org.json.JSONArray;
+import org.json.JSONObject;
 import tosad.database.DatabaseConnection;
 import tosad.define.BusinessRule;
 import tosad.define.BusinessRuleFactory;
@@ -27,13 +29,18 @@ public class Main extends DatabaseConnection {
 //        }
 //
 //        System.out.println(json.toString());
-        Generator generator = new Generator();
-//        2, 1, 4, 3, null, 2, 'test_listval'
-//        3, 1, 4, 3, 2, null, 'test_attributeval'
-//        4, 1, 9, 4, null, 3, 'test_attributeval'
+//        Generator generator = new Generator();
+////        2, 1, 4, 3, null, 2, 'test_listval'
+////        3, 1, 4, 3, 2, null, 'test_attributeval'
+////        4, 1, 9, 4, null, 3, 'test_attributeval'
+//
+//        int ruleID, String ruleName, int compareStatus, int operatorID, int attributeID, int subAttributeID, int businessRuleTypeID
+//        BusinessRule newBusinessRule = new BusinessRule(4, "test_listrule", 1, 9, 4, 3);
+//        BusinessRule testRule = new BusinessRule(2, "test_attributeval", 1, 4, 3, 0, 2);
+//        System.out.println(generator.generatorInformation(testRule, "INSERT"));
 
-        BusinessRule newBusinessRule = new BusinessRule(4, "test_listrule", 1, 9, 4, 3);
-        System.out.println(generator.generatorInformation(newBusinessRule, "INSERT"));
     }
+
+
 
 }
