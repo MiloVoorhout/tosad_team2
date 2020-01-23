@@ -1,5 +1,7 @@
-$("#createBtn").on('change', function (e) {
-    alert("hello");
+$("form").submit(function (e) {
+
+    e.preventDefault();
+
     const rule_type_select = $('#rule_type_select').val();
     const rule_type_text = $('#rule_type_select option:selected').html();
     const rule_name = $('#rule_name').val();
@@ -73,5 +75,8 @@ $("#createBtn").on('change', function (e) {
         window.sessionStorage.setItem(rule_name, JSON.stringify(rangeArray));
     }
 
-    alert("done");
+    alert("Business Rule created");
+    window.location.replace("list.html");
+
+
 });

@@ -34,7 +34,7 @@
                 <img src="img/logo_color.svg" width="30" height="30" class="d-inline-block align-top" alt="">
                 TOSAD Business Rule Generator
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            <button type="button" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -58,11 +58,11 @@
                     <div class="card">
                         <h5 class="card-header">Add Validation Rule</h5>
                         <div class="card-body">
-                            <form>
+                            <form id="main_form">
                                 <p class="card-text">Define the validation you want to perform with this rule and configure
                                     the Validation Failure response.</p>
                                 <div class="form-group">
-                                    <select class="form-control" id="rule_type_select" required>
+                                    <select class="form-control" id="rule_type_select" name="rule_type_select" required>
                                         <option value="" disabled selected>Choose a Rule Type</option>
                                         <option value="1">Attribute Range</option>
                                         <option value="2">Attribute Compare</option>
@@ -72,7 +72,7 @@
                                 <div id="properties">
                                     <div class="form-group">
                                         <label for="rule_name">Choose a name</label>
-                                        <input type="text" class="form-control" id="rule_name" required>
+                                        <input type="text" class="form-control" id="rule_name" name="name" required>
                                     </div>
                                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                                         <li class="nav-item">
@@ -92,24 +92,24 @@
 
                                                 <div class="form-group mt-3">
                                                     <label for="table_select">Table</label>
-                                                    <select class="form-control" id="table_select">
+                                                    <select class="form-control" id="table_select" name="table_select">
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label for="attribute_select">Attribute</label>
-                                                    <select class="form-control" id="attribute_select">
+                                                    <select class="form-control" id="attribute_select" name="attribute_select">
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label for="operator_select">Operator</label>
-                                                    <select class="form-control" id="operator_select">
+                                                    <select class="form-control" id="operator_select" name="operator_select">
                                                         <option value="1">Between</option>
                                                         <option value="2">NotBetween</option>
                                                     </select>
 
-                                                    <select class="form-control" id="operator_select_compare">
+                                                    <select class="form-control" id="operator_select_compare" name="operator_select_compare">
                                                         <option value="3">Equals [=]</option>
                                                         <option value="4">NotEquals [!=]</option>
                                                         <option value="5">LessThan [<]</option>
@@ -118,7 +118,7 @@
                                                         <option value="8">GreaterOrEqualTo[>=]</option>
                                                     </select>
 
-                                                    <select class="form-control" id="operator_select_list">
+                                                    <select class="form-control" id="operator_select_list" name="operator_select_list">
                                                         <option value="1">In</option>
                                                         <option value="2">Not in</option>
                                                     </select>
@@ -126,7 +126,7 @@
 
                                                 <div class="form-group" id="compare_with">
                                                     <label for="compare_with_select">Compare with</label>
-                                                    <select class="form-control" id="compare_with_select">
+                                                    <select class="form-control" id="compare_with_select" name="compare_with_select">
                                                         <option value="1">Literal Value</option>
                                                         <option value="2">Entity Attribute</option>
                                                     </select>
@@ -138,12 +138,12 @@
                                                 <div id="list">
                                                     <div class="form-group">
                                                         <label for="newListItemValue">Add new list items</label>
-                                                        <input type="text" class="form-control" id="newListItemValue" placeholder="Example: list_item_name">
+                                                        <input type="text" class="form-control" id="newListItemValue" placeholder="Example: list_item_name" name="listItems">
                                                         <div class="blockquote-footer">Hint: Press enter to add the item into the list below</div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="listValues">Current values in list</label>
-                                                        <select multiple class="form-control" id="listValues" required>
+                                                        <select multiple class="form-control" id="listValues" name="listValues" >
                                                         </select>
                                                     </div>
                                                     <div id="listActions">
@@ -157,12 +157,12 @@
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <input type="number" class="form-control" id="minimum_value"
-                                                                   placeholder="Minimum value" required>
+                                                                   placeholder="Minimum value" name="minval" required>
                                                             <div class="blockquote-footer">Hint: Enter valid values for the
                                                                 selected attribute's type</div>
                                                         </div>
                                                         <div class="form-group col-md-6">
-                                                            <input type="number" class="form-control" id="maximum_value"
+                                                            <input type="number" class="form-control" id="maximum_value" name="maxval"
                                                                    placeholder="Maximum value" required>
                                                         </div>
                                                     </div>
@@ -172,7 +172,7 @@
                                                 <div class="form-group" id="literalValue">
                                                     <label for="enter_literal_value_textbox">Enter Literal Value</label>
                                                     <textarea class="form-control" id="enter_literal_value_textbox"
-                                                              rows="3" required></textarea>
+                                                              rows="3" name="enter_literal_value_textbox" ></textarea>
                                                     <div class="blockquote-footer">Hint: Enter a valid value for the
                                                         selected attribute's type</div>
                                                 </div>
@@ -180,7 +180,7 @@
                                                 <!-- Entity tosad.attribute.Attribute -->
                                                 <div class="form-group" id="entityAttribute">
                                                     <label for="select_entity_attribute">Select Entity</label>
-                                                    <select class="form-control" id="select_entity_attribute" required>
+                                                    <select class="form-control" id="select_entity_attribute" name="select_entity_attribute" required>
 
                                                     </select>
                                                     <div class="blockquote-footer">Hint: The selected entity attribute's
@@ -193,22 +193,22 @@
                                                 <div class="form-group">
                                                     <label for="validation_failure_severity">Validation Failure Severity
                                                     </label>
-                                                    <select class="form-control" id="validation_failure_severity">
+                                                    <select class="form-control" id="validation_failure_severity" name="validation_failure_severity">
                                                         <option value="1">Error</option>
                                                         <option value="2">Informational Warning</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="failure_message">Failure Message</label>
-                                                    <textarea class="form-control" id="failure_message" rows="3" required
+                                                    <textarea class="form-control" id="failure_message" rows="3" required name="failure_message"
                                                               placeholder="Enter text for the translatable validation failure messages"></textarea>
                                                     <div class="blockquote-footer">Hint: to add a token message expession,
                                                         include a token of the form {0} in your error message string</div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <input type="submit" class="btn btn-success float-right" value="Create" id="createBtn">
-                                    <button class="btn btn-secondary" data-toggle="modal" data-target="#help_modal">
+                                        <input type="submit" class="btn btn-success float-right" value="Create" id="createBtn" name="save">
+                                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#help_modal">
                                         Help
                                     </button>
                                 </div>
