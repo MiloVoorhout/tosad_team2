@@ -26,15 +26,13 @@ const maximumValue = $('#maximum_value');
 const validationFailureSeverity = $('#validation_failure_severity');
 const failureMessage = $('#failure_message');
 
-// const rule_type_select = $('#rule_type_select');
-
 properties.hide();
 
 var arrayObj = [compareWith, operator, operatorCompare, compare_with_select, operator_select_list, range,
     literalValue, entityAttribute, list, listValue, listItems];
 
 function getRuleTypes() {
-    $.get("rest/GetRuleTypes/GetRuleType", function (array) {
+    $.get("rest/GetRuleTypes", function (array) {
         $.each(array, function (i, val) {
             rule_type_select.append('<option value="' + val['id'] + '">' + val['type'] + '</option>')
         });

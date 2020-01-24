@@ -17,7 +17,6 @@ import java.sql.Statement;
 public class GetRuleTypes extends DatabaseConnection {
 
     @GET
-    @Path("/GetRuleType")
     @Produces({MediaType.APPLICATION_JSON})
     public static String getTableData() throws SQLException {
 
@@ -26,7 +25,7 @@ public class GetRuleTypes extends DatabaseConnection {
 
         Connection conn = getConnection();
 
-        String query  = "SELECT * FROM TOSAD.CATEGORY";
+        String query  = "SELECT id, type FROM TOSAD.CATEGORY";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
