@@ -31,5 +31,4 @@ public class DatabaseConnection {
     public static void closeConnection() throws SQLException{
         conn.close();
     }
-
 }

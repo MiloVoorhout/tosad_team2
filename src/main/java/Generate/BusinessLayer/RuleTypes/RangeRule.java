@@ -1,7 +1,6 @@
-package tosad.generate.type;
+package Generate.BusinessLayer.RuleTypes;
 
-import tosad.attribute.Attribute;
-import tosad.define.BusinessRule;
+import Generate.BusinessLayer.Attribute;
 import tosad.define.Operator;
 
 import java.util.HashMap;

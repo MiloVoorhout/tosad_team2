@@ -1,4 +1,4 @@
-package tosad.attribute;
+package Generate.BusinessLayer;
 
 public class Attribute {
     private String Name;

@@ -1,21 +1,21 @@
-package tosad.generate;
+package Generate.BusinessLayer;
 
-import tosad.attribute.Attribute;
-import Database.DatabaseFacade;
+import Generate.BusinessLayer.Attribute;
+import Generate.DatabaseLayer.GenereteDAOImpl;
 import tosad.define.BusinessRule;
 import tosad.define.Operator;
-import tosad.generate.type.CompareRule;
-import tosad.generate.type.ListRule;
-import tosad.generate.type.RangeRule;
+import Generate.BusinessLayer.RuleTypes.CompareRule;
+import Generate.BusinessLayer.RuleTypes.ListRule;
+import Generate.BusinessLayer.RuleTypes.RangeRule;
 import java.util.HashMap;
 
 public class Generator {
 
     public String generatorInformation(BusinessRule rule, String operation){
         int typeID = rule.getBusinessRuleTypeID();
-        Operator operator = DatabaseFacade.getOperatorInformation(rule.getOperatorID());
-        Attribute attribute = DatabaseFacade.getAttributeData(rule.getAttributeID());
-        HashMap<Integer, String> values = DatabaseFacade.getValues(rule.getRuleID());
+        Operator operator = GenereteDAOImpl.getOperatorInformation(rule.getOperatorID());
+        Attribute attribute = GenereteDAOImpl.getAttributeData(rule.getAttributeID());
+        HashMap<Integer, String> values = GenereteDAOImpl.getValues(rule.getRuleID());
         String triggerCode = "";
         String fullCode = "";
 
@@ -25,14 +25,14 @@ public class Generator {
                 break;
             case 2:
                 if(values.isEmpty()) {
-                    Attribute subAttribute = DatabaseFacade.getAttributeData(rule.getSubAttributeID());
+                    Attribute subAttribute = GenereteDAOImpl.getAttributeData(rule.getSubAttributeID());
                     triggerCode = CompareRule.triggerCodeSubAttribute(operator, attribute, subAttribute);
                 } else {
                     triggerCode = CompareRule.triggerCodeLitValue(operator, attribute, values);
                 }
                 break;
             case 3:
-                values = DatabaseFacade.getListValues(rule.getRuleID());
+                values = GenereteDAOImpl.getListValues(rule.getRuleID());
                 triggerCode = ListRule.triggerCodeListRule(operator, attribute, values);
                 break;
             default:

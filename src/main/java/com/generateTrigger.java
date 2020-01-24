@@ -3,11 +3,10 @@ package com;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import tosad.define.BusinessRule;
-import tosad.generate.Generator;
+import Generate.BusinessLayer.Generator;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-
 
 @Path("/generate")
 public class generateTrigger {
