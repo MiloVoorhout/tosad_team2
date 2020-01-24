@@ -1,4 +1,4 @@
-package Define.DatabaseLayer;
+package com;
 
 import Database.DatabaseConnection;
 import org.json.JSONArray;
@@ -17,30 +17,27 @@ import java.sql.Statement;
 public class GetRuleTypes extends DatabaseConnection {
 
     @GET
+    @Path("/GetRuleType")
     @Produces({MediaType.APPLICATION_JSON})
     public static String getTableData() throws SQLException {
 
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
 
-        try {
-            Connection conn = (Connection) new DatabaseConnection();
-            Statement stmt = conn.createStatement();
+        Connection conn = getConnection();
 
-            ResultSet rs = stmt.executeQuery("SELECT * FROM TOSAD.CATEGORY");
+        String query  = "SELECT * FROM TOSAD.CATEGORY";
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
 
-            while (rs.next()) {
-                obj.put("id", rs.getInt("id"));
-                obj.put("type", rs.getString("type"));
-                arr.put(obj);
-                obj = new JSONObject();
+        while (rs.next()) {
+            obj.put("id", rs.getInt("id"));
+            obj.put("type", rs.getString("type"));
+            arr.put(obj);
+            obj = new JSONObject();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
         String result = arr.toString();
-
         return result;
     }
 }

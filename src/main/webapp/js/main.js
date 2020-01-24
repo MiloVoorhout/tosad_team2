@@ -1,6 +1,6 @@
-const rule_type_select = $('#rule_type_select');
 const rule_name = $('#rule_name');
 
+const rule_type_select = $('#rule_type_select');
 const tableSelect = $('#table_select');
 const attributeSelect = $('#attribute_select');
 const operator = $('#operator_select');
@@ -26,10 +26,22 @@ const maximumValue = $('#maximum_value');
 const validationFailureSeverity = $('#validation_failure_severity');
 const failureMessage = $('#failure_message');
 
+// const rule_type_select = $('#rule_type_select');
+
 properties.hide();
 
 var arrayObj = [compareWith, operator, operatorCompare, compare_with_select, operator_select_list, range,
     literalValue, entityAttribute, list, listValue, listItems];
+
+function getRuleTypes() {
+    $.get("rest/GetRuleTypes/GetRuleType", function (array) {
+        $.each(array, function (i, val) {
+            rule_type_select.append('<option value="' + val['id'] + '">' + val['type'] + '</option>')
+        });
+    });
+}
+
+getRuleTypes();
 
 function hideAllObj(){
     arrayObj.forEach(function(item) { item.hide(); });
