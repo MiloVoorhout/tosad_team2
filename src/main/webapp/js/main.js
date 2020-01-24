@@ -10,15 +10,16 @@ const entityAttribute = $("#entityAttribute");
 const properties = $("#properties");
 const list = $("#list");
 const listValue = $('#newListItemValue');
-const listItems = $('#listValues');
-const tableSelect = $('#table_select')
-const attributeSelect = $('#attribute_select')
-const selectEntityAttribute = $('#select_entity_attribute')
-const clearAllListBtn = $('#clearAllList')
+const listItems = $('#listValues');;
+const tableSelect = $('#table_select');
+const attributeSelect = $('#attribute_select');
+const selectEntityAttribute = $('#select_entity_attribute');
+const clearAllListBtn = $('#clearAllList');
 
 properties.hide();
 
-var arrayObj = [compareWith, operator, operatorCompare, compare_with_select, operator_select_list, range, literalValue, entityAttribute, list, listValue, listItems];
+var arrayObj = [compareWith, operator, operatorCompare, compare_with_select, operator_select_list, range,
+    literalValue, entityAttribute, list, listValue, listItems];
 
 function hideAllObj(){
     arrayObj.forEach(function(item) { item.hide(); });
@@ -72,6 +73,7 @@ listValue.keypress(function(event){
     }
 });
 
+
 clearAllListBtn.on('click', function (e) {
     listItems.empty();
 });
@@ -100,3 +102,7 @@ tableSelect.on('change', function(e) {
 });
 
 getTables();
+
+$.post("rest/createNewBusinessRule", function (data) {
+    
+});
