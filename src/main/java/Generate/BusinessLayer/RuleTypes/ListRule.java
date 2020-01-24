@@ -1,7 +1,7 @@
 package Generate.BusinessLayer.RuleTypes;
 
 import Generate.BusinessLayer.Attribute;
-import tosad.define.Operator;
+import Define.BusinessLayer.Operator;
 
 import java.util.ArrayList;
 import java.util.HashMap;

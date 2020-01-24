@@ -1,4 +1,4 @@
-package tosad.define;
+package Define.BusinessLayer;
 
 public class Operator {
     private String name;

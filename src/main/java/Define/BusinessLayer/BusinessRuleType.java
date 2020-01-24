@@ -1,4 +1,4 @@
-package tosad.define;
+package Define.BusinessLayer;
 
 public class BusinessRuleType {
     private String name;

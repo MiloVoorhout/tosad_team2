@@ -1,6 +1,7 @@
-package tosad.define;
+package Define.PresentationLayer;
 
-import java.util.ArrayList;
+import Define.BusinessLayer.BusinessRule;
+
 import java.util.List;
 
 public class BusinessRuleFactory implements BusinessRuleFactoryInterface {

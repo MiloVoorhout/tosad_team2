@@ -1,4 +1,6 @@
-package tosad.define;
+package Define.BusinessLayer;
+
+import Define.PresentationLayer.BusinessRulePrototype;
 
 import java.util.List;
 
@@ -11,7 +13,6 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
     private int AttributeID;
     private int SubAttributeID;
     private int BusinessRuleTypeID;
-
 
     public BusinessRule(String ruleName, int compareStatus, int operatorID, int attributeID, int subAttributeID, int businessRuleTypeID) {
         Name = ruleName;

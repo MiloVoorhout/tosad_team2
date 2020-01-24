@@ -1,14 +1,14 @@
 package Generate.DatabaseLayer;
 
 import Generate.BusinessLayer.Attribute;
-import tosad.define.Operator;
+import Define.BusinessLayer.Operator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
 
-public class GenereteDAOImpl extends Database.DatabaseConnection{
+public class GenerateDAOImpl extends Database.DatabaseConnection{
 
     public static Attribute getAttributeData(int AttributeID) {
         String name = "";

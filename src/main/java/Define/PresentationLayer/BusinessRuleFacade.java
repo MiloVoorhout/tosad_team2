@@ -1,6 +1,7 @@
-package tosad.define;
+package Define.PresentationLayer;
 
-import java.io.IOException;
+import Define.BusinessLayer.BusinessRule;
+
 import java.util.List;
 
 public class BusinessRuleFacade {
@@ -28,5 +29,4 @@ public class BusinessRuleFacade {
 
         return true;
     }
-
 }

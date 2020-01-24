@@ -1,9 +1,8 @@
 package Generate.BusinessLayer;
 
-import Generate.BusinessLayer.Attribute;
-import Generate.DatabaseLayer.GenereteDAOImpl;
-import tosad.define.BusinessRule;
-import tosad.define.Operator;
+import Generate.DatabaseLayer.GenerateDAOImpl;
+import Define.BusinessLayer.BusinessRule;
+import Define.BusinessLayer.Operator;
 import Generate.BusinessLayer.RuleTypes.CompareRule;
 import Generate.BusinessLayer.RuleTypes.ListRule;
 import Generate.BusinessLayer.RuleTypes.RangeRule;
@@ -13,9 +12,9 @@ public class Generator {
 
     public String generatorInformation(BusinessRule rule, String operation){
         int typeID = rule.getBusinessRuleTypeID();
-        Operator operator = GenereteDAOImpl.getOperatorInformation(rule.getOperatorID());
-        Attribute attribute = GenereteDAOImpl.getAttributeData(rule.getAttributeID());
-        HashMap<Integer, String> values = GenereteDAOImpl.getValues(rule.getRuleID());
+        Operator operator = GenerateDAOImpl.getOperatorInformation(rule.getOperatorID());
+        Attribute attribute = GenerateDAOImpl.getAttributeData(rule.getAttributeID());
+        HashMap<Integer, String> values = GenerateDAOImpl.getValues(rule.getRuleID());
         String triggerCode = "";
         String fullCode = "";
 
@@ -25,14 +24,14 @@ public class Generator {
                 break;
             case 2:
                 if(values.isEmpty()) {
-                    Attribute subAttribute = GenereteDAOImpl.getAttributeData(rule.getSubAttributeID());
+                    Attribute subAttribute = GenerateDAOImpl.getAttributeData(rule.getSubAttributeID());
                     triggerCode = CompareRule.triggerCodeSubAttribute(operator, attribute, subAttribute);
                 } else {
                     triggerCode = CompareRule.triggerCodeLitValue(operator, attribute, values);
                 }
                 break;
             case 3:
-                values = GenereteDAOImpl.getListValues(rule.getRuleID());
+                values = GenerateDAOImpl.getListValues(rule.getRuleID());
                 triggerCode = ListRule.triggerCodeListRule(operator, attribute, values);
                 break;
             default:

@@ -2,7 +2,7 @@ package com;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import tosad.define.BusinessRule;
+import Define.BusinessLayer.BusinessRule;
 import Generate.BusinessLayer.Generator;
 
 import javax.ws.rs.*;

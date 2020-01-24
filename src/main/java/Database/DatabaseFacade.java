@@ -1,13 +1,5 @@
 package Database;
 
-import Generate.BusinessLayer.Attribute;
-import tosad.define.BusinessRule;
-import tosad.define.Operator;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class DatabaseFacade extends DatabaseConnection {
 
     // Milo FF kijken of je deze gebruikt anders kan de volledige klasse weggegooid worden.
