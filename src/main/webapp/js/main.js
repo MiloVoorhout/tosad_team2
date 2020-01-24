@@ -79,7 +79,7 @@ clearAllListBtn.on('click', function (e) {
 });
 
 function getTables() {
-    $.get("rest/getAttributes/getAllTables", function (array) {
+    $.get("rest/GetTableInfo/getAllTables", function (array) {
         $.each(array, function (i, val) {
             tableSelect.append('<option value="' + val['name'] + '">' + val['name'] + '</option>')
         });
@@ -87,7 +87,7 @@ function getTables() {
 }
 
 function setAttributes() {
-    $.get("rest/getAttributes/Table?table="+tableSelect.val(), function(array){
+    $.get("rest/GetTableInfo/GetAttributes?table="+tableSelect.val(), function(array){
         attributeSelect.empty();
         selectEntityAttribute.empty();
         $.each( array, function( i, val ) {
