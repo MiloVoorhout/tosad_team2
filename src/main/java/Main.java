@@ -1,13 +1,6 @@
-import org.json.JSONArray;
-import org.json.JSONObject;
-import tosad.database.DatabaseConnection;
-import tosad.define.BusinessRule;
-import tosad.define.BusinessRuleFactory;
-import tosad.generate.Generator;
+import Database.DatabaseConnection;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main extends DatabaseConnection {
 

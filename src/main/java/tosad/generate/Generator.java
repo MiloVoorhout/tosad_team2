@@ -1,7 +1,7 @@
 package tosad.generate;
 
 import tosad.attribute.Attribute;
-import tosad.database.DatabaseFacade;
+import Database.DatabaseFacade;
 import tosad.define.BusinessRule;
 import tosad.define.Operator;
 import tosad.generate.type.CompareRule;

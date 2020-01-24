@@ -1,11 +1,13 @@
-package tosad.database;
+package Define.DatabaseLayer;
+
+import Database.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class OracleDatabase extends DatabaseConnection{
+public class OracleDatabase extends DatabaseConnection {
     public OracleDatabase() throws SQLException {
     }
 

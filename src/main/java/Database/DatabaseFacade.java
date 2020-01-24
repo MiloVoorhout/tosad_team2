@@ -1,9 +1,8 @@
-package tosad.database;
+package Database;
 
 import tosad.attribute.Attribute;
 import tosad.define.BusinessRule;
 import tosad.define.Operator;
-import tosad.generate.Generator;
 
 import java.sql.*;
 import java.util.ArrayList;

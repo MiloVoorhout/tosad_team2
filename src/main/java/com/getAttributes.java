@@ -2,7 +2,7 @@ package com;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import tosad.database.DatabaseConnection;
+import Database.DatabaseConnection;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
