@@ -25,7 +25,7 @@ public class GetRuleTypes extends DatabaseConnection {
 
         Connection conn = getConnection();
 
-        String query  = "SELECT id, type FROM TOSAD.CATEGORY";
+        String query  = "SELECT ID, TYPE FROM TOSAD.CATEGORY";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
