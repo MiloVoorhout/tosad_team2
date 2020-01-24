@@ -1,6 +1,12 @@
 const rule_type_select = $('#rule_type_select');
-const compareWith = $('#compare_with');
+const rule_name = $('#rule_name');
+
+const tableSelect = $('#table_select');
+const attributeSelect = $('#attribute_select');
 const operator = $('#operator_select');
+
+const compareWith = $('#compare_with');
+
 const operatorCompare = $("#operator_select_compare");
 const compare_with_select = $("#compare_with_select");
 const operator_select_list = $("#operator_select_list");
@@ -11,10 +17,14 @@ const properties = $("#properties");
 const list = $("#list");
 const listValue = $('#newListItemValue');
 const listItems = $('#listValues');;
-const tableSelect = $('#table_select');
-const attributeSelect = $('#attribute_select');
+
 const selectEntityAttribute = $('#select_entity_attribute');
 const clearAllListBtn = $('#clearAllList');
+
+const minimumValue = $('#minimum_value');
+const maximumValue = $('#maximum_value');
+const validationFailureSeverity = $('#validation_failure_severity');
+const failureMessage = $('#failure_message');
 
 properties.hide();
 
@@ -103,6 +113,33 @@ tableSelect.on('change', function(e) {
 
 getTables();
 
-$.post("rest/createNewBusinessRule", function (data) {
-    
+$("form").submit(function (e) {
+    e.preventDefault();
+
+    if(rule_type_select.val() === 1) {
+        $.post("rest/createNewBusinessRule" +
+            "?rule_type_select="+rule_type_select.val()+
+            "&rule_name="+rule_name.val()+
+            "&tableSelect="+tableSelect.val()+
+            "&attributeSelect="+attributeSelect.val()+
+            "&operator="+operator.val()+
+            "&minimumValue="+minimumValue.val()+
+            "&maximumValue="+maximumValue.val()+
+            "&validationFailureSeverity="+validationFailureSeverity.val(), function (data) {
+            console.log(data);
+        });
+    }
+
+    console.log(rule_type_select.val());
+    console.log(rule_name.val());
+    console.log(tableSelect.val());
+    console.log(attributeSelect.val());
+    console.log(operator.val());
+    console.log(minimumValue.val());
+    console.log(maximumValue.val());
+    console.log(validationFailureSeverity.val());
+    console.log(failureMessage.val());
 });
+
+// $.post("rest/GetTableInfo/createNewBusinessRule", function (data) {
+// });
