@@ -57,7 +57,7 @@ function getValues(id) {
     
     $.get("generate/getBusinessRules/values?id="+id, function (array) {
         $.each(array, function (i, val) {
-            values.push(val["type"]: val["value"]);
+            values.push(val["type"] : val["value"]);
             console.log(val["value"] + " " + val["type"]);
         });
     });

@@ -23,8 +23,8 @@ public class GenerateDAOImpl extends Database.DatabaseConnection{
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 name = rs.getString("NAME");
-                table = rs.getString("TABEL");
-                database = rs.getString("DATABASE");
+                table = rs.getString("TABLENAME");
+                database = rs.getString("DATABASENAME");
             }
             newAttribute = new Attribute(name, table, database);
         } catch (Exception e) {

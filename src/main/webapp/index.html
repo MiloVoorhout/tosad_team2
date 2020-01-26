@@ -134,14 +134,16 @@
                                                 <!-- List -->
                                                 <div id="list">
                                                     <div class="form-group">
-                                                        <label for="newListItemValue">Add new list items</label>
+                                                        <label for="newListItemValue">Add a new value</label>
                                                         <input type="text" class="form-control" id="newListItemValue" placeholder="Example: list_item_name" name="listItems">
-                                                        <div class="blockquote-footer">Hint: Press enter to add the item into the list below</div>
+                                                        <div class="blockquote-footer">Hint: Press enter to add items to the list below</div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="listValues">Current values in list</label>
+                                                        <label for="listValues">List items</label>
                                                         <select multiple class="form-control" id="listValues" name="listValues" >
                                                         </select>
+                                                        <div class="blockquote-footer">Hint: Hold "SHIFT" to select multiple items</div>
+
                                                     </div>
                                                     <div id="listActions">
                                                         <button type="button" class="btn btn-danger btn-sm" id="clearAllList">Clear all</button>
@@ -154,30 +156,30 @@
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <input type="number" class="form-control" id="minimum_value"
-                                                                   placeholder="Minimum value" name="minval" required>
+                                                                   placeholder="Minimum value" name="minval">
                                                             <div class="blockquote-footer">Hint: Enter valid values for the
                                                                 selected attribute's type</div>
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <input type="number" class="form-control" id="maximum_value" name="maxval"
-                                                                   placeholder="Maximum value" required>
+                                                                   placeholder="Maximum value">
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <!-- Literal value -->
                                                 <div class="form-group" id="literalValue">
-                                                    <label for="enter_literal_value_textbox">Enter Literal Value</label>
-                                                    <textarea class="form-control" id="enter_literal_value_textbox"
-                                                              rows="3" name="enter_literal_value_textbox" ></textarea>
+                                                    <label for="literalValueTextarea">Enter Literal Value</label>
+                                                    <textarea class="form-control" id="literalValueTextarea"
+                                                              rows="3" name="literalValueTextarea" ></textarea>
                                                     <div class="blockquote-footer">Hint: Enter a valid value for the
                                                         selected attribute's type</div>
                                                 </div>
 
                                                 <!-- Entity Generate.BusinessLayer.Attribute -->
                                                 <div class="form-group" id="entityAttribute">
-                                                    <label for="select_entity_attribute">Select Entity</label>
-                                                    <select class="form-control" id="select_entity_attribute" name="select_entity_attribute" required>
+                                                    <label for="attributeEntitySelect">Select Entity</label>
+                                                    <select class="form-control" id="attributeEntitySelect" name="attributeEntitySelect">
 
                                                     </select>
                                                     <div class="blockquote-footer">Hint: The selected entity attribute's
@@ -187,7 +189,8 @@
                                             </div>
                                             <div class="tab-pane fade" id="failure_handling" role="tabpanel"
                                                  aria-labelledby="failure_handling-tab">
-                                                <div class="form-group">
+
+                                                <div class="form-group mt-3">
                                                     <label for="validation_failure_severity">Validation Failure Severity
                                                     </label>
                                                     <select class="form-control" id="validation_failure_severity" name="validation_failure_severity">
@@ -197,7 +200,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="failure_message">Failure Message</label>
-                                                    <textarea class="form-control" id="failure_message" rows="3" required name="failure_message"
+                                                    <textarea class="form-control" id="failure_message" rows="3" name="failure_message"
                                                               placeholder="Enter text for the translatable validation failure messages"></textarea>
                                                     <div class="blockquote-footer">Hint: to add a token message expession,
                                                         include a token of the form {0} in your error message string</div>
@@ -233,6 +236,11 @@
                 </div>
             </div>
         </div>
+
+
+    <div id="alertContainer">
+
+    </div>
 
     </body>
     <script src="js/main.js"></script>

@@ -11,3 +11,13 @@ a {
     background-color: #9B59B6;
     color: white;
 }
+
+#alertContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 40%;
+    margin: 50px auto auto auto;
+    text-align: center;
+}
