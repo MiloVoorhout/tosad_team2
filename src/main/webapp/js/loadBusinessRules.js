@@ -1,6 +1,6 @@
 function initPage() {
     sessionStorage.clear();
-    $.get("rest/getBusinessRules", function (array) {
+    $.get("generate/getBusinessRules", function (array) {
         $.each(array, function (i, val) {
             sessionStorage.setItem(val["id"], JSON.stringify(array[i]));
             if(i == 0) {

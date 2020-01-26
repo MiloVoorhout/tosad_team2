@@ -1,15 +1,15 @@
-package com;
+package Generate.PresentationLayer.generateServlet;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import Define.BusinessLayer.BusinessRule;
+import Generate.BusinessLayer.BusinessRule;
 import Generate.BusinessLayer.Generator;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 @Path("/generate")
-public class generateTrigger {
+public class GenerateTrigger {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getTestService(@DefaultValue("0") @QueryParam("array") String array) {

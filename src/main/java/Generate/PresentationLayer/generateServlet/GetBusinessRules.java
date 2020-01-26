@@ -1,4 +1,4 @@
-package com;
+package Generate.PresentationLayer.generateServlet;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 @Path("/getBusinessRules")
-public class getBusinessRules extends DatabaseConnection {
+public class GetBusinessRules extends DatabaseConnection {
 
     @GET
     @Produces({MediaType.APPLICATION_JSON})

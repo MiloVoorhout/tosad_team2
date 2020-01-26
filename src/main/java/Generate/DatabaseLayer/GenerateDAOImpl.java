@@ -1,7 +1,7 @@
 package Generate.DatabaseLayer;
 
 import Generate.BusinessLayer.Attribute;
-import Define.BusinessLayer.Operator;
+import Generate.BusinessLayer.ruleObjects.Operator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
