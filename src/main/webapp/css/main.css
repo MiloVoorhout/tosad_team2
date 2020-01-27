@@ -21,3 +21,8 @@ a {
     margin: 50px auto auto auto;
     text-align: center;
 }
+
+#list-tab {
+    height: 450px;
+    overflow-y: scroll;
+}
