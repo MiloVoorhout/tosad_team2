@@ -28,6 +28,7 @@ public class CreateBusinessRule extends DatabaseConnection {
             @QueryParam("maximumValue") int maximumValue,
             @QueryParam("compareWith") int compareWith,
             @QueryParam("value") String value,
+            @QueryParam("interEntityTable") String interEntityTable,
             @QueryParam("listValues") String listValues
 
     ) throws SQLException {
@@ -54,7 +55,6 @@ public class CreateBusinessRule extends DatabaseConnection {
             lastIDAttribute = rs.getInt("ID");
         }
 
-
         // If Rule Type = RANGE
         if (rule_type_select == 1) {
 
@@ -64,7 +64,7 @@ public class CreateBusinessRule extends DatabaseConnection {
             stmt = conn.prepareStatement(query_BusinessRule);
             stmt.setInt(1, operator);
             stmt.setInt(2, lastIDAttribute);
-            stmt.setInt(3, rule_type_select);
+            stmt.setInt(3, 1);
             stmt.setString(4, rule_name);
             stmt.setInt(5, validationFailureSeverity);
             stmt.setString(6, failureMessage);
@@ -98,6 +98,10 @@ public class CreateBusinessRule extends DatabaseConnection {
         // If Business Rule = COMPARE
         if (rule_type_select == 2) {
 
+            if (interEntityTable != null) {
+                tableSelect = interEntityTable;
+            }
+
             // Create a new (sub)attribute
             String query_SubAttribute = "INSERT INTO TOSAD.ATTRIBUTE(NAME, TABLENAME, DATABASENAME) VALUES (?, ?, ?)";
             stmt = conn.prepareStatement(query_SubAttribute);
@@ -122,7 +126,7 @@ public class CreateBusinessRule extends DatabaseConnection {
             stmt.setInt(2, operator);
             stmt.setInt(3, lastIDAttribute);
             stmt.setInt(4, lastIDSubAttribute);
-            stmt.setInt(5, rule_type_select);
+            stmt.setInt(5, compareWith);
             stmt.setString(6, rule_name);
             stmt.setInt(7, validationFailureSeverity);
             stmt.setString(8, failureMessage);
@@ -154,7 +158,7 @@ public class CreateBusinessRule extends DatabaseConnection {
             stmt = conn.prepareStatement(query_BusinessRule);
             stmt.setInt(1, operator);
             stmt.setInt(2, lastIDAttribute);
-            stmt.setInt(3, rule_type_select);
+            stmt.setInt(3, 3);
             stmt.setString(4, rule_name);
             stmt.setInt(5, validationFailureSeverity);
             stmt.setString(6, failureMessage);

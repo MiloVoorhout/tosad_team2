@@ -18,7 +18,7 @@ public class GetTableInfo extends DatabaseConnection {
     @Path("/GetAttributes")
     @Produces({MediaType.APPLICATION_JSON})
     public String getTestService(
-            @DefaultValue("VBMG_KLANTEN") @QueryParam("table") String table
+            @QueryParam("table") String table
     ) throws SQLException {
 
         JSONObject obj = new JSONObject();

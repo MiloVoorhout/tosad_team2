@@ -116,16 +116,17 @@
                                                     </select>
 
                                                     <select class="form-control" id="operator_select_list" name="operator_select_list">
-                                                        <option value="1">In</option>
-                                                        <option value="2">Not in</option>
+                                                        <option value="9">In</option>
+                                                        <option value="10">Not in</option>
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group" id="compare_with">
                                                     <label for="compare_with_select">Compare with</label>
                                                     <select class="form-control" id="compare_with_select" name="compare_with_select">
-                                                        <option value="1">Literal Value</option>
-                                                        <option value="2">Entity Attribute</option>
+                                                        <option value="2">Literal Value</option>
+                                                        <option value="5">Entity Attribute</option>
+                                                        <option value="4">Inter-Entity Attribute</option>
                                                     </select>
                                                 </div>
 
@@ -142,7 +143,7 @@
                                                         <label for="listValues">List items</label>
                                                         <select multiple class="form-control" id="listValues" name="listValues" >
                                                         </select>
-                                                        <div class="blockquote-footer">Hint: Hold "SHIFT" to select multiple items</div>
+                                                        <div class="blockquote-footer">Hint: Hold "CTRL" to select multiple items</div>
 
                                                     </div>
                                                     <div id="listActions">
@@ -167,25 +168,45 @@
                                                     </div>
                                                 </div>
 
-                                                <!-- Literal value -->
+                                                <!-- Literal Value -->
                                                 <div class="form-group" id="literalValue">
-                                                    <label for="literalValueTextarea">Enter Literal Value</label>
+                                                    <label for="literalValueTextarea">Enter Literal Value (Attribute)</label>
                                                     <textarea class="form-control" id="literalValueTextarea"
                                                               rows="3" name="literalValueTextarea" ></textarea>
                                                     <div class="blockquote-footer">Hint: Enter a valid value for the
                                                         selected attribute's type</div>
                                                 </div>
 
-                                                <!-- Entity Generate.BusinessLayer.Attribute -->
+                                                <!-- Entity Attribute -->
                                                 <div class="form-group" id="entityAttribute">
-                                                    <label for="attributeEntitySelect">Select Entity</label>
+                                                    <label for="attributeEntitySelect">Select Entity (Tuple)</label>
                                                     <select class="form-control" id="attributeEntitySelect" name="attributeEntitySelect">
-
                                                     </select>
                                                     <div class="blockquote-footer">Hint: The selected entity attribute's
                                                         value will be used for comparison</div>
                                                 </div>
+
+                                                <!-- Inter-Entity  -->
+                                                <div class="form-group" id="interEntity">
+
+                                                    <div class="form-group">
+                                                        <label for="interEntityTableSelect">Inter-Entity Table</label>
+                                                        <select class="form-control" id="interEntityTableSelect" name="interEntityTableSelect">
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="interEntityAttributeSelect">Inter-Entity Attribute</label>
+                                                        <select class="form-control" id="interEntityAttributeSelect" name="interEntityAttributeSelect">
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="blockquote-footer">Hint: The selected inter-entity attribute's
+                                                        value will be used for comparison</div>
+                                                </div>
+
                                                 <hr>
+
                                             </div>
                                             <div class="tab-pane fade" id="failure_handling" role="tabpanel"
                                                  aria-labelledby="failure_handling-tab">
