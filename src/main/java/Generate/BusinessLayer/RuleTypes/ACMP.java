@@ -7,23 +7,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class CompareRule {
-
-    public static String triggerCodeSubAttribute(Operator operator, Attribute attribute, Attribute subAttribute) {
-        String attributeName;
-        String operatorSymbol;
-        String subAttributeName;
-
-        attributeName = attribute.getName();
-        operatorSymbol = operator.getSymbol();
-        subAttributeName = subAttribute.getName();
-
-        return String.format("%s %s %s",
-                attributeName,
-                operatorSymbol,
-                subAttributeName);
-    }
-
+public class ACMP {
     public static String triggerCodeLitValue(Operator operator, Attribute attribute, HashMap values) {
         String attributeName;
         String operatorSymbol;

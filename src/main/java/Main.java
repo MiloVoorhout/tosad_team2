@@ -1,3 +1,6 @@
+import Generate.BusinessLayer.BusinessRule;
+import Generate.BusinessLayer.Generator;
+
 import java.sql.*;
 
 public class Main {
@@ -20,15 +23,23 @@ public class Main {
 //        }
 //
 //        System.out.println(json.toString());
-//        Generator generator = new Generator();
 ////        2, 1, 4, 3, null, 2, 'test_listval'
 ////        3, 1, 4, 3, 2, null, 'test_attributeval'
 ////        4, 1, 9, 4, null, 3, 'test_attributeval'
 //
 //        int ruleID, String ruleName, int compareStatus, int operatorID, int attributeID, int subAttributeID, int businessRuleTypeID
 //        BusinessRule newBusinessRule = new BusinessRule(4, "test_listrule", 1, 9, 4, 3);
-//        BusinessRule testRule = new BusinessRule(2, "test_attributeval", 1, 4, 3, 0, 2);
-//        System.out.println(generator.generatorInformation(testRule, "INSERT"));
+
+        Generator generator = new Generator();
+//        BusinessRule test1 = new BusinessRule(82, "Milopik", 0, 1, 82, 0, 3);
+//        BusinessRule test2 = new BusinessRule(83, "numberList", 0, 1, 83, 0, 3);
+        BusinessRule test3 = new BusinessRule(84, "TupleCompareRule", 3, 1, 84, 85, 5);
+        BusinessRule test4 = new BusinessRule(88, "InterRule", 4, 1, 92, 93, 4);
+//        System.out.println(generator.generatorInformation(test1, "INSERT"));
+//        System.out.println(generator.generatorInformation(test2, "INSERT"));
+        System.out.println(generator.generatorInformation(test3, "INSERT"));
+        System.out.println(generator.generatorInformation(test4, "INSERT"));
+
 
     }
 

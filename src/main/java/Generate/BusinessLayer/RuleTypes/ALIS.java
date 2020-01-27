@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class ListRule {
+public class ALIS {
 
     public static String triggerCodeListRule(Operator operator, Attribute attribute, HashMap values) {
         String attributeName;
@@ -27,7 +27,14 @@ public class ListRule {
         StringBuffer finalList = new StringBuffer();
         finalList.append("(");
         for (int i = 0; i < listValues.size(); i++) {
-            finalList.append("'" + listValues.get(i) + "'");
+            boolean numeric = true;
+            numeric = listValues.get(i).matches("-?\\d+(\\.\\d+)?");
+
+            if(numeric)
+                finalList.append(listValues.get(i));
+            else
+                finalList.append("'" + listValues.get(i) + "'");
+
             if (i != listValues.size() - 1) {
                 finalList.append(", ");
             }

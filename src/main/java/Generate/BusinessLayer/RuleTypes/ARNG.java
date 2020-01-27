@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class RangeRule {
+public class ARNG {
 
     public static String triggerCodeRangeRule(Operator operator, Attribute attribute, HashMap values) {
         String attributeName;
