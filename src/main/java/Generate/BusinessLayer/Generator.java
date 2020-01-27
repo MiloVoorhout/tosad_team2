@@ -6,6 +6,9 @@ import Generate.BusinessLayer.RuleTypes.ACMP;
 import Generate.BusinessLayer.RuleTypes.ALIS;
 import Generate.BusinessLayer.RuleTypes.ARNG;
 import Generate.BusinessLayer.RuleTypes.TCMP;
+import Generate.daoImplementatie.AttributeDAOImpl;
+import Generate.daoImplementatie.OperatorDAOImpl;
+import Generate.daoImplementatie.ValueDAOImpl;
 
 import java.util.HashMap;
 
@@ -13,10 +16,10 @@ public class Generator {
 
     public String generatorInformation(BusinessRule rule, String operation){
         int typeID = rule.getBusinessRuleTypeID();
-        Operator operator = GenerateDAOImpl.getOperatorInformation(rule.getOperatorID());
-        Attribute attribute = GenerateDAOImpl.getAttributeData(rule.getAttributeID());
-        Attribute subAttribute = GenerateDAOImpl.getAttributeData(rule.getSubAttributeID());;
-        HashMap<Integer, String> values = GenerateDAOImpl.getValues(rule.getRuleID());
+        Operator operator = OperatorDAOImpl.getOperatorInformation(rule.getOperatorID());
+        Attribute attribute = AttributeDAOImpl.getAttributeData(rule.getAttributeID());
+        Attribute subAttribute = AttributeDAOImpl.getAttributeData(rule.getSubAttributeID());;
+        HashMap<Integer, String> values = ValueDAOImpl.getValues(rule.getRuleID());
         String triggerCode = "";
         String fullCode = "";
 
@@ -28,7 +31,7 @@ public class Generator {
                 triggerCode = ACMP.triggerCodeLitValue(operator, attribute, values);
                 break;
             case 3:
-                values = GenerateDAOImpl.getListValues(rule.getRuleID());
+                values = ValueDAOImpl.getListValues(rule.getRuleID());
                 triggerCode = ALIS.triggerCodeListRule(operator, attribute, values);
                 break;
             case 4:
