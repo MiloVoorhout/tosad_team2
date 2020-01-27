@@ -72,5 +72,31 @@ public class GetBusinessRules extends DatabaseConnection {
         return (result);
     }
 
+    @Path("/subAttribute")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getSubAttributeRul(@QueryParam("subAttributeID") int subAttributeID) throws SQLException {
+
+        JSONObject obj = new JSONObject();
+        JSONArray arr = new JSONArray();
+
+        Connection conn = getConnection();
+        String query  = "SELECT * FROM TOSAD.ATTRIBUTE WHERE ID = " + subAttributeID;
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        while (rs.next()) {
+            obj.put("name", rs.getString("NAME"));
+            obj.put("tablename", rs.getString("TABLENAME"));
+            obj.put("databasename", rs.getString("DATABASENAME"));
+            arr.put(obj);
+            obj = new JSONObject();
+        }
+
+        String result = arr.toString();
+
+        return (result);
+    }
+
 
 }

@@ -3,19 +3,21 @@ function initPage() {
     $.get("generate/getBusinessRules/information", function (array) {
         $.each(array, function (i, val) {
             sessionStorage.setItem(val["id"], JSON.stringify(array[i]));
-            getValues(val["id"]);
-            // if(i == 0) {
-            //     $('#list-tab').append('<a class="list-group-item list-group-item-action active" data-id="' + val["id"] + '" id="list-'+ val["id"] +'-list" data-toggle="list" href="#list-'+ val["id"] +'" role="tab" aria-controls="list-'+ val["id"] + '">' + val["name"] + '</a>');
-            //     loadCompareRuleData(array[i], val["id"], val["businessRuleTypeID"]);
-            //     $('#list-' + val["id"]).addClass('active');
-            // } else {
-            //     $('#list-tab').append('<a class="list-group-item list-group-item-action" data-id="' + val["id"] + '" id="list-'+ val["id"] +'-list" data-toggle="list" href="#list-'+ val["id"] +'" role="tab" aria-controls="list-'+ val["id"] +'">' + val["name"] + '</a>');
-            //     loadCompareRuleData(array[i], val["id"], val["businessRuleTypeID"]);
-            //     $('#list-'+ val["id"] +'').on('click', function (e) {
-            //         e.preventDefault()
-            //         $(this).tab('show')
-            //     })
-            // }
+            // console.log(array);
+            if(i == 0) {
+                $('#list-tab').append('<a class="list-group-item list-group-item-action active" data-id="' + val["id"] + '" id="list-'+ val["id"] +'-list" data-toggle="list" href="#list-'+ val["id"] +'" role="tab" aria-controls="list-'+ val["id"] + '">' + val["name"] + '</a>');
+                getRuleData(val["id"], val["businessRuleTypeID"], val["subAttributeID"]);
+                loadCompareRuleData(array[i], val["id"], val["businessRuleTypeID"]);
+                $('#list-' + val["id"]).addClass('active');
+            } else {
+                $('#list-tab').append('<a class="list-group-item list-group-item-action" data-id="' + val["id"] + '" id="list-'+ val["id"] +'-list" data-toggle="list" href="#list-'+ val["id"] +'" role="tab" aria-controls="list-'+ val["id"] +'">' + val["name"] + '</a>');
+                getRuleData(val["id"], val["businessRuleTypeID"], val["subAttributeID"]);
+                loadCompareRuleData(array[i], val["id"], val["businessRuleTypeID"]);
+                $('#list-'+ val["id"] +'').on('click', function (e) {
+                    e.preventDefault()
+                    $(this).tab('show')
+                })
+            }
         });
     });
 }
@@ -51,20 +53,62 @@ function initPage() {
     //     }
     // }
 
+function getRuleData(id, ruleType, subAttributeID) {
+    switch (ruleType) {
+        case 1:
+            var minValue = 0;
+            var maxValue = 0;
+            $.get("generate/getBusinessRules/values?id="+id, function (array) {
+                $.each(array, function (i, val) {
+                    if(val["type"] == 1) {
+                        minValue = val["value"];
+                    } else if (val["type"] == 2) {
+                        maxValue = val["value"];
+                    }
+                });
+                // console.log(minValue, maxValue);
+            });
+            break;
+        case 2:
+            var subAttributeName = "";
+            if(subAttributeID !== 0) {
+                $.get("generate/getBusinessRules/subAttribute?subAttributeID="+subAttributeID, function (array) {
+                    $.each(array, function (i, val) {
+                        subAttributeName = val["tablename"] + "." + val["name"];
+                    });
+                    console.log(subAttributeName);
+                });
+            }
+            var value = 0;
+            if(subAttributeID == 0) {
+                $.get("generate/getBusinessRules/values?id="+id, function (array) {
+                    $.each(array, function (i, val) {
+                        value = val["value"];
+                    });
+                    // console.log(value);
+                });
+            }
+
+            break;
+        case 3:
+
+            break;
+    }
+}
 
 function getValues(id) {
     var values = [];
     
     $.get("generate/getBusinessRules/values?id="+id, function (array) {
         $.each(array, function (i, val) {
-            values.push(val["type"] : val["value"]);
-            console.log(val["value"] + " " + val["type"]);
+            // values.push(val["type"] : val["value"]);
+            // values.push(val["type" ]: val["value"]);
+            // console.log(val["value"] + " " + val["type"]);
         });
     });
 }
 
 function loadCompareRuleData(array, id, information) {
-    console.log(array);
     $('#nav-tabContent').append(
         '<div class="tab-pane fade show" id="list-'+ id +'" role="tabpanel" aria-labelledby="list-'+ id + '">\n' +
         '                                    <table class="table table-striped">\n' +
