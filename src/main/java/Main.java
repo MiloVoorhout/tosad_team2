@@ -1,8 +1,6 @@
-import Database.DatabaseConnection;
-
 import java.sql.*;
 
-public class Main extends DatabaseConnection {
+public class Main {
 
     public static void main(String[] arg) throws SQLException {
 

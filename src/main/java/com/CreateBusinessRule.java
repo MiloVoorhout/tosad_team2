@@ -5,13 +5,14 @@
 
 package com;
 
-import Database.DatabaseConnection;
+import Generate.DatabaseLayer.DatabaseConnection;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.*;
 
 @Path("/newBusinessRule")
-public class CreateBusinessRule extends DatabaseConnection {
+public class CreateBusinessRule {
 
     @GET
     @Path("/create")
@@ -33,7 +34,7 @@ public class CreateBusinessRule extends DatabaseConnection {
     ) throws SQLException {
 
         // Set variables
-        Connection conn = getConnection();
+        Connection conn = DatabaseConnection.getInstance().getConnection();
         int lastIDAttribute = 0;
         int lastIDBusinessRule = 0;
         int lastIDSubAttribute = 0;

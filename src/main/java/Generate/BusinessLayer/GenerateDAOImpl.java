@@ -1,6 +1,7 @@
-package Generate.DatabaseLayer;
+package Generate.BusinessLayer;
 
 import Generate.BusinessLayer.Attribute;
+import Generate.DatabaseLayer.DatabaseConnection;
 import Generate.BusinessLayer.ruleObjects.Operator;
 
 import java.sql.Connection;
@@ -8,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
 
-public class GenerateDAOImpl extends Database.DatabaseConnection{
+public class GenerateDAOImpl{
 
     public static Attribute getAttributeData(int AttributeID) {
         String name = "";
@@ -17,7 +18,7 @@ public class GenerateDAOImpl extends Database.DatabaseConnection{
         Attribute newAttribute = null;
 
         try {
-            Connection conn = getConnection();
+            Connection conn = DatabaseConnection.getInstance().getConnection();
             String query = "SELECT * FROM TOSAD.ATTRIBUTE WHERE ID = " + AttributeID;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
@@ -39,7 +40,7 @@ public class GenerateDAOImpl extends Database.DatabaseConnection{
         Operator newOperator = null;
 
         try {
-            Connection conn = getConnection();
+            Connection conn = DatabaseConnection.getInstance().getConnection();
             String query = "SELECT * FROM TOSAD.OPERATOR WHERE ID = " + OperatorID;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
@@ -60,7 +61,7 @@ public class GenerateDAOImpl extends Database.DatabaseConnection{
         HashMap<Integer, String> values = new HashMap<>();
 
         try {
-            Connection conn = getConnection();
+            Connection conn = DatabaseConnection.getInstance().getConnection();
             String query = "SELECT * FROM TOSAD.VALUE WHERE BUSINESSRULEID = " + id;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
@@ -81,7 +82,7 @@ public class GenerateDAOImpl extends Database.DatabaseConnection{
         HashMap<Integer, String> values = new HashMap<>();
 
         try {
-            Connection conn = getConnection();
+            Connection conn = DatabaseConnection.getInstance().getConnection();
             String query = "SELECT * FROM TOSAD.VALUE WHERE BUSINESSRULEID = " + id;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
