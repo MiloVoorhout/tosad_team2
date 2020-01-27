@@ -13,6 +13,8 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
     private int AttributeID;
     private int SubAttributeID;
     private int BusinessRuleTypeID;
+    private String FailureType;
+    private String FailureMessage;
 
     public BusinessRule(String ruleName, int compareStatus, int operatorID, int attributeID, int subAttributeID, int businessRuleTypeID) {
         Name = ruleName;
@@ -33,7 +35,7 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
         BusinessRuleTypeID = businessRuleTypeID;
     }
 
-    public BusinessRule(int ruleID, String ruleName, int compareStatus, int operatorID, int attributeID, int subAttributeID, int businessRuleTypeID) {
+    public BusinessRule(int ruleID, String ruleName, int compareStatus, int operatorID, int attributeID, int subAttributeID, int businessRuleTypeID, String failureType, String failureMessage) {
         RuleID = ruleID;
         Name = ruleName;
         CompareStatus = compareStatus;
@@ -41,6 +43,8 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
         AttributeID = attributeID;
         SubAttributeID = subAttributeID;
         BusinessRuleTypeID = businessRuleTypeID;
+        FailureType = failureType;
+        FailureMessage = failureMessage;
     }
 
     public BusinessRule(int ruleID, String ruleName, int compareStatus, int operatorID, int attributeID, int businessRuleTypeID) {
@@ -99,11 +103,17 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
         SubAttributeID = subAttributeID;
     }
 
-    public int getBusinessRuleTypeID() {
-        return BusinessRuleTypeID;
-    }
+    public int getBusinessRuleTypeID() {return BusinessRuleTypeID; }
 
     public void setBusinessRuleTypeID(int businessRuleTypeID) {
         BusinessRuleTypeID = businessRuleTypeID;
     }
+
+    public String getFailureType() { return FailureType; }
+
+    public void setFailureType(String failureType) { FailureType = failureType; }
+
+    public String getFailureMessage() { return FailureMessage; }
+
+    public void setFailureMessage(String failureMessage) { FailureMessage = failureMessage; }
 }

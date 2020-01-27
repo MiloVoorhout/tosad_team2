@@ -50,13 +50,16 @@ public class Generator {
                                 "ON %s.%s %n" +
                                 "FOR EACH ROW %n" +
                              "BEGIN %n" +
-                                ":new.%s %n" +
+                                "IF :new.%s THEN %n" +
+                                    "raise_application_error(-20001, '%s' %n" +
+                                "END IF" +
                              "END;",
                     rule.getName(),
                     operation,
                     attribute.getDatabase(),
                     attribute.getTable(),
-                    triggerCode
+                    triggerCode,
+                    rule.getFailureMessage()
                 );
     }
 }
