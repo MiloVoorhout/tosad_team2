@@ -1,4 +1,4 @@
-package com;
+package Define.PresentationLayer.defineServlet;
 
 import Generate.DatabaseLayer.DatabaseConnection;
 import org.json.JSONArray;
