@@ -28,7 +28,7 @@
     <meta name="theme-color" content="#9B59B6">
 </head>
 
-<body onload="initPage()">
+<body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5 ">
     <a class="navbar-brand" href="index.html">
         <img src="img/logo_color.svg" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -62,10 +62,45 @@
                             <div class="list-group" id="list-tab" role="tablist"></div>
                         </div>
                         <div class="col-8">
-                            <div class="tab-content" id="nav-tabContent"></div>
+                            <div class="tab-content" id="nav-tabContent">
+                                <table class="table table-borderless">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Rule Type</th>
+                                            <td id="ruleType">?</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Name</th>
+                                            <td id="ruleTypeName">?</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Table</th>
+                                            <td id="ruleTypeTable">?</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Attribute</th>
+                                            <td id="ruleTypeAttr">?</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Operator</th>
+                                            <td id="ruleTypeOperator">?</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Validation Failure Severity</th>
+                                            <td id="ruleTypeFailureType">?</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Failure Message</th>
+                                            <td id="ruleTypeFailureMessage">?</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                    <button class="btn btn-success float-right" data-toggle="modal" onclick="generateRule()">Generate</button>
+                    <button class="btn btn-success float-right ml-1" data-toggle="modal" onclick="generateRule()">Generate</button>
+                    <button class="btn btn-warning float-right" data-toggle="modal">Package</button>
+
                 </div>
             </div>
         </div>
@@ -90,7 +125,6 @@
 </div>
 
 </body>
-<script src="js/main.js"></script>
-<script src="js/loadBusinessRules.js"></script>
+<script src="js/test.js"></script>
 <script src="js/generateBusinessRule.js"></script>
 </html>
