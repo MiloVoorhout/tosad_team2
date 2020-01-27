@@ -163,7 +163,7 @@ ruleType.on('change', function () {
 });
 
 compareWithSelect.on('change', function () {
-    if (this.value === '1') {
+    if (this.value === '2') {
         literalValue.show();
         literalValueTextarea.prop('required', true);
         entityAttribute.hide();
@@ -172,7 +172,7 @@ compareWithSelect.on('change', function () {
         interEntityAttributeSelect.prop('required', false);
         interEntityTableSelect.prop('required', false);
 
-    } else if (this.value === '2') {
+    } else if (this.value === '5') {
         entityAttribute.show();
         attributeEntitySelect.prop('required', true);
         literalValue.hide();
@@ -180,7 +180,6 @@ compareWithSelect.on('change', function () {
         interEntity.hide();
         interEntityAttributeSelect.prop('required', false);
         interEntityTableSelect.prop('required', false);
-
     } else {
         interEntity.show();
         interEntityAttributeSelect.prop('required', true);

@@ -93,21 +93,27 @@
                                             <th scope="row">Failure Message</th>
                                             <td id="ruleTypeFailureMessage">?</td>
                                         </tr>
+                                        <tr id="ruleTypeSubAttrContainer">
+                                            <th scope="row">Sub Attribute</th>
+                                            <td id="ruleTypeSubAttr">?</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Database</th>
+                                            <td id="ruleTypeDB">?</td>
+                                        </tr>
+
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                     <button class="btn btn-success float-right ml-1" data-toggle="modal" onclick="generateRule()">Generate</button>
-                    <button class="btn btn-warning float-right" data-toggle="modal">Package</button>
-
+                    <button class="btn btn-warning float-right" data-toggle="modal" data-target="#packageModal" id="packageBtn">Package</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<button>Hello</button>
 
 <!-- Modals -->
 <div class="modal fade" id="generate_modal" tabindex="-1" role="dialog" aria-labelledby="generate_modal"
@@ -122,6 +128,43 @@
             </div>
             <div class="modal-body" id="modal_code">
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Dit is die modal Milan -->
+<div class="modal fade" id="packageModal" tabindex="-1" role="dialog" aria-labelledby="packageModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="packageModalLabel">Generate package</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form>
+
+                <div class="modal-body">
+                        <div class="form-group">
+                            <label for="packageValues">Choose rules to generate</label>
+                            <select multiple class="form-control" id="packageValues" name="packageValues" style="height: 300px">
+                            </select>
+                            <div class="blockquote-footer">Hint: Hold "CTRL" to select multiple items</div>
+                        </div>
+
+                        <div class="form-group" id="packageMethod">
+                            <label for="packageMethodSelect">Method</label>
+                            <select class="form-control" id="packageMethodSelect" name="packageMethodSelect">
+                                <option value="1">before insert/update/delete</option>
+                                <option value="2">before insert/update/delete for each row</option>
+                                <option value="3">after insert/update/delete</option>
+                            </select>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success">Generate</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

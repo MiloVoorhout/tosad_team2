@@ -50,6 +50,7 @@ public class GetBusinessRules {
 
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
+        String failureType = "Informational Warning";
 
         Connection conn = DatabaseConnection.getInstance().getConnection();
         String query  = "SELECT br.ID, br.name, br.FAILURETYPE, br.FAILUREMESSAGE, o.NAME as OPERATOR, " +
@@ -63,13 +64,14 @@ public class GetBusinessRules {
         ResultSet rs = stmt.executeQuery(query);
 
         while (rs.next()) {
+            if (rs.getInt("FAILURETYPE") == 1) failureType = "Error";
             obj.put("id", rs.getInt("ID"));
             obj.put("operator", rs.getString("OPERATOR"));
             obj.put("attributeName", rs.getString("ATTRIBUTE_NAME"));
             obj.put("attributeTable", rs.getString("ATTRIBUTE_TABLE"));
             obj.put("businessRuleType", rs.getString("BUSINESSRULETYPE"));
             obj.put("name", rs.getString("NAME"));
-            obj.put("failureType", rs.getString("FAILURETYPE"));
+            obj.put("failureType", failureType);
             obj.put("failureMessage", rs.getString("FAILUREMESSAGE"));
             arr.put(obj);
             obj = new JSONObject();
@@ -77,6 +79,33 @@ public class GetBusinessRules {
 
         return (arr.toString());
 
+    }
+
+    @Path("/getValues")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getValues(@QueryParam("id") int id) throws SQLException {
+
+        JSONObject obj = new JSONObject();
+        JSONArray arr = new JSONArray();
+
+        Connection conn = DatabaseConnection.getInstance().getConnection();
+        String query  = "SELECT v.id, v.value, b.name AS BUSINESSRULETYPEID, A2.NAME AS ATTRIBUTENAME, A2.TABLENAME, A2.DATABASENAME FROM TOSAD.VALUE V INNER JOIN TOSAD.BUSINESSRULETYPE B ON V.TYPE = B.ID INNER JOIN TOSAD.ATTRIBUTE A2 on V.BUSINESSRULEID = A2.ID WHERE BUSINESSRULEID = "+id;
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        while (rs.next()) {
+            obj.put("id", rs.getInt("ID"));
+            obj.put("value", rs.getString("VALUE"));
+            obj.put("businessRuleTypeID", rs.getString("BUSINESSRULETYPEID"));
+            obj.put("attributeName", rs.getString("ATTRIBUTENAME"));
+            obj.put("tableName", rs.getString("TABLENAME"));
+            obj.put("databaseName", rs.getString("DATABASENAME"));
+            arr.put(obj);
+            obj = new JSONObject();
+        }
+
+        return (arr.toString());
     }
 
 

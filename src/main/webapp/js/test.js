@@ -8,7 +8,11 @@ const ruleTypeAttr = $('#ruleTypeAttr');
 const ruleTypeOperator = $('#ruleTypeOperator');
 const ruleTypeFailureType = $('#ruleTypeFailureType');
 const ruleTypeFailureMessage = $('#ruleTypeFailureMessage');
-let tempValue;
+const ruleTypeSubAttr = $('#ruleTypeSubAttr');
+const ruleTypeDB = $('#ruleTypeDB');
+const ruleTypeSubAttrContainer = $('#ruleTypeSubAttrContainer');
+const packageBtn = $('#packageBtn');
+const packageValues = $('#packageValues');
 
 function getContent(id){
     $.get("generate/getBusinessRules/getContent?id="+id, function (array) {
@@ -20,6 +24,33 @@ function getContent(id){
             ruleTypeOperator.html(val['operator']);
             ruleTypeFailureType.html(val['failureType']);
             ruleTypeFailureMessage.html(val['failureMessage']);
+            getValues(id);
+        });
+    });
+}
+
+function getValues(id) {
+    $.get("generate/getBusinessRules/getValues?id="+id, function (array) {
+        $.each(array, function (i, val) {
+
+            if (i === 0) {
+                if (val['attributeName']) {
+                    ruleTypeSubAttrContainer.show();
+                    ruleTypeSubAttr.html = val['attributeName'];
+                } else {
+                    ruleTypeSubAttrContainer.hide();
+                }
+                ruleTypeDB.html = val['databaseName'];
+            }
+
+        });
+    });
+}
+
+function getAllRules(){
+    $.get("generate/getBusinessRules/getMenuItems", function (array) {
+        $.each(array, function (i, val) {
+            packageValues.append("<option value='"+ val['id'] +"'>" + val['name'] + "</option>");
         });
     });
 }
@@ -35,11 +66,9 @@ $.get("generate/getBusinessRules/getMenuItems", function (array) {
 });
 
 
-
-$( "a" ).click(function() {
-    console.log("HALLO");
-
-    var id = $(this).attr("data-id");
-    alert(id);
-    getContent(id)
+packageBtn.click(function(e){
+    e.preventDefault();
+    getAllRules();
 });
+
+
