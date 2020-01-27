@@ -1,16 +1,18 @@
 package Generate.BusinessLayer.daoImplementatie;
 
+import Generate.BusinessLayer.BusinessRule;
 import Generate.DatabaseLayer.DatabaseConnection;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class BusinessDAOImpl {
 
-    public static String getBusinessRuleInfo() throws Exception{
+    public static String getBusinessRuleInfo() throws SQLException{
 
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
@@ -34,5 +36,28 @@ public class BusinessDAOImpl {
 
         String result = arr.toString();
         return result;
+    }
+
+    public static BusinessRule getBusinessRuleTrigger(int id) throws SQLException {
+        Connection conn = DatabaseConnection.getInstance().getConnection();
+        String query  = "SELECT * FROM TOSAD.BUSINESSRULE WHERE ID =" + id;
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        BusinessRule ruleDefinition = null;
+
+        while (rs.next()) {
+            int businessRuleID = rs.getInt("ID");
+            String name = rs.getString("NAME");
+            int compareStatus = rs.getInt("COMPARESTATUS");
+            int operatorID = rs.getInt("OPERATORID");
+            int attributeID = rs.getInt("ATTRIBUTEID");
+            int subAttributeID = rs.getInt("SUBATTRIBUTEID");
+            int businessRuleTypeID = rs.getInt("BUSINESSRULETYPEID");
+            int failureType = rs.getInt("FAILURETYPE");
+            String failureMessage = rs.getString("FAILUREMESSAGE");
+            ruleDefinition = new BusinessRule(businessRuleID, name, compareStatus, operatorID, attributeID, subAttributeID, businessRuleTypeID, failureType, failureMessage);
+        }
+
+        return ruleDefinition;
     }
 }

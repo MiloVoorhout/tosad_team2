@@ -13,7 +13,7 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
     private int AttributeID;
     private int SubAttributeID;
     private int BusinessRuleTypeID;
-    private String FailureType;
+    private int FailureType;
     private String FailureMessage;
 
     public BusinessRule(String ruleName, int compareStatus, int operatorID, int attributeID, int subAttributeID, int businessRuleTypeID) {
@@ -35,7 +35,7 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
         BusinessRuleTypeID = businessRuleTypeID;
     }
 
-    public BusinessRule(int ruleID, String ruleName, int compareStatus, int operatorID, int attributeID, int subAttributeID, int businessRuleTypeID, String failureType, String failureMessage) {
+    public BusinessRule(int ruleID, String ruleName, int compareStatus, int operatorID, int attributeID, int subAttributeID, int businessRuleTypeID, int failureType, String failureMessage) {
         RuleID = ruleID;
         Name = ruleName;
         CompareStatus = compareStatus;
@@ -109,9 +109,9 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
         BusinessRuleTypeID = businessRuleTypeID;
     }
 
-    public String getFailureType() { return FailureType; }
+    public int getFailureType() { return FailureType; }
 
-    public void setFailureType(String failureType) { FailureType = failureType; }
+    public void setFailureType(int failureType) { FailureType = failureType; }
 
     public String getFailureMessage() { return FailureMessage; }
 

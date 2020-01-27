@@ -30,15 +30,15 @@ public class Main {
 //        int ruleID, String ruleName, int compareStatus, int operatorID, int attributeID, int subAttributeID, int businessRuleTypeID
 //        BusinessRule newBusinessRule = new BusinessRule(4, "test_listrule", 1, 9, 4, 3);
 
-        Generator generator = new Generator();
+//        Generator generator = new Generator();
 //        BusinessRule test1 = new BusinessRule(82, "Milopik", 0, 1, 82, 0, 3);
 //        BusinessRule test2 = new BusinessRule(83, "numberList", 0, 1, 83, 0, 3);
-        BusinessRule test3 = new BusinessRule(84, "TupleCompareRule", 3, 1, 84, 85, 5);
-        BusinessRule test4 = new BusinessRule(88, "InterRule", 4, 1, 92, 93, 4);
+//        BusinessRule test3 = new BusinessRule(84, "TupleCompareRule", 3, 1, 84, 85, 5);
+//        BusinessRule test4 = new BusinessRule(88, "InterRule", 4, 1, 92, 93, 4);
 //        System.out.println(generator.generatorInformation(test1, "INSERT"));
 //        System.out.println(generator.generatorInformation(test2, "INSERT"));
-        System.out.println(generator.generatorInformation(test3, "INSERT"));
-        System.out.println(generator.generatorInformation(test4, "INSERT"));
+//        System.out.println(generator.generatorInformation(test3, "INSERT"));
+//        System.out.println(generator.generatorInformation(test4, "INSERT"));
 
 
     }
