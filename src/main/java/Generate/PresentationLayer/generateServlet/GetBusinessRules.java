@@ -1,8 +1,8 @@
 package Generate.PresentationLayer.generateServlet;
 
+import Generate.DatabaseLayer.DatabaseConnection;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import Database.DatabaseConnection;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 @Path("/getBusinessRules")
-public class GetBusinessRules extends DatabaseConnection {
+public class GetBusinessRules {
 
     @Path("/information")
     @GET
@@ -25,7 +25,7 @@ public class GetBusinessRules extends DatabaseConnection {
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
 
-        Connection conn = getConnection();
+        Connection conn = DatabaseConnection.getInstance().getConnection();
         String query  = "SELECT * FROM TOSAD.BUSINESSRULE";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
@@ -55,7 +55,7 @@ public class GetBusinessRules extends DatabaseConnection {
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
 
-        Connection conn = getConnection();
+        Connection conn = DatabaseConnection.getInstance().getConnection();
         String query  = "SELECT * FROM TOSAD.VALUE WHERE BUSINESSRULEID = " + ID;
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
@@ -80,7 +80,7 @@ public class GetBusinessRules extends DatabaseConnection {
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
 
-        Connection conn = getConnection();
+        Connection conn = DatabaseConnection.getInstance().getConnection();
         String query  = "SELECT * FROM TOSAD.ATTRIBUTE WHERE ID = " + subAttributeID;
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);

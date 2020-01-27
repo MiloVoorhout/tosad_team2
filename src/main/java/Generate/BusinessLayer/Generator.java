@@ -4,7 +4,6 @@ import Generate.BusinessLayer.ruleObjects.Operator;
 import Generate.BusinessLayer.RuleTypes.CompareRule;
 import Generate.BusinessLayer.RuleTypes.ListRule;
 import Generate.BusinessLayer.RuleTypes.RangeRule;
-import Generate.DatabaseLayer.GenerateDAOImpl;
 
 import java.util.HashMap;
 

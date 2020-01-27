@@ -1,8 +1,8 @@
 package com;
 
+import Generate.DatabaseLayer.DatabaseConnection;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import Database.DatabaseConnection;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 @Path("/GetTableInfo")
-public class GetTableInfo extends DatabaseConnection {
+public class GetTableInfo {
 
     @GET
     @Path("/GetAttributes")
@@ -24,7 +24,7 @@ public class GetTableInfo extends DatabaseConnection {
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
 
-        Connection conn = getConnection();
+        Connection conn = DatabaseConnection.getInstance().getConnection();
         String query  = "SELECT column_name FROM all_tab_cols WHERE table_name = '"+ table +"'";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
@@ -52,7 +52,7 @@ public class GetTableInfo extends DatabaseConnection {
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
 
-        Connection conn = getConnection();
+        Connection conn = DatabaseConnection.getInstance().getConnection();
         String query  = "SELECT table_name from all_tables where owner = 'VBMG'";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);

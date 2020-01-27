@@ -1,6 +1,6 @@
 package com;
 
-import Database.DatabaseConnection;
+import Generate.DatabaseLayer.DatabaseConnection;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 @Path("/GetRuleTypes")
-public class GetRuleTypes extends DatabaseConnection {
+public class GetRuleTypes {
 
     @GET
     @Produces({MediaType.APPLICATION_JSON})
@@ -23,7 +23,7 @@ public class GetRuleTypes extends DatabaseConnection {
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
 
-        Connection conn = getConnection();
+        Connection conn = DatabaseConnection.getInstance().getConnection();
 
         String query  = "SELECT ID, TYPE FROM TOSAD.CATEGORY";
         Statement stmt = conn.createStatement();
