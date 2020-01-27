@@ -8,7 +8,7 @@ function generateRule() {
         $('#generate_modal').modal('toggle');
     });
 
-    $.get("rest/newBusinessRule/create" +
+    $.get("generate/newBusinessRule/create" +
         "?rule_type_select=" + ruleType.val() +
         "&rule_name=" + ruleName.val() +
         "&tableSelect=" + tableSelect.val() +

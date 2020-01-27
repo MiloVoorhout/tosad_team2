@@ -6,7 +6,6 @@ import Generate.BusinessLayer.daoImplementatie.ValueDAOImpl;
 import Generate.DatabaseLayer.DatabaseConnection;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;

@@ -69,7 +69,7 @@ tableSelect.on('change', function() { setAttributes(false);});
 interEntityTableSelect.on('change', function() { setAttributes(true);});
 
 function getRuleTypes() {
-    $.get("rest/GetRuleTypes", function (data) {
+    $.get("define/GetRuleTypes", function (data) {
         $.each(data, function (i, val) {
             ruleType.append('<option value="' + val['id'] + '">' + val['type'] + '</option>');
         });
@@ -96,7 +96,7 @@ function createAlert(type, message, tab, clean){
 }
 
 function getTables() {
-    $.get("rest/GetTableInfo/getAllTables", function (array) {
+    $.get("define/GetTableInfo/getAllTables", function (array) {
         $.each(array, function (i, val) {
             tableSelect.append('<option value="' + val['name'] + '">' + val['name'] + '</option>');
             interEntityTableSelect.append('<option value="' + val['name'] + '">' + val['name'] + '</option>');
@@ -115,7 +115,7 @@ function setAttributes(interEntity) {
         attributeEntitySelect.empty();
     }
 
-    $.get("rest/GetTableInfo/GetAttributes?table="+temporaryValue, function(array){
+    $.get("define/GetTableInfo/GetAttributes?table="+temporaryValue, function(array){
         $.each( array, function( i, val ) {
             if (interEntity) {
                 interEntityAttributeSelect.append('<option value="'+ val['name'] +'">'+ val['name'] +'</option>');
@@ -212,7 +212,7 @@ form.submit(function (e) {
         createAlert('danger', 'Please enter a failure message', 'failure_handling', true);
     } else {
         if(ruleType.val() === "1") {
-            $.get("rest/newBusinessRule/create" +
+            $.get("define/newBusinessRule/create" +
                 "?rule_type_select=" + ruleType.val() +
                 "&rule_name=" + ruleName.val() +
                 "&tableSelect=" + tableSelect.val() +
@@ -244,7 +244,7 @@ form.submit(function (e) {
                         "&value="+interEntityAttributeSelect.val();
                 }
 
-                $.get("rest/newBusinessRule/create" +
+                $.get("define/newBusinessRule/create" +
                     "?rule_type_select=" + ruleType.val() +
                     "&rule_name=" + ruleName.val() +
                     "&tableSelect=" + tableSelect.val() +
@@ -264,7 +264,7 @@ form.submit(function (e) {
         }
 
         if(ruleType.val() === "3") {
-            $.get("rest/newBusinessRule/create" +
+            $.get("define/newBusinessRule/create" +
                 "?rule_type_select=" + ruleType.val() +
                 "&rule_name=" + ruleName.val() +
                 "&tableSelect=" + tableSelect.val() +

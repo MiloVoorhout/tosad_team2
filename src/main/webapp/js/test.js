@@ -41,3 +41,7 @@ $( "a" ).click(function() {
     alert(id);
     getContent(id)
 });
+
+$( "a" ).on( "click", function() {
+    alert( $( this ).text() );
+});
