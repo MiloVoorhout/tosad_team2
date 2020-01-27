@@ -27,12 +27,14 @@ function getContent(id){
 $.get("generate/getBusinessRules/getMenuItems", function (array) {
     $.each(array, function (i, val) {
         if (i === 0) {
-            listTab.append('<a class="list-group-item list-group-item-action listItem active" data-id="'+val['id']+'" id="list-'+val['id']+'-list" data-toggle="list" href="#list-'+val['id']+'" role="tab" aria-controls="list-'+val['id']+'" aria-selected="true">'+val['name']+'</a>');
+            listTab.append('<button onclick="getContent('+val["id"]+')" class="list-group-item list-group-item-action listItem active" data-id="'+val['id']+'" id="list-'+val['id']+'-list" data-toggle="list" href="#list-'+val['id']+'" role="tab" aria-controls="list-'+val['id']+'" aria-selected="true">'+val['name']+'</button>');
             getContent(val['id']);
         }
-        else listTab.append('<a class="list-group-item list-group-item-action listItem" data-id="'+val['id']+'" id="list-'+val['id']+'-list" data-toggle="list" href="#list-'+val['id']+'" role="tab" aria-controls="list-'+val['id']+'">'+val['name']+'</a>');
+        else listTab.append('<button onclick="getContent('+ val["id"] +')" class="list-group-item list-group-item-action listItem" data-id="'+val['id']+'" id="list-'+val['id']+'-list" data-toggle="list" href="#list-'+val['id']+'" role="tab" aria-controls="list-'+val['id']+'">'+val['name']+'</button>');
     });
 });
+
+
 
 $( "a" ).click(function() {
     console.log("HALLO");
@@ -40,8 +42,4 @@ $( "a" ).click(function() {
     var id = $(this).attr("data-id");
     alert(id);
     getContent(id)
-});
-
-$( "a" ).on( "click", function() {
-    alert( $( this ).text() );
 });
