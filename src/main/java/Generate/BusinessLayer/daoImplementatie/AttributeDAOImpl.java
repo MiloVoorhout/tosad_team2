@@ -1,4 +1,4 @@
-package Generate.daoImplementatie;
+package Generate.BusinessLayer.daoImplementatie;
 
 import Generate.BusinessLayer.Attribute;
 import Generate.DatabaseLayer.DatabaseConnection;

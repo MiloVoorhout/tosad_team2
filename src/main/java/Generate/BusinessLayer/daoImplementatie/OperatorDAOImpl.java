@@ -1,4 +1,4 @@
-package Generate.daoImplementatie;
+package Generate.BusinessLayer.daoImplementatie;
 
 import Generate.BusinessLayer.ruleObjects.Operator;
 import Generate.DatabaseLayer.DatabaseConnection;

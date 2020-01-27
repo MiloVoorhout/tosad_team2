@@ -1,4 +1,4 @@
-package Generate.daoImplementatie;
+package Generate.BusinessLayer.daoImplementatie;
 
 import Generate.DatabaseLayer.DatabaseConnection;
 import org.json.JSONArray;

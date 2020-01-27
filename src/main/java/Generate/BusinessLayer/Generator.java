@@ -6,9 +6,9 @@ import Generate.BusinessLayer.RuleTypes.ACMP;
 import Generate.BusinessLayer.RuleTypes.ALIS;
 import Generate.BusinessLayer.RuleTypes.ARNG;
 import Generate.BusinessLayer.RuleTypes.TCMP;
-import Generate.daoImplementatie.AttributeDAOImpl;
-import Generate.daoImplementatie.OperatorDAOImpl;
-import Generate.daoImplementatie.ValueDAOImpl;
+import Generate.BusinessLayer.daoImplementatie.AttributeDAOImpl;
+import Generate.BusinessLayer.daoImplementatie.OperatorDAOImpl;
+import Generate.BusinessLayer.daoImplementatie.ValueDAOImpl;
 
 import java.util.HashMap;
 
