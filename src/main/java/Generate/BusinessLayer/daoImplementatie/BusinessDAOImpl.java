@@ -87,13 +87,7 @@ public class BusinessDAOImpl extends DAOFacade {
         String failureType = "Informational Warning";
 
         Connection conn = DatabaseFacade.getInstance().getConnection();
-        String query  = "SELECT br.ID, br.name, br.FAILURETYPE, br.FAILUREMESSAGE, o.NAME as OPERATOR, " +
-                "A2.NAME AS ATTRIBUTE_NAME, A2.TABLENAME AS ATTRIBUTE_TABLE, B.NAME AS BUSINESSRULETYPE " +
-                "FROM TOSAD.BUSINESSRULE br " +
-                "INNER JOIN TOSAD.ATTRIBUTE A2 on br.ATTRIBUTEID = A2.ID " +
-                "INNER JOIN TOSAD.OPERATOR O on br.OPERATORID = O.ID " +
-                "INNER JOIN TOSAD.BUSINESSRULETYPE B on br.BUSINESSRULETYPEID = B.ID " +
-                "WHERE br.ID = "+id;
+        String query  = "SELECT br.ID, br.name, A3.NAME AS SUBATTRIBUTE, A3.TABLENAME AS SUBATTRIBUTETABLE, br.FAILURETYPE, br.FAILUREMESSAGE, o.NAME as OPERATOR, A2.NAME AS ATTRIBUTE_NAME, A2.TABLENAME AS ATTRIBUTE_TABLE, B.NAME AS BUSINESSRULETYPE FROM TOSAD.BUSINESSRULE br INNER JOIN TOSAD.ATTRIBUTE A2 on br.ATTRIBUTEID = A2.ID INNER JOIN TOSAD.OPERATOR O on br.OPERATORID = O.ID INNER JOIN TOSAD.BUSINESSRULETYPE B on br.BUSINESSRULETYPEID = B.ID INNER JOIN TOSAD.ATTRIBUTE A3 ON br.SUBATTRIBUTEID = A3.ID INNER JOIN TOSAD.ATTRIBUTE A3 ON br.SUBATTRIBUTEID = A3.ID WHERE br.ID = "+id;
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
@@ -103,6 +97,8 @@ public class BusinessDAOImpl extends DAOFacade {
             obj.put("operator", rs.getString("OPERATOR"));
             obj.put("attributeName", rs.getString("ATTRIBUTE_NAME"));
             obj.put("attributeTable", rs.getString("ATTRIBUTE_TABLE"));
+            obj.put("subAttribute", rs.getString("SUBATTRIBUTE"));
+            obj.put("subAttributeTable", rs.getString("SUBATTRIBUTETABLE"));
             obj.put("businessRuleType", rs.getString("BUSINESSRULETYPE"));
             obj.put("name", rs.getString("NAME"));
             obj.put("failureType", failureType);

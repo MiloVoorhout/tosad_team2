@@ -8,11 +8,18 @@ const ruleTypeAttr = $('#ruleTypeAttr');
 const ruleTypeOperator = $('#ruleTypeOperator');
 const ruleTypeFailureType = $('#ruleTypeFailureType');
 const ruleTypeFailureMessage = $('#ruleTypeFailureMessage');
-const ruleTypeSubAttr = $('#ruleTypeSubAttr');
 const ruleTypeDB = $('#ruleTypeDB');
 const ruleTypeSubAttrContainer = $('#ruleTypeSubAttrContainer');
 const packageBtn = $('#packageBtn');
 const packageValues = $('#packageValues');
+
+const subattrTr = $('#subattrTr');
+const ruleTypeSubAttr = $('#ruleTypeSubAttr');
+const subattrTableTr = $('#subattrTableTr');
+const ruleTypeSubAttrTable = $('#ruleTypeSubAttrTable');
+
+subattrTr.hide();
+subattrTableTr.hide();
 
 function getContent(id){
     $.get("generate/getBusinessRules/getContent?id="+id, function (array) {
@@ -34,11 +41,15 @@ function getValues(id) {
         $.each(array, function (i, val) {
 
             if (i === 0) {
-                if (val['attributeName']) {
-                    ruleTypeSubAttrContainer.show();
-                    ruleTypeSubAttr.html = val['attributeName'];
+                if (val['subAttribute']) {
+                    subattrTr.show();
+                    subattrTableTr.show();
+                    ruleTypeSubAttr.html = val['subAttribute'];
+                    ruleTypeSubAttrTable.html = val['subAttributeTable'];
                 } else {
-                    ruleTypeSubAttrContainer.hide();
+                    subattrTr.hide();
+                    subattrTableTr.hide();
+
                 }
                 ruleTypeDB.html = val['databaseName'];
             }
