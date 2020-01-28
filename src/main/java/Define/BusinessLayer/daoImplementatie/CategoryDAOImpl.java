@@ -1,6 +1,6 @@
 package Define.BusinessLayer.daoImplementatie;
 
-import Define.DatabaseLayer.DatabaseConnection;
+import Define.DatabaseLayer.DatabaseFacade;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -15,7 +15,7 @@ public class CategoryDAOImpl extends DAOFacade {
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
 
-        Connection conn = DatabaseConnection.getInstance().getConnection();
+        Connection conn = DatabaseFacade.getInstance().getConnection();
 
         String query  = "SELECT ID, TYPE FROM TOSAD.CATEGORY";
         Statement stmt = conn.createStatement();

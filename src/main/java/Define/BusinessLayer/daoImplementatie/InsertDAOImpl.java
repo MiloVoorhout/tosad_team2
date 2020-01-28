@@ -1,6 +1,7 @@
 package Define.BusinessLayer.daoImplementatie;
 
 import Define.DatabaseLayer.DatabaseConnection;
+import Define.DatabaseLayer.DatabaseFacade;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +15,7 @@ public class InsertDAOImpl extends DAOFacade {
                                     int maximumValue, int compareWith, String value, String interEntityTable,
                                     String listValues) throws Exception {
 
-        Connection conn = DatabaseConnection.getInstance().getConnection();
+        Connection conn = DatabaseFacade.getInstance().getConnection();
         int lastIDAttribute = 0;
         int lastIDBusinessRule = 0;
         int lastIDSubAttribute = 0;

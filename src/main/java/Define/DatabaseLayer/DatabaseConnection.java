@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DatabaseConnection {
+public class DatabaseConnection extends DatabaseFacade{
     private static DatabaseConnection instance;
     private Connection connection;
     private static final String DB_DRIV = "oracle.jdbc.driver.OracleDriver";

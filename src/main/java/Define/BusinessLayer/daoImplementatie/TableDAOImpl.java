@@ -1,6 +1,6 @@
 package Define.BusinessLayer.daoImplementatie;
 
-import Define.DatabaseLayer.DatabaseConnection;
+import Define.DatabaseLayer.DatabaseFacade;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -15,7 +15,7 @@ public class TableDAOImpl extends DAOFacade {
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
 
-        Connection conn = DatabaseConnection.getInstance().getConnection();
+        Connection conn = DatabaseFacade.getInstance().getConnection();
         String query  = "SELECT column_name FROM all_tab_cols WHERE table_name = '"+ table +"'";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
@@ -38,7 +38,7 @@ public class TableDAOImpl extends DAOFacade {
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
 
-        Connection conn = DatabaseConnection.getInstance().getConnection();
+        Connection conn = DatabaseFacade.getInstance().getConnection();
         String query  = "SELECT table_name from all_tables where owner = 'VBMG'";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
