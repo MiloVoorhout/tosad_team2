@@ -1,5 +1,5 @@
-package Define.BusinessLayer.BusinessRule;
-
-public interface BusinessRuleFactoryInterface {
-    BusinessRule buildRule();
-}
+//package Define.BusinessLayer.BusinessRule;
+//
+//public interface BusinessRuleFactoryInterface {
+//    BusinessRule buildRule();
+//}

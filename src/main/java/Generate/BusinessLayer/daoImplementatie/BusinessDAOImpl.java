@@ -48,14 +48,13 @@ public class BusinessDAOImpl extends DAOFacade {
         while (rs.next()) {
             int businessRuleID = rs.getInt("ID");
             String name = rs.getString("NAME");
-            int compareStatus = rs.getInt("COMPARESTATUS");
             int operatorID = rs.getInt("OPERATORID");
             int attributeID = rs.getInt("ATTRIBUTEID");
             int subAttributeID = rs.getInt("SUBATTRIBUTEID");
             int businessRuleTypeID = rs.getInt("BUSINESSRULETYPEID");
-            int failureType = rs.getInt("FAILURETYPE");
             String failureMessage = rs.getString("FAILUREMESSAGE");
-            ruleDefinition = new BusinessRule(businessRuleID, name, compareStatus, operatorID, attributeID, subAttributeID, businessRuleTypeID, failureType, failureMessage);
+            ruleDefinition = new BusinessRule(businessRuleID, name, operatorID, attributeID, subAttributeID,
+                    businessRuleTypeID, failureMessage);
         }
 
         return ruleDefinition;

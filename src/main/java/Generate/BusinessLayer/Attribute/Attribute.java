@@ -20,6 +20,4 @@ public class Attribute {
     public void setTable(String table) { Table = table; }
 
     public String getDatabase() { return Database; }
-
-    public void setDatabase(String database) { Database = database; }
 }

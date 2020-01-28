@@ -5,80 +5,31 @@ import java.util.List;
 public class BusinessRule {
     private int RuleID;
     private String Name;
-    private int CompareStatus;
     private int OperatorID;
     private List<String> Value;
     private int AttributeID;
     private int SubAttributeID;
     private int BusinessRuleTypeID;
-    private int FailureType;
     private String FailureMessage;
 
-    public BusinessRule(String ruleName, int compareStatus, int operatorID, int attributeID, int subAttributeID,
-                        int businessRuleTypeID) {
-        Name = ruleName;
-        CompareStatus = compareStatus;
-        OperatorID = operatorID;
-        AttributeID = attributeID;
-        SubAttributeID = subAttributeID;
-        BusinessRuleTypeID = businessRuleTypeID;
-    }
-
-    public BusinessRule(String ruleName, int compareStatus, int operatorID, List<String> value, int attributeID,
-                        int subAttributeID, int businessRuleTypeID) {
-        Name = ruleName;
-        CompareStatus = compareStatus;
-        OperatorID = operatorID;
-        Value = value;
-        AttributeID = attributeID;
-        SubAttributeID = subAttributeID;
-        BusinessRuleTypeID = businessRuleTypeID;
-    }
-
-    public BusinessRule(int ruleID, String ruleName, int compareStatus, int operatorID, int attributeID,
-                        int subAttributeID, int businessRuleTypeID, int failureType, String failureMessage) {
+    public BusinessRule(int ruleID, String ruleName, int operatorID, int attributeID,
+                        int subAttributeID, int businessRuleTypeID, String failureMessage) {
         RuleID = ruleID;
         Name = ruleName;
-        CompareStatus = compareStatus;
         OperatorID = operatorID;
         AttributeID = attributeID;
         SubAttributeID = subAttributeID;
         BusinessRuleTypeID = businessRuleTypeID;
-        FailureType = failureType;
         FailureMessage = failureMessage;
     }
 
-    public BusinessRule(int ruleID, String ruleName, int compareStatus, int operatorID, int attributeID,
-                        int businessRuleTypeID) {
-        RuleID = ruleID;
-        Name = ruleName;
-        CompareStatus = compareStatus;
-        OperatorID = operatorID;
-        AttributeID = attributeID;
-        BusinessRuleTypeID = businessRuleTypeID;
-    }
-
     public int getRuleID() {return RuleID;}
-
-    public int setRuleID(int ruleID) {return RuleID = ruleID;}
 
     public String getName() {return Name;}
 
     public void setName(String ruleName) {Name = ruleName;}
 
-    public int getCompareStatus() {
-        return CompareStatus;
-    }
-
-    public void setCompareStatus(int compareStatus) {
-        CompareStatus = compareStatus;
-    }
-
     public int getOperatorID() { return OperatorID; }
-
-    public void setOperatorID(int operatorID) {
-        OperatorID = operatorID;
-    }
 
     public List<String> getValue() { return Value; }
 
@@ -86,29 +37,12 @@ public class BusinessRule {
 
     public int getAttributeID() { return AttributeID; }
 
-    public void setAttributeID(int attributeID) {
-        AttributeID = attributeID;
-    }
-
     public int getSubAttributeID() {
         return SubAttributeID;
     }
 
-    public void setSubAttributeID(int subAttributeID) {
-        SubAttributeID = subAttributeID;
-    }
-
     public int getBusinessRuleTypeID() {return BusinessRuleTypeID; }
-
-    public void setBusinessRuleTypeID(int businessRuleTypeID) {
-        BusinessRuleTypeID = businessRuleTypeID;
-    }
-
-    public int getFailureType() { return FailureType; }
-
-    public void setFailureType(int failureType) { FailureType = failureType; }
 
     public String getFailureMessage() { return FailureMessage; }
 
-    public void setFailureMessage(String failureMessage) { FailureMessage = failureMessage; }
 }

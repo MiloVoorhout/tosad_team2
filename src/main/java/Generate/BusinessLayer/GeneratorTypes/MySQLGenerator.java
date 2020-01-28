@@ -42,12 +42,13 @@ class MySQLGenerator {
             default:
                 return null;
         }
+
         fullCode = generateCodeMYSQL(rule, attribute, triggerCode, operation, ferStatus);
         return fullCode;
     }
 
-    private static String generateCodeMYSQL(BusinessRule rule, Attribute attribute, String triggerCode, String operation,
-                                            int ferStatus) {
+    private static String generateCodeMYSQL(BusinessRule rule, Attribute attribute, String triggerCode,
+                                            String operation, int ferStatus) {
         int ruleType = rule.getBusinessRuleTypeID();
         String completeTriggerCode;
         String statement = "";
@@ -95,6 +96,7 @@ class MySQLGenerator {
                     trigger,
                     rule.getFailureMessage());
         }
+
         return completeTriggerCode;
     }
 }
