@@ -8,9 +8,9 @@ import Generate.BusinessLayer.ruleObjects.Operator;
 
 import java.util.HashMap;
 
-public class MySQLGenerator {
+class MySQLGenerator {
 
-    public String generatorMYSQLInformation(BusinessRule rule, String operation, int ferStatus) throws Exception {
+    static String generatorMYSQLInformation(BusinessRule rule, String operation, int ferStatus) throws Exception {
         int typeID = rule.getBusinessRuleTypeID();
         Operator operator = DAOFacade.getOperatorInformation(rule.getOperatorID());
         Attribute attribute = DAOFacade.getAttributeData(rule.getAttributeID());
@@ -46,8 +46,8 @@ public class MySQLGenerator {
         return fullCode;
     }
 
-    public String generateCodeMYSQL(BusinessRule rule, Attribute attribute, String triggerCode, String operation,
-                               int ferStatus) {
+    private static String generateCodeMYSQL(BusinessRule rule, Attribute attribute, String triggerCode, String operation,
+                                            int ferStatus) {
         int ruleType = rule.getBusinessRuleTypeID();
         String completeTriggerCode;
         String statement = "";
