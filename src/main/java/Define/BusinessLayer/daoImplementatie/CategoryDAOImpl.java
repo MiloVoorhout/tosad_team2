@@ -1,6 +1,6 @@
 package Define.BusinessLayer.daoImplementatie;
 
-import Generate.DatabaseLayer.DatabaseConnection;
+import Define.DatabaseLayer.DatabaseConnection;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

@@ -1,6 +1,6 @@
 package Define.BusinessLayer.daoImplementatie;
 
-import Generate.DatabaseLayer.DatabaseConnection;
+import Define.DatabaseLayer.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

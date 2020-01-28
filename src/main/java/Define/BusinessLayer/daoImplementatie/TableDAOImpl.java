@@ -1,6 +1,6 @@
 package Define.BusinessLayer.daoImplementatie;
 
-import Generate.DatabaseLayer.DatabaseConnection;
+import Define.DatabaseLayer.DatabaseConnection;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -30,8 +30,7 @@ public class TableDAOImpl {
             obj = new JSONObject();
         }
 
-        String result = arr.toString();
-        return result;
+        return arr.toString();
     }
 
     public static String getAllTableNames() throws Exception {
@@ -54,7 +53,6 @@ public class TableDAOImpl {
             obj = new JSONObject();
         }
 
-        String result = arr.toString();
-        return result;
+        return arr.toString();
     }
 }
