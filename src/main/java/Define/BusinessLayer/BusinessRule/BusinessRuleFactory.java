@@ -1,4 +1,4 @@
-package Define.BusinessLayer;
+package Define.BusinessLayer.BusinessRule;
 
 import java.util.List;
 

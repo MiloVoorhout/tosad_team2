@@ -1,4 +1,4 @@
-package Define.BusinessLayer;
+package Define.BusinessLayer.FailureHandling;
 
 public class FailureHandling implements FailureHandlingInterface {
 

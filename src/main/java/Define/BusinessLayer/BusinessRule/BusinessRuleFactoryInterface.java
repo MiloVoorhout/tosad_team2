@@ -1,6 +1,4 @@
-package Define.BusinessLayer;
-
-import Define.BusinessLayer.BusinessRule;
+package Define.BusinessLayer.BusinessRule;
 
 public interface BusinessRuleFactoryInterface {
     BusinessRule buildRule();

@@ -1,6 +1,6 @@
 package Generate.BusinessLayer;
 
-import Define.BusinessLayer.BusinessRulePrototype;
+import Generate.BusinessLayer.BusinessRulePrototype;
 
 import java.util.List;
 
