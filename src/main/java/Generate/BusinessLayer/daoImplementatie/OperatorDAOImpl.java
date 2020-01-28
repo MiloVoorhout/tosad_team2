@@ -1,7 +1,7 @@
 package Generate.BusinessLayer.daoImplementatie;
 
 import Generate.BusinessLayer.ruleObjects.Operator;
-import Generate.DatabaseLayer.DatabaseConnection;
+import Generate.DatabaseLayer.DatabaseFacade;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -14,7 +14,7 @@ public class OperatorDAOImpl extends DAOFacade{
         String symbol = "";
         Operator newOperator;
 
-            Connection conn = DatabaseConnection.getInstance().getConnection();
+            Connection conn = DatabaseFacade.getInstance().getConnection();
             String query = "SELECT * FROM TOSAD.OPERATOR WHERE ID = " + OperatorID;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);

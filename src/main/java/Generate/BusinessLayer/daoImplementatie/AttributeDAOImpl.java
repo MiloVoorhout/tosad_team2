@@ -1,7 +1,7 @@
 package Generate.BusinessLayer.daoImplementatie;
 
 import Generate.BusinessLayer.Attribute.Attribute;
-import Generate.DatabaseLayer.DatabaseConnection;
+import Generate.DatabaseLayer.DatabaseFacade;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -18,7 +18,7 @@ public class AttributeDAOImpl extends DAOFacade {
         Attribute newAttribute = null;
 
         try {
-            Connection conn = DatabaseConnection.getInstance().getConnection();
+            Connection conn = DatabaseFacade.getInstance().getConnection();
             String query = "SELECT * FROM TOSAD.ATTRIBUTE WHERE ID = " + AttributeID;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
@@ -39,7 +39,7 @@ public class AttributeDAOImpl extends DAOFacade {
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
 
-        Connection conn = DatabaseConnection.getInstance().getConnection();
+        Connection conn = DatabaseFacade.getInstance().getConnection();
         String query  = "SELECT * FROM TOSAD.ATTRIBUTE WHERE ID = " + subAttributeID;
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);

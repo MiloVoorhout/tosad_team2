@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class EOTH {
+public class EOTH extends RuleTypesFacade {
+
     public static String triggerCodeEntityOtherRule(HashMap values) {
         String litVal = null;
 

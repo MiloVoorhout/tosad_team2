@@ -2,11 +2,9 @@ package Generate.BusinessLayer;
 
 import Generate.BusinessLayer.Attribute.Attribute;
 import Generate.BusinessLayer.BusinessRule.BusinessRule;
-import Generate.BusinessLayer.RuleTypes.*;
+import Generate.BusinessLayer.RuleTypes.RuleTypesFacade;
+import Generate.BusinessLayer.daoImplementatie.DAOFacade;
 import Generate.BusinessLayer.ruleObjects.Operator;
-import Generate.BusinessLayer.daoImplementatie.AttributeDAOImpl;
-import Generate.BusinessLayer.daoImplementatie.OperatorDAOImpl;
-import Generate.BusinessLayer.daoImplementatie.ValueDAOImpl;
 
 import java.util.HashMap;
 
@@ -14,32 +12,32 @@ public class Generator {
 
     public String generatorInformation(BusinessRule rule, String operation, int ferStatus) throws Exception {
         int typeID = rule.getBusinessRuleTypeID();
-        Operator operator = OperatorDAOImpl.getOperatorInformation(rule.getOperatorID());
-        Attribute attribute = AttributeDAOImpl.getAttributeData(rule.getAttributeID());
-        Attribute subAttribute = AttributeDAOImpl.getAttributeData(rule.getSubAttributeID());;
-        HashMap<Integer, String> values = ValueDAOImpl.getValues(rule.getRuleID());
-        String triggerCode = "";
-        String fullCode = "";
+        Operator operator = DAOFacade.getOperatorInformation(rule.getOperatorID());
+        Attribute attribute = DAOFacade.getAttributeData(rule.getAttributeID());
+        Attribute subAttribute = DAOFacade.getAttributeData(rule.getSubAttributeID());;
+        HashMap<Integer, String> values = DAOFacade.getValues(rule.getRuleID());
+        String triggerCode;
+        String fullCode;
 
         switch(typeID) {
             case 1:
-                triggerCode = ARNG.triggerCodeRangeRule(operator, attribute, values);
+                triggerCode = RuleTypesFacade.triggerCodeRangeRule(operator, attribute, values);
                 break;
             case 2:
-                triggerCode = ACMP.triggerCodeLitValue(operator, attribute, values);
+                triggerCode = RuleTypesFacade.triggerCodeLitValue(operator, attribute, values);
                 break;
             case 3:
-                values = ValueDAOImpl.getListValues(rule.getRuleID());
-                triggerCode = ALIS.triggerCodeListRule(operator, attribute, values);
+                values = DAOFacade.getListValues(rule.getRuleID());
+                triggerCode = RuleTypesFacade.triggerCodeListRule(operator, attribute, values);
                 break;
             case 4:
-                triggerCode = ICMP.triggerCodeInterEntityCompareRule(operator, attribute, subAttribute);
+                triggerCode = RuleTypesFacade.triggerCodeInterEntityCompareRule(operator, attribute, subAttribute);
                 break;
             case 5:
-                triggerCode = TCMP.triggerCodeSubAttribute(operator, attribute, subAttribute);
+                triggerCode = RuleTypesFacade.triggerCodeSubAttribute(operator, attribute, subAttribute);
                 break;
             case 6:
-                triggerCode = EOTH.triggerCodeEntityOtherRule(values);
+                triggerCode = RuleTypesFacade.triggerCodeEntityOtherRule(values);
                 break;
             default:
                 return null;
@@ -48,9 +46,10 @@ public class Generator {
         return fullCode;
     }
 
-    public String generateCode(BusinessRule rule, Attribute attribute, String triggerCode, String operation, int ferStatus) {
+    public String generateCode(BusinessRule rule, Attribute attribute, String triggerCode, String operation,
+                               int ferStatus) {
         int ruleType = rule.getBusinessRuleTypeID();
-        String completeTriggerCode = "";
+        String completeTriggerCode;
         String statement = "";
         String trigger = "";
         if (ferStatus == 0) {

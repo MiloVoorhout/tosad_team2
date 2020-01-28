@@ -3,9 +3,10 @@ package Generate.BusinessLayer.RuleTypes;
 import Generate.BusinessLayer.Attribute.Attribute;
 import Generate.BusinessLayer.ruleObjects.Operator;
 
-public class ICMP {
+public class ICMP extends RuleTypesFacade {
 
-    public static String triggerCodeInterEntityCompareRule(Operator operator, Attribute attribute, Attribute subAttribute) {
+    public static String triggerCodeInterEntityCompareRule(Operator operator, Attribute attribute,
+                                                           Attribute subAttribute) {
         String attributeName;
         String operatorSymbol;
         String subAttributeName;

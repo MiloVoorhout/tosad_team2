@@ -1,6 +1,6 @@
 package Generate.BusinessLayer.daoImplementatie;
 
-import Generate.DatabaseLayer.DatabaseConnection;
+import Generate.DatabaseLayer.DatabaseFacade;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -16,7 +16,7 @@ public class ValueDAOImpl extends DAOFacade{
         int type;
         HashMap<Integer, String> values = new HashMap<>();
 
-            Connection conn = DatabaseConnection.getInstance().getConnection();
+            Connection conn = DatabaseFacade.getInstance().getConnection();
             String query = "SELECT * FROM TOSAD.VALUE WHERE BUSINESSRULEID = " + id;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
@@ -33,7 +33,7 @@ public class ValueDAOImpl extends DAOFacade{
         String value;
         HashMap<Integer, String> values = new HashMap<>();
 
-            Connection conn = DatabaseConnection.getInstance().getConnection();
+            Connection conn = DatabaseFacade.getInstance().getConnection();
             String query = "SELECT * FROM TOSAD.VALUE WHERE BUSINESSRULEID = " + id;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
@@ -51,7 +51,7 @@ public class ValueDAOImpl extends DAOFacade{
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
 
-        Connection conn = DatabaseConnection.getInstance().getConnection();
+        Connection conn = DatabaseFacade.getInstance().getConnection();
         String query  = "SELECT * FROM TOSAD.VALUE WHERE BUSINESSRULEID = " + ID;
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
@@ -71,7 +71,7 @@ public class ValueDAOImpl extends DAOFacade{
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
 
-        Connection conn = DatabaseConnection.getInstance().getConnection();
+        Connection conn = DatabaseFacade.getInstance().getConnection();
         String query  = "SELECT v.id, v.value, b.name AS BUSINESSRULETYPEID, A2.NAME AS ATTRIBUTENAME, A2.TABLENAME," +
                 " A2.DATABASENAME FROM TOSAD.VALUE V INNER JOIN TOSAD.BUSINESSRULETYPE B ON V.TYPE = B.ID" +
                 " INNER JOIN TOSAD.ATTRIBUTE A2 on V.BUSINESSRULEID = A2.ID WHERE BUSINESSRULEID = "+id;

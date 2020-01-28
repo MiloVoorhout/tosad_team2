@@ -3,7 +3,8 @@ package Generate.BusinessLayer.RuleTypes;
 import Generate.BusinessLayer.Attribute.Attribute;
 import Generate.BusinessLayer.ruleObjects.Operator;
 
-public class TCMP {
+public class TCMP extends RuleTypesFacade {
+
     public static String triggerCodeSubAttribute(Operator operator, Attribute attribute, Attribute subAttribute) {
         String attributeName;
         String operatorSymbol;

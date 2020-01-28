@@ -7,7 +7,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class ACMP {
+public class ACMP extends RuleTypesFacade {
+
     public static String triggerCodeLitValue(Operator operator, Attribute attribute, HashMap values) {
         String attributeName;
         String operatorSymbol;

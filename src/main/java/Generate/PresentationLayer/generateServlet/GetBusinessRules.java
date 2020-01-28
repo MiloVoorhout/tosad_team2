@@ -1,8 +1,6 @@
 package Generate.PresentationLayer.generateServlet;
 
-import Generate.BusinessLayer.daoImplementatie.AttributeDAOImpl;
-import Generate.BusinessLayer.daoImplementatie.BusinessDAOImpl;
-import Generate.BusinessLayer.daoImplementatie.ValueDAOImpl;
+import Generate.BusinessLayer.daoImplementatie.DAOFacade;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -18,7 +16,7 @@ public class GetBusinessRules {
     @Produces({MediaType.APPLICATION_JSON})
     public String getMenuItems() throws Exception {
 
-        return BusinessDAOImpl.getMenuItems();
+        return DAOFacade.getMenuItems();
 
     }
 
@@ -27,7 +25,7 @@ public class GetBusinessRules {
     @Produces({MediaType.APPLICATION_JSON})
     public String getContent(@QueryParam("id") int id) throws Exception {
 
-        return BusinessDAOImpl.getContent(id);
+        return DAOFacade.getContent(id);
 
     }
 
@@ -36,7 +34,7 @@ public class GetBusinessRules {
     @Produces({MediaType.APPLICATION_JSON})
     public String getBusinessRuleValue(@QueryParam("id") int id) throws Exception {
 
-        return ValueDAOImpl.getBusinessRuleValue(id);
+        return DAOFacade.getBusinessRuleValue(id);
     }
 
 
@@ -45,7 +43,7 @@ public class GetBusinessRules {
     @Produces({MediaType.APPLICATION_JSON})
     public String getTestService() throws Exception {
 
-        return (BusinessDAOImpl.getBusinessRuleInfo());
+        return DAOFacade.getBusinessRuleInfo();
     }
 
     @Path("/values")
@@ -53,7 +51,7 @@ public class GetBusinessRules {
     @Produces({MediaType.APPLICATION_JSON})
     public String getRuleValues(@QueryParam("id") int ID) throws Exception {
 
-        return (ValueDAOImpl.getRuleValues(ID));
+        return DAOFacade.getRuleValues(ID);
     }
 
     @Path("/subAttribute")
@@ -61,6 +59,6 @@ public class GetBusinessRules {
     @Produces({MediaType.APPLICATION_JSON})
     public String getSubAttributeRule(@QueryParam("subAttributeID") int subAttributeID) throws Exception {
 
-        return (AttributeDAOImpl.getSubAttributeRule(subAttributeID));
+        return DAOFacade.getSubAttributeRule(subAttributeID);
     }
 }

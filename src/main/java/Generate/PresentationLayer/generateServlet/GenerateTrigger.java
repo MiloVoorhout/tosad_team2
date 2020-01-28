@@ -1,6 +1,6 @@
 package Generate.PresentationLayer.generateServlet;
 
-import Generate.BusinessLayer.daoImplementatie.BusinessDAOImpl;
+import Generate.BusinessLayer.daoImplementatie.DAOFacade;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import Generate.BusinessLayer.BusinessRule.BusinessRule;
@@ -16,7 +16,8 @@ public class GenerateTrigger {
     public String getTestService(@QueryParam("id") int id,
                                  @QueryParam("statement") String statement,
                                  @QueryParam("ferStatus") int ferStatus) throws Exception {
-        BusinessRule generateRule = BusinessDAOImpl.getBusinessRuleTrigger(id);
+
+        BusinessRule generateRule = DAOFacade.getBusinessRuleTrigger(id);
 
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();

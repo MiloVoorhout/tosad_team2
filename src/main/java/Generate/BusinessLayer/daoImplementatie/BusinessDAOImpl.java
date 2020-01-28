@@ -1,7 +1,7 @@
 package Generate.BusinessLayer.daoImplementatie;
 
 import Generate.BusinessLayer.BusinessRule.BusinessRule;
-import Generate.DatabaseLayer.DatabaseConnection;
+import Generate.DatabaseLayer.DatabaseFacade;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -17,7 +17,7 @@ public class BusinessDAOImpl extends DAOFacade {
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
 
-        Connection conn = DatabaseConnection.getInstance().getConnection();
+        Connection conn = DatabaseFacade.getInstance().getConnection();
         String query  = "SELECT * FROM TOSAD.BUSINESSRULE";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
@@ -38,7 +38,8 @@ public class BusinessDAOImpl extends DAOFacade {
     }
 
     public static BusinessRule getBusinessRuleTrigger(int id) throws SQLException {
-        Connection conn = DatabaseConnection.getInstance().getConnection();
+
+        Connection conn = DatabaseFacade.getInstance().getConnection();
         String query  = "SELECT * FROM TOSAD.BUSINESSRULE WHERE ID =" + id;
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
@@ -65,7 +66,7 @@ public class BusinessDAOImpl extends DAOFacade {
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
 
-        Connection conn = DatabaseConnection.getInstance().getConnection();
+        Connection conn = DatabaseFacade.getInstance().getConnection();
         String query  = "SELECT ID, NAME FROM TOSAD.BUSINESSRULE";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
@@ -86,7 +87,7 @@ public class BusinessDAOImpl extends DAOFacade {
         JSONArray arr = new JSONArray();
         String failureType = "Informational Warning";
 
-        Connection conn = DatabaseConnection.getInstance().getConnection();
+        Connection conn = DatabaseFacade.getInstance().getConnection();
         String query  = "SELECT br.ID, br.name, br.FAILURETYPE, br.FAILUREMESSAGE, o.NAME as OPERATOR, " +
                 "A2.NAME AS ATTRIBUTE_NAME, A2.TABLENAME AS ATTRIBUTE_TABLE, B.NAME AS BUSINESSRULETYPE " +
                 "FROM TOSAD.BUSINESSRULE br " +

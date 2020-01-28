@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class ALIS {
+public class ALIS extends RuleTypesFacade {
 
     public static String triggerCodeListRule(Operator operator, Attribute attribute, HashMap values) {
         String attributeName;
@@ -22,7 +22,6 @@ public class ALIS {
             Map.Entry value = (Map.Entry) iterator.next();
             listValues.add((String) value.getValue());
          }
-
 
         StringBuffer finalList = new StringBuffer();
         finalList.append("(");
@@ -46,5 +45,4 @@ public class ALIS {
                 operatorSymbol,
                 finalList);
     }
-
 }
