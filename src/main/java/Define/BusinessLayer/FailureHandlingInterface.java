@@ -1,4 +1,4 @@
-package Define.PresentationLayer;
+package Define.BusinessLayer;
 
 import Define.BusinessLayer.FailureHandling;
 

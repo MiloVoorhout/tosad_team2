@@ -1,7 +1,5 @@
 package Define.BusinessLayer;
 
-import Define.PresentationLayer.BusinessRulePrototype;
-
 import java.util.List;
 
 public class BusinessRule implements BusinessRulePrototype, Cloneable {

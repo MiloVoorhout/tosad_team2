@@ -1,6 +1,4 @@
-package Define.PresentationLayer;
-
-import Define.BusinessLayer.BusinessRule;
+package Define.BusinessLayer;
 
 import java.util.List;
 

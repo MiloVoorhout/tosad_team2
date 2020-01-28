@@ -1,7 +1,5 @@
 package Define.BusinessLayer;
 
-import Define.PresentationLayer.FailureHandlingInterface;
-
 public class FailureHandling implements FailureHandlingInterface {
 
     private String name;

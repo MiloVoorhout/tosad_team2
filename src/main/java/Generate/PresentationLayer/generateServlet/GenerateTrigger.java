@@ -14,14 +14,15 @@ import java.sql.SQLException;
 public class GenerateTrigger {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public String getTestService(@DefaultValue("0") @QueryParam("id") int id) throws Exception {
+    public String getTestService(@QueryParam("id") int id,
+                                 @QueryParam("statement") String statement) throws Exception {
         BusinessRule generateRule = BusinessDAOImpl.getBusinessRuleTrigger(id);
 
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
 
         Generator generator = new Generator();
-        String triggerCode = generator.generatorInformation(generateRule, "INSERT");
+        String triggerCode = generator.generatorInformation(generateRule, statement);
         obj.put("code", triggerCode);
         arr.put(obj);
 
