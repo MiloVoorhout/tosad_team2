@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class TableDAOImpl {
+public class TableDAOImpl extends DAOFacade {
 
     public static String getAttributesFromTable(String table) throws Exception {
 

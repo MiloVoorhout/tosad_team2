@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class InsertDAOImpl {
+public class InsertDAOImpl extends DAOFacade {
 
     public static String createRule(int rule_type_select, String rule_name, String tableSelect, String attributeSelect,
                                     int operator, int validationFailureSeverity, String failureMessage, int minimumValue,

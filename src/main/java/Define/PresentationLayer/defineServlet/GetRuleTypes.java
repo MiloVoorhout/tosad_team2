@@ -1,6 +1,6 @@
 package Define.PresentationLayer.defineServlet;
 
-import Define.BusinessLayer.daoImplementatie.CategoryDAOImpl;
+import Define.BusinessLayer.daoImplementatie.DAOFacade;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -14,6 +14,6 @@ public class GetRuleTypes {
     @Produces({MediaType.APPLICATION_JSON})
     public static String getTableData() throws Exception {
 
-        return (CategoryDAOImpl.getTableData());
+        return (DAOFacade.getTableData());
     }
 }

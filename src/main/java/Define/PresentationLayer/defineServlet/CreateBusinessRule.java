@@ -5,7 +5,7 @@
 
 package Define.PresentationLayer.defineServlet;
 
-import Define.BusinessLayer.daoImplementatie.InsertDAOImpl;
+import Define.BusinessLayer.daoImplementatie.DAOFacade;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -33,7 +33,7 @@ public class CreateBusinessRule {
 
     ) throws Exception {
 
-        return InsertDAOImpl.createRule(rule_type_select, rule_name, tableSelect, attributeSelect, operator,
+        return DAOFacade.createRule(rule_type_select, rule_name, tableSelect, attributeSelect, operator,
                 validationFailureSeverity, failureMessage, minimumValue, maximumValue, compareWith, value,
                 interEntityTable, listValues);
     }

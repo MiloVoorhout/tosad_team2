@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class CategoryDAOImpl {
+public class CategoryDAOImpl extends DAOFacade {
 
     public static String getTableData() throws Exception{
 
@@ -28,7 +28,6 @@ public class CategoryDAOImpl {
             obj = new JSONObject();
         }
 
-        String result = arr.toString();
-        return result;
+        return arr.toString();
     }
 }
