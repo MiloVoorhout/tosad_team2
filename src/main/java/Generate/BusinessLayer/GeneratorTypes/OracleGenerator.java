@@ -8,9 +8,9 @@ import Generate.BusinessLayer.ruleObjects.Operator;
 
 import java.util.HashMap;
 
-class OracleGenerator {
+public class OracleGenerator {
 
-    static String generatorInformation(BusinessRule rule, String operation, int ferStatus) throws Exception {
+    public static String generatorInformation(BusinessRule rule, String operation, int ferStatus) throws Exception {
         int typeID = rule.getBusinessRuleTypeID();
         Operator operator = DAOFacade.getOperatorInformation(rule.getOperatorID());
         Attribute attribute = DAOFacade.getAttributeData(rule.getAttributeID());

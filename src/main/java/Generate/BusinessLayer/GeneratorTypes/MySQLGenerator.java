@@ -8,7 +8,7 @@ import Generate.BusinessLayer.ruleObjects.Operator;
 
 import java.util.HashMap;
 
-class MySQLGenerator {
+public class MySQLGenerator {
 
     static String generatorMYSQLInformation(BusinessRule rule, String operation, int ferStatus) throws Exception {
         int typeID = rule.getBusinessRuleTypeID();
