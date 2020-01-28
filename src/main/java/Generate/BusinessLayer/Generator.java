@@ -16,7 +16,7 @@ import java.util.HashMap;
 
 public class Generator {
 
-    public String generatorInformation(BusinessRule rule, String operation) throws Exception {
+    public String generatorInformation(BusinessRule rule, String operation, int ferStatus) throws Exception {
         int typeID = rule.getBusinessRuleTypeID();
         Operator operator = OperatorDAOImpl.getOperatorInformation(rule.getOperatorID());
         Attribute attribute = AttributeDAOImpl.getAttributeData(rule.getAttributeID());
@@ -45,26 +45,42 @@ public class Generator {
             default:
                 return null;
         }
-        fullCode = generateCode(rule, attribute, triggerCode, operation);
+        fullCode = generateCode(rule, attribute, triggerCode, operation, ferStatus);
         return fullCode;
     }
 
-    public String generateCode(BusinessRule rule, Attribute attribute, String triggerCode, String operation) {
+    public String generateCode(BusinessRule rule, Attribute attribute, String triggerCode, String operation, int ferStatus) {
+        String statement = "";
+        String trigger = "";
+        if (ferStatus == 0) {
+            statement = String.format(  "%s %n" +
+                                        "ON %s.%s %n",
+                                        operation,
+                                        attribute.getDatabase(),
+                                        attribute.getTable());
+            trigger = triggerCode;
+        } else if (ferStatus == 1) {
+            operation = operation.substring(0, operation.length() - 12);
+            statement = String.format(  "%s %n" +
+                                        "ON %s.%s %n" +
+                                        "FOR EACH ROW %n",
+                                        operation,
+                                        attribute.getDatabase(),
+                                        attribute.getTable());
+            trigger = ":new." + triggerCode;
+        }
+
         return String.format("CREATE OR REPLACE TRIGGER %s %n" +
-                             "BEFORE %s %n" +
-                                "ON %s.%s %n" +
-                                "FOR EACH ROW %n" +
-                             "BEGIN %n" +
-                                "IF :new.%s THEN %n" +
-                                    "raise_application_error(-20001, '%s' %n" +
-                                "END IF" +
-                             "END;",
-                    rule.getName(),
-                    operation,
-                    attribute.getDatabase(),
-                    attribute.getTable(),
-                    triggerCode,
-                    rule.getFailureMessage()
-                );
+                        "%s" +
+                        "BEGIN %n" +
+                        "IF %s THEN %n" +
+                        "raise_application_error(-20001, '%s') %n" +
+                        "END IF; %n" +
+                        "END;",
+                rule.getName(),
+                statement,
+                trigger,
+                rule.getFailureMessage()
+        );
     }
 }

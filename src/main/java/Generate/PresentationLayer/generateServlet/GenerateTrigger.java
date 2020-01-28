@@ -14,14 +14,15 @@ public class GenerateTrigger {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getTestService(@QueryParam("id") int id,
-                                 @QueryParam("statement") String statement) throws Exception {
+                                 @QueryParam("statement") String statement,
+                                 @QueryParam("ferStatus") int ferStatus) throws Exception {
         BusinessRule generateRule = BusinessDAOImpl.getBusinessRuleTrigger(id);
 
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
 
         Generator generator = new Generator();
-        String triggerCode = generator.generatorInformation(generateRule, statement);
+        String triggerCode = generator.generatorInformation(generateRule, statement, ferStatus);
         obj.put("code", triggerCode);
         arr.put(obj);
 

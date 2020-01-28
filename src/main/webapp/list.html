@@ -109,11 +109,20 @@
                     </div>
                     <button class="btn btn-success float-right ml-2" data-toggle="modal" onclick="generateRule()">Generate</button>
                     <button class="btn btn-warning float-right ml-1" data-toggle="modal" data-target="#packageModal" id="packageBtn">Package</button>
-                    <select class="float-right" style="margin-right: 193px">
+                    <select class="float-right" style="margin-right: 193px" id="statementMethodSelect" name="statementMethodSelect">
                         <option value="" disabled selected>Choose a...</option>
-                        <option value="1">before insert/update/delete</option>
-                        <option value="2">before insert/update/delete for each row</option>
-                        <option value="3">after insert/update/delete</option>
+                        <option value="1">before insert</option>
+                        <option value="2">before update</option>
+                        <option value="3">before delete</option>
+                        <option value="4">before insert/update/delete</option>
+                        <option value="5">before insert for each row</option>
+                        <option value="6">before update for each row</option>
+                        <option value="7">before insert for each row</option>
+                        <option value="8">before insert/update/delete for each row</option>
+                        <option value="9">after insert</option>
+                        <option value="10">after update</option>
+                        <option value="11">after delete</option>
+                        <option value="12">after insert/update/delete</option>
                     </select>
                 </div>
             </div>
@@ -158,9 +167,9 @@
                             <div class="blockquote-footer">Hint: Hold "CTRL" to select multiple items</div>
                         </div>
 
-                        <div class="form-group float-right" style="margin-right: 193px" id="statementMethod">
-                            <label for="statementMethodSelect">Method</label>
-                            <select class="form-control" id="statementMethodSelect" name="statementMethodSelect">
+                        <div class="form-group" id="packageMethod">
+                            <label for="packageMethodSelect">Method</label>
+                            <select class="form-control" id="packageMethodSelect" name="packageMethodSelect">
                                 <option value="1">before insert</option>
                                 <option value="2">before update</option>
                                 <option value="3">before delete</option>
