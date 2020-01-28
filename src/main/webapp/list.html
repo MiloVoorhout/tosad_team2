@@ -107,8 +107,14 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-success float-right ml-1" data-toggle="modal" onclick="generateRule()">Generate</button>
-                    <button class="btn btn-warning float-right" data-toggle="modal" data-target="#packageModal" id="packageBtn">Package</button>
+                    <button class="btn btn-success float-right ml-2" data-toggle="modal" onclick="generateRule()">Generate</button>
+                    <button class="btn btn-warning float-right ml-1" data-toggle="modal" data-target="#packageModal" id="packageBtn">Package</button>
+                    <select class="float-right" style="margin-right: 193px">
+                        <option value="" disabled selected>Choose a...</option>
+                        <option value="1">before insert/update/delete</option>
+                        <option value="2">before insert/update/delete for each row</option>
+                        <option value="3">after insert/update/delete</option>
+                    </select>
                 </div>
             </div>
         </div>
