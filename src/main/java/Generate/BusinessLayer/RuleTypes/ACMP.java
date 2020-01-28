@@ -9,7 +9,26 @@ import java.util.Map;
 
 public class ACMP extends RuleTypesFacade {
 
-    public static String triggerCodeLitValue(Operator operator, Attribute attribute, HashMap values) {
+    public static String triggerCodeLitValueOracle(Operator operator, Attribute attribute, HashMap values) {
+        String attributeName;
+        String operatorSymbol;
+        String litVal = null;
+
+        attributeName = attribute.getName();
+        operatorSymbol = operator.getSymbol();
+        Iterator iterator = values.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry value = (Map.Entry) iterator.next();
+            litVal = (String) value.getValue();
+        }
+
+        return String.format("%s %s %s",
+                attributeName,
+                operatorSymbol,
+                litVal);
+    }
+
+    public static String triggerCodeLitValueMYSQL(Operator operator, Attribute attribute, HashMap values) {
         String attributeName;
         String operatorSymbol;
         String litVal = null;

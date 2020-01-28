@@ -5,7 +5,7 @@ import Generate.BusinessLayer.ruleObjects.Operator;
 
 public class TCMP extends RuleTypesFacade {
 
-    public static String triggerCodeSubAttribute(Operator operator, Attribute attribute, Attribute subAttribute) {
+    public static String triggerCodeSubAttributeMYSQL(Operator operator, Attribute attribute, Attribute subAttribute) {
         String attributeName;
         String operatorSymbol;
         String subAttributeName;

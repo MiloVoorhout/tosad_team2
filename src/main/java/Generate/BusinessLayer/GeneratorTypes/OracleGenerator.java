@@ -1,4 +1,4 @@
-package Generate.BusinessLayer;
+package Generate.BusinessLayer.GeneratorTypes;
 
 import Generate.BusinessLayer.Attribute.Attribute;
 import Generate.BusinessLayer.BusinessRule.BusinessRule;
@@ -8,46 +8,45 @@ import Generate.BusinessLayer.ruleObjects.Operator;
 
 import java.util.HashMap;
 
-public class Generator {
+public class OracleGenerator {
 
     public String generatorInformation(BusinessRule rule, String operation, int ferStatus) throws Exception {
         int typeID = rule.getBusinessRuleTypeID();
         Operator operator = DAOFacade.getOperatorInformation(rule.getOperatorID());
         Attribute attribute = DAOFacade.getAttributeData(rule.getAttributeID());
-        Attribute subAttribute = DAOFacade.getAttributeData(rule.getSubAttributeID());;
+        Attribute subAttribute = DAOFacade.getAttributeData(rule.getSubAttributeID());
         HashMap<Integer, String> values = DAOFacade.getValues(rule.getRuleID());
         String triggerCode;
         String fullCode;
 
         switch(typeID) {
             case 1:
-                triggerCode = RuleTypesFacade.triggerCodeRangeRule(operator, attribute, values);
+                triggerCode = RuleTypesFacade.triggerCodeRangeRuleOracle(operator, attribute, values);
                 break;
             case 2:
-                triggerCode = RuleTypesFacade.triggerCodeLitValue(operator, attribute, values);
+                triggerCode = RuleTypesFacade.triggerCodeLitValueOracle(operator, attribute, values);
                 break;
             case 3:
                 values = DAOFacade.getListValues(rule.getRuleID());
-                triggerCode = RuleTypesFacade.triggerCodeListRule(operator, attribute, values);
+                triggerCode = RuleTypesFacade.triggerCodeListRuleOracle(operator, attribute, values);
                 break;
             case 4:
-                triggerCode = RuleTypesFacade.triggerCodeInterEntityCompareRule(operator, attribute, subAttribute);
+                triggerCode = RuleTypesFacade.triggerCodeInterEntityCompareRuleOracle(operator, attribute, subAttribute);
                 break;
             case 5:
-                triggerCode = RuleTypesFacade.triggerCodeSubAttribute(operator, attribute, subAttribute);
+                triggerCode = RuleTypesFacade.triggerCodeSubAttributeOracle(operator, attribute, subAttribute);
                 break;
             case 6:
-                triggerCode = RuleTypesFacade.triggerCodeEntityOtherRule(values);
+                triggerCode = RuleTypesFacade.triggerCodeEntityOtherRuleOracle(values);
                 break;
             default:
                 return null;
         }
-        fullCode = generateCode(rule, attribute, triggerCode, operation, ferStatus);
+        fullCode = generateCodeOracle(rule, attribute, triggerCode, operation, ferStatus);
         return fullCode;
     }
 
-    public String generateCode(BusinessRule rule, Attribute attribute, String triggerCode, String operation,
-                               int ferStatus) {
+    public String generateCodeOracle(BusinessRule rule, Attribute attribute, String triggerCode, String operation, int ferStatus) {
         int ruleType = rule.getBusinessRuleTypeID();
         String completeTriggerCode;
         String statement = "";
@@ -81,21 +80,19 @@ public class Generator {
                                                 "END;",
                     rule.getName(),
                     statement,
-                    trigger
-            );
+                    trigger);
         } else {
             completeTriggerCode = String.format("CREATE OR REPLACE TRIGGER %s %n" +
                                                 "%s" +
                                                 "BEGIN %n" +
                                                 "IF %s THEN %n" +
-                                                "raise_application_error(-20001, '%s') %n" +
+                                                "raise_application_error(-20001, '%s'); %n" +
                                                 "END IF; %n" +
                                                 "END;",
                     rule.getName(),
                     statement,
                     trigger,
-                    rule.getFailureMessage()
-            );
+                    rule.getFailureMessage());
         }
         return completeTriggerCode;
     }

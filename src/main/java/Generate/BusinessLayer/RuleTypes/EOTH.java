@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class EOTH extends RuleTypesFacade {
 
-    public static String triggerCodeEntityOtherRule(HashMap values) {
+    public static String triggerCodeEntityOtherRuleMYSQL(HashMap values) {
         String litVal = null;
 
         Iterator iterator = values.entrySet().iterator();

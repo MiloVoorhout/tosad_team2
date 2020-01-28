@@ -5,7 +5,7 @@ import Generate.BusinessLayer.ruleObjects.Operator;
 
 public class ICMP extends RuleTypesFacade {
 
-    public static String triggerCodeInterEntityCompareRule(Operator operator, Attribute attribute,
+    public static String triggerCodeInterEntityCompareRuleMYSQL(Operator operator, Attribute attribute,
                                                            Attribute subAttribute) {
         String attributeName;
         String operatorSymbol;

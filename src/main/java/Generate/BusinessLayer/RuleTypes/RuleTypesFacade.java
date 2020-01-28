@@ -8,39 +8,70 @@ import java.util.HashMap;
 public class RuleTypesFacade {
 
     // ACMP functies
-    public static String triggerCodeLitValue(Operator operator, Attribute attribute, HashMap values) {
+    public static String triggerCodeLitValueOracle(Operator operator, Attribute attribute, HashMap values) {
 
-        return ACMP.triggerCodeLitValue(operator, attribute, values);
+        return ACMP.triggerCodeLitValueOracle(operator, attribute, values);
+    }
+
+    public static String triggerCodeLitValueMYSQL(Operator operator, Attribute attribute, HashMap values) {
+
+        return ACMP.triggerCodeLitValueMYSQL(operator, attribute, values);
     }
 
     //ALIS functies
-    public static String triggerCodeListRule(Operator operator, Attribute attribute, HashMap values) {
+    public static String triggerCodeListRuleOracle(Operator operator, Attribute attribute, HashMap values) {
 
-        return ALIS.triggerCodeListRule(operator, attribute, values);
+        return ALIS.triggerCodeListRuleOracle(operator, attribute, values);
+    }
+
+    public static String triggerCodeListRuleMYSQL(Operator operator, Attribute attribute, HashMap values) {
+
+        return ALIS.triggerCodeListRuleMYSQL(operator, attribute, values);
     }
 
     //ARNG functies
-    public static String triggerCodeRangeRule(Operator operator, Attribute attribute, HashMap values) {
+    public static String triggerCodeRangeRuleOracle(Operator operator, Attribute attribute, HashMap values) {
 
-        return ARNG.triggerCodeRangeRule(operator, attribute, values);
+        return ARNG.triggerCodeRangeRuleOracle(operator, attribute, values);
+    }
+
+    public static String triggerCodeRangeRuleMYSQL(Operator operator, Attribute attribute, HashMap values) {
+
+        return ARNG.triggerCodeRangeRuleMYSQL(operator, attribute, values);
     }
 
     //EOTH functies
-    public static String triggerCodeEntityOtherRule(HashMap values) {
+    public static String triggerCodeEntityOtherRuleOracle(HashMap values) {
 
-        return EOTH.triggerCodeEntityOtherRule(values);
+        return EOTH.triggerCodeEntityOtherRuleOracle(values);
+    }
+
+    public static String triggerCodeEntityOtherRuleMYSQL(HashMap values) {
+
+        return EOTH.triggerCodeEntityOtherRuleMYSQL(values);
     }
 
     //ICMP functies
-    public static String triggerCodeInterEntityCompareRule(Operator operator, Attribute attribute,
+    public static String triggerCodeInterEntityCompareRuleOracle(Operator operator, Attribute attribute,
                                                            Attribute subAttribute) {
 
-        return ICMP.triggerCodeInterEntityCompareRule(operator, attribute, subAttribute);
+        return ICMP.triggerCodeInterEntityCompareRuleOracle(operator, attribute, subAttribute);
+    }
+
+    public static String triggerCodeInterEntityCompareRuleMYSQL(Operator operator, Attribute attribute,
+                                                                 Attribute subAttribute) {
+
+        return ICMP.triggerCodeInterEntityCompareRuleMYSQL(operator, attribute, subAttribute);
     }
 
     //TCMP functies
-    public static String triggerCodeSubAttribute(Operator operator, Attribute attribute, Attribute subAttribute) {
+    public static String triggerCodeSubAttributeOracle(Operator operator, Attribute attribute, Attribute subAttribute) {
 
-        return TCMP.triggerCodeSubAttribute(operator, attribute, subAttribute);
+        return TCMP.triggerCodeSubAttributeOracle(operator, attribute, subAttribute);
+    }
+
+    public static String triggerCodeSubAttributeMYSQL(Operator operator, Attribute attribute, Attribute subAttribute) {
+
+        return TCMP.triggerCodeSubAttributeMYSQL(operator, attribute, subAttribute);
     }
 }
