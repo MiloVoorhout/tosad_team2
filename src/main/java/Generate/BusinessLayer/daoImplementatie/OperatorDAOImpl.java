@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class OperatorDAOImpl {
+public class OperatorDAOImpl extends DAOFacade{
 
     public static Operator getOperatorInformation(int OperatorID) throws Exception {
         String name = "";

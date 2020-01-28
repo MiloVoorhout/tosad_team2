@@ -2,7 +2,7 @@ package Generate.BusinessLayer.BusinessRule;
 
 import java.util.List;
 
-public class BusinessRule implements BusinessRulePrototype, Cloneable {
+public class BusinessRule {
     private int RuleID;
     private String Name;
     private int CompareStatus;
@@ -14,7 +14,8 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
     private int FailureType;
     private String FailureMessage;
 
-    public BusinessRule(String ruleName, int compareStatus, int operatorID, int attributeID, int subAttributeID, int businessRuleTypeID) {
+    public BusinessRule(String ruleName, int compareStatus, int operatorID, int attributeID, int subAttributeID,
+                        int businessRuleTypeID) {
         Name = ruleName;
         CompareStatus = compareStatus;
         OperatorID = operatorID;
@@ -23,7 +24,8 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
         BusinessRuleTypeID = businessRuleTypeID;
     }
 
-    public BusinessRule(String ruleName, int compareStatus, int operatorID, List<String> value, int attributeID, int subAttributeID, int businessRuleTypeID) {
+    public BusinessRule(String ruleName, int compareStatus, int operatorID, List<String> value, int attributeID,
+                        int subAttributeID, int businessRuleTypeID) {
         Name = ruleName;
         CompareStatus = compareStatus;
         OperatorID = operatorID;
@@ -33,7 +35,8 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
         BusinessRuleTypeID = businessRuleTypeID;
     }
 
-    public BusinessRule(int ruleID, String ruleName, int compareStatus, int operatorID, int attributeID, int subAttributeID, int businessRuleTypeID, int failureType, String failureMessage) {
+    public BusinessRule(int ruleID, String ruleName, int compareStatus, int operatorID, int attributeID,
+                        int subAttributeID, int businessRuleTypeID, int failureType, String failureMessage) {
         RuleID = ruleID;
         Name = ruleName;
         CompareStatus = compareStatus;
@@ -45,18 +48,14 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
         FailureMessage = failureMessage;
     }
 
-    public BusinessRule(int ruleID, String ruleName, int compareStatus, int operatorID, int attributeID, int businessRuleTypeID) {
+    public BusinessRule(int ruleID, String ruleName, int compareStatus, int operatorID, int attributeID,
+                        int businessRuleTypeID) {
         RuleID = ruleID;
         Name = ruleName;
         CompareStatus = compareStatus;
         OperatorID = operatorID;
         AttributeID = attributeID;
         BusinessRuleTypeID = businessRuleTypeID;
-    }
-
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
     }
 
     public int getRuleID() {return RuleID;}
@@ -75,9 +74,7 @@ public class BusinessRule implements BusinessRulePrototype, Cloneable {
         CompareStatus = compareStatus;
     }
 
-    public int getOperatorID() {
-        return OperatorID;
-    }
+    public int getOperatorID() { return OperatorID; }
 
     public void setOperatorID(int operatorID) {
         OperatorID = operatorID;

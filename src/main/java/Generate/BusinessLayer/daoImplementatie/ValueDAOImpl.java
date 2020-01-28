@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
 
-public class ValueDAOImpl {
+public class ValueDAOImpl extends DAOFacade{
 
     public static HashMap<Integer, String> getValues(int id) throws Exception {
         String value;

@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class AttributeDAOImpl {
+public class AttributeDAOImpl extends DAOFacade {
 
     public static Attribute getAttributeData(int AttributeID) {
         String name = "";

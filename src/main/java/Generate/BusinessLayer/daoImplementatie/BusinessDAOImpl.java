@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class BusinessDAOImpl {
+public class BusinessDAOImpl extends DAOFacade {
 
     public static String getBusinessRuleInfo() throws SQLException{
 
