@@ -1,6 +1,5 @@
 package Define.BusinessLayer.daoImplementatie;
 
-import Define.DatabaseLayer.DatabaseConnection;
 import Define.DatabaseLayer.DatabaseFacade;
 
 import java.sql.Connection;
