@@ -10,8 +10,8 @@ import java.sql.Statement;
 public class InsertDAOImpl {
 
     public static String createRule(int rule_type_select, String rule_name, String tableSelect, String attributeSelect,
-                                    int operator, int validationFailureSeverity, String failureMessage, int minimumValue
-                                    , int maximumValue, int compareWith, String value, String interEntityTable,
+                                    int operator, int validationFailureSeverity, String failureMessage, int minimumValue,
+                                    int maximumValue, int compareWith, String value, String interEntityTable,
                                     String listValues) throws Exception {
 
         Connection conn = DatabaseConnection.getInstance().getConnection();
