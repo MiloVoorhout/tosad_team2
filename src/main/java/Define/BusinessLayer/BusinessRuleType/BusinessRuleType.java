@@ -1,4 +1,4 @@
-package Define.BusinessLayer;
+package Define.BusinessLayer.BusinessRuleType;
 
 public class BusinessRuleType {
     private String name;

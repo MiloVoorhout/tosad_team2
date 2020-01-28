@@ -1,4 +1,4 @@
-package Define.BusinessLayer;
+package Define.BusinessLayer.Operator;
 
 public class Operator {
     private String name;

@@ -1,5 +1,7 @@
 package Generate.BusinessLayer;
 
+import Generate.BusinessLayer.Attribute.Attribute;
+import Generate.BusinessLayer.BusinessRule.BusinessRule;
 import Generate.BusinessLayer.RuleTypes.ICMP;
 import Generate.BusinessLayer.ruleObjects.Operator;
 import Generate.BusinessLayer.RuleTypes.ACMP;

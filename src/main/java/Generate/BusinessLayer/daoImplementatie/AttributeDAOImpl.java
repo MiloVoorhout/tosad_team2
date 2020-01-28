@@ -1,6 +1,6 @@
 package Generate.BusinessLayer.daoImplementatie;
 
-import Generate.BusinessLayer.Attribute;
+import Generate.BusinessLayer.Attribute.Attribute;
 import Generate.DatabaseLayer.DatabaseConnection;
 import org.json.JSONArray;
 import org.json.JSONObject;

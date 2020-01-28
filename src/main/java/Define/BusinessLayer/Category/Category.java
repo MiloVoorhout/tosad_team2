@@ -1,4 +1,4 @@
-package Define.BusinessLayer;
+package Define.BusinessLayer.Category;
 
 public class Category {
     private String type;

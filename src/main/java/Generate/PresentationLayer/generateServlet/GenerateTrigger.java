@@ -3,12 +3,11 @@ package Generate.PresentationLayer.generateServlet;
 import Generate.BusinessLayer.daoImplementatie.BusinessDAOImpl;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import Generate.BusinessLayer.BusinessRule;
+import Generate.BusinessLayer.BusinessRule.BusinessRule;
 import Generate.BusinessLayer.Generator;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.sql.SQLException;
 
 @Path("/generate")
 public class GenerateTrigger {

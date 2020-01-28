@@ -1,4 +1,4 @@
-package Generate.BusinessLayer;
+package Generate.BusinessLayer.Attribute;
 
 public class Attribute {
     private String Name;
