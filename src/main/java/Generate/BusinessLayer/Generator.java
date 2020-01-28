@@ -2,12 +2,8 @@ package Generate.BusinessLayer;
 
 import Generate.BusinessLayer.Attribute.Attribute;
 import Generate.BusinessLayer.BusinessRule.BusinessRule;
-import Generate.BusinessLayer.RuleTypes.ICMP;
+import Generate.BusinessLayer.RuleTypes.*;
 import Generate.BusinessLayer.ruleObjects.Operator;
-import Generate.BusinessLayer.RuleTypes.ACMP;
-import Generate.BusinessLayer.RuleTypes.ALIS;
-import Generate.BusinessLayer.RuleTypes.ARNG;
-import Generate.BusinessLayer.RuleTypes.TCMP;
 import Generate.BusinessLayer.daoImplementatie.AttributeDAOImpl;
 import Generate.BusinessLayer.daoImplementatie.OperatorDAOImpl;
 import Generate.BusinessLayer.daoImplementatie.ValueDAOImpl;
@@ -42,6 +38,9 @@ public class Generator {
             case 5:
                 triggerCode = TCMP.triggerCodeSubAttribute(operator, attribute, subAttribute);
                 break;
+            case 6:
+                triggerCode = EOTH.triggerCodeEntityOtherRule(values);
+                break;
             default:
                 return null;
         }
@@ -50,6 +49,8 @@ public class Generator {
     }
 
     public String generateCode(BusinessRule rule, Attribute attribute, String triggerCode, String operation, int ferStatus) {
+        int ruleType = rule.getBusinessRuleTypeID();
+        String completeTriggerCode = "";
         String statement = "";
         String trigger = "";
         if (ferStatus == 0) {
@@ -67,20 +68,36 @@ public class Generator {
                                         operation,
                                         attribute.getDatabase(),
                                         attribute.getTable());
-            trigger = ":new." + triggerCode;
+            if (ruleType != 6) {
+                trigger = ":new." + triggerCode;
+            } else {
+                trigger = triggerCode;
+            }
         }
 
-        return String.format("CREATE OR REPLACE TRIGGER %s %n" +
-                        "%s" +
-                        "BEGIN %n" +
-                        "IF %s THEN %n" +
-                        "raise_application_error(-20001, '%s') %n" +
-                        "END IF; %n" +
-                        "END;",
-                rule.getName(),
-                statement,
-                trigger,
-                rule.getFailureMessage()
-        );
+        if (ruleType == 6) {
+            completeTriggerCode = String.format("CREATE OR REPLACE TRIGGER %s %n" +
+                                                "%s" +
+                                                "%s" +
+                                                "END;",
+                    rule.getName(),
+                    statement,
+                    trigger
+            );
+        } else {
+            completeTriggerCode = String.format("CREATE OR REPLACE TRIGGER %s %n" +
+                                                "%s" +
+                                                "BEGIN %n" +
+                                                "IF %s THEN %n" +
+                                                "raise_application_error(-20001, '%s') %n" +
+                                                "END IF; %n" +
+                                                "END;",
+                    rule.getName(),
+                    statement,
+                    trigger,
+                    rule.getFailureMessage()
+            );
+        }
+        return completeTriggerCode;
     }
 }

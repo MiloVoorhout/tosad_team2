@@ -1,0 +1,19 @@
+package Generate.BusinessLayer.RuleTypes;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+public class EOTH {
+    public static String triggerCodeEntityOtherRule(HashMap values) {
+        String litVal = null;
+
+        Iterator iterator = values.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry value = (Map.Entry) iterator.next();
+            litVal = (String) value.getValue();
+        }
+
+        return String.format("%s", litVal);
+    }
+}
