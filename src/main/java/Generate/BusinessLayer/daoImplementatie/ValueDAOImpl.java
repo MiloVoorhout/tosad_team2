@@ -11,12 +11,11 @@ import java.util.HashMap;
 
 public class ValueDAOImpl {
 
-    public static HashMap<Integer, String> getValues(int id) {
+    public static HashMap<Integer, String> getValues(int id) throws Exception {
         String value;
         int type;
         HashMap<Integer, String> values = new HashMap<>();
 
-        try {
             Connection conn = DatabaseConnection.getInstance().getConnection();
             String query = "SELECT * FROM TOSAD.VALUE WHERE BUSINESSRULEID = " + id;
             Statement stmt = conn.createStatement();
@@ -26,18 +25,14 @@ public class ValueDAOImpl {
                 type = rs.getInt("TYPE");
                 values.put(type, value);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
         return values;
     }
 
-    public static HashMap<Integer, String> getListValues(int id) {
+    public static HashMap<Integer, String> getListValues(int id) throws Exception {
         String value;
-        int type;
         HashMap<Integer, String> values = new HashMap<>();
 
-        try {
             Connection conn = DatabaseConnection.getInstance().getConnection();
             String query = "SELECT * FROM TOSAD.VALUE WHERE BUSINESSRULEID = " + id;
             Statement stmt = conn.createStatement();
@@ -47,9 +42,7 @@ public class ValueDAOImpl {
                 id = rs.getInt("ID");
                 values.put(id, value);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
         return values;
     }
 
@@ -70,7 +63,32 @@ public class ValueDAOImpl {
             obj = new JSONObject();
         }
 
-        String result = arr.toString();
-        return result;
+        return arr.toString();
+    }
+
+    public static String getBusinessRuleValue(int id) throws Exception {
+
+        JSONObject obj = new JSONObject();
+        JSONArray arr = new JSONArray();
+
+        Connection conn = DatabaseConnection.getInstance().getConnection();
+        String query  = "SELECT v.id, v.value, b.name AS BUSINESSRULETYPEID, A2.NAME AS ATTRIBUTENAME, A2.TABLENAME," +
+                " A2.DATABASENAME FROM TOSAD.VALUE V INNER JOIN TOSAD.BUSINESSRULETYPE B ON V.TYPE = B.ID" +
+                " INNER JOIN TOSAD.ATTRIBUTE A2 on V.BUSINESSRULEID = A2.ID WHERE BUSINESSRULEID = "+id;
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        while (rs.next()) {
+            obj.put("id", rs.getInt("ID"));
+            obj.put("value", rs.getString("VALUE"));
+            obj.put("businessRuleTypeID", rs.getString("BUSINESSRULETYPEID"));
+            obj.put("attributeName", rs.getString("ATTRIBUTENAME"));
+            obj.put("tableName", rs.getString("TABLENAME"));
+            obj.put("databaseName", rs.getString("DATABASENAME"));
+            arr.put(obj);
+            obj = new JSONObject();
+        }
+
+        return arr.toString();
     }
 }

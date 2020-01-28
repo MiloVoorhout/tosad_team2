@@ -14,7 +14,7 @@ import java.util.HashMap;
 
 public class Generator {
 
-    public String generatorInformation(BusinessRule rule, String operation){
+    public String generatorInformation(BusinessRule rule, String operation) throws Exception {
         int typeID = rule.getBusinessRuleTypeID();
         Operator operator = OperatorDAOImpl.getOperatorInformation(rule.getOperatorID());
         Attribute attribute = AttributeDAOImpl.getAttributeData(rule.getAttributeID());

@@ -52,7 +52,6 @@ public class AttributeDAOImpl {
             obj = new JSONObject();
         }
 
-        String result = arr.toString();
-        return result;
+        return arr.toString();
     }
 }

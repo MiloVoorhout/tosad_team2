@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class GenerateTrigger {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public String getTestService(@DefaultValue("0") @QueryParam("id") int id) throws SQLException {
+    public String getTestService(@DefaultValue("0") @QueryParam("id") int id) throws Exception {
         BusinessRule generateRule = BusinessDAOImpl.getBusinessRuleTrigger(id);
 
         JSONObject obj = new JSONObject();
@@ -25,7 +25,6 @@ public class GenerateTrigger {
         obj.put("code", triggerCode);
         arr.put(obj);
 
-        String result = arr.toString();
-        return (result);
+        return (arr.toString());
     }
 }
