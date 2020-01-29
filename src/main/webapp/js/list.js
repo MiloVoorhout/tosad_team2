@@ -45,8 +45,7 @@ function generatePackage() {
     if (packageName.val()) {
         if ($("#packageValues option:selected").length) {
             $.get("generate/generatePackage" +
-                "?id=" + $('.listItem.active').attr("data-id") +
-                "&name=" + packageName.val() +
+                "?name=" + packageName.val() +
                 "&packageValues=" + packageValues.val() +
                 "&packageMethodSelect=" + packageMethodSelect.val(), function (array) {
                 console.log(array);

@@ -15,7 +15,6 @@ public class GeneratePackage {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getPackage(
-            @QueryParam("id") int id,
             @QueryParam("name") String packageName,
             @QueryParam("packageValues") String packageValues,
             @QueryParam("packageMethodSelect") int packageMethodSelect
