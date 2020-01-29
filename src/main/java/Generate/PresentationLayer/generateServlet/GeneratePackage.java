@@ -16,9 +16,13 @@ public class GeneratePackage {
     @Produces({MediaType.APPLICATION_JSON})
     public String getPackage(
             @QueryParam("id") int id,
+            @QueryParam("name") String packageName,
             @QueryParam("packageValues") String packageValues,
             @QueryParam("packageMethodSelect") int packageMethodSelect
     ) throws Exception {
+
+        // Split packageValues
+
         return "aardappels";
     }
 }

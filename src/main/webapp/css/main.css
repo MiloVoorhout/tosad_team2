@@ -20,6 +20,7 @@ a {
     width: 40%;
     margin: 50px auto auto auto;
     text-align: center;
+    z-index: 9999;
 }
 
 #list-tab {

@@ -1,15 +1,5 @@
 const listTab = $('#list-tab');
 const content = $('#nav-tabContent');
-
-const ruleStatement = $('#statementMethodSelect option:selected').html().toUpperCase();
-const dataBaseType = $('#databaseMethodeSelect option:selected').val();
-let forEachRowStatus = 0;
-let ruleID;
-
-const packageMethodSelect = $('#packageMethodSelect').val();
-const modalCode = $('#modal_code').val();
-const generateModal = $('#generate_modal').val();
-
 const ruleType = $('#ruleType');
 const ruleTypeName = $('#ruleTypeName');
 const ruleTypeTable = $('#ruleTypeTable');
@@ -19,40 +9,53 @@ const ruleTypeFailureType = $('#ruleTypeFailureType');
 const ruleTypeFailureMessage = $('#ruleTypeFailureMessage');
 const ruleTypeDB = $('#ruleTypeDB');
 const ruleTypeSubAttrContainer = $('#ruleTypeSubAttrContainer');
-
 const packageBtn = $('#packageBtn');
 const packageValues = $('#packageValues');
 const subattrTr = $('#subattrTr');
 const ruleTypeSubAttr = $('#ruleTypeSubAttr');
 const subattrTableTr = $('#subattrTableTr');
 const ruleTypeSubAttrTable = $('#ruleTypeSubAttrTable');
+const packageMethodSelect = $('#packageMethodSelect');
+const packageName = $('#packageName');
+const modalCode = $('#modal_code');
+const generateModal = $('#generate_modal');
+const packageModal = $('#packageModal');
+let forEachRowStatus = 0;
 
 subattrTr.hide();
 subattrTableTr.hide();
 
 function generateRule() {
-    ruleID = $('.listItem.active').attr("data-id");
+    const ruleStatement = $('#statementMethodSelect option:selected').html().toUpperCase();
+    const dataBaseType = $('#databaseMethodeSelect option:selected').val();
     if (ruleStatement.slice(ruleStatement.length - 12) == "FOR EACH ROW") forEachRowStatus = 1;
+
     $.get("generate/generate" +
-        "?id=" + ruleID +
+        "?id=" + $('.listItem.active').attr("data-id") +
         "&statement=" + ruleStatement +
         "&ferStatus=" + forEachRowStatus +
         "&dataBaseType=" + dataBaseType, function (array) {
-        code = array[0]["code"];
-        code = code.replace(/(?:\r\n|\r|\n)/g, '<br>');
+        const code = array[0]["code"].replace(/(?:\r\n|\r|\n)/g, '<br>');
         modalCode.html(code);
         generateModal.modal('toggle');
     });
 }
 
 function generatePackage() {
-    ruleID = $('.listItem.active').attr("data-id");
-    $.get("generate/generatePackage" +
-        "?id=" + ruleID +
-        "&packageValues=" + packageValues +
-        "&packageMethodSelect=" + packageMethodSelect, function (array) {
-        console.log(array);
-    });
+    if (packageName.val()) {
+        if ($("#packageValues option:selected").length) {
+            $.get("generate/generatePackage" +
+                "?id=" + $('.listItem.active').attr("data-id") +
+                "&name=" + packageName.val() +
+                "&packageValues=" + packageValues.val() +
+                "&packageMethodSelect=" + packageMethodSelect.val(), function (array) {
+                console.log(array);
+                // createAlert('success', 'Package "'+ packageName.val() +'" succesfully created', false, true);
+                // form.trigger("reset");
+                // packageModal.modal('toggle');
+            });
+        } else createAlert('danger', 'Please choose one or more rules for this package', false, true);
+    } else createAlert('danger', 'Please enter a package name', false, true);
 }
 
 function getContent(id){
