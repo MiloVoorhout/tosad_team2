@@ -53,6 +53,7 @@ public class MySQLGenerator {
         String completeTriggerCode;
         String statement = "";
         String trigger = "";
+        operation = operation.replace("/", " OR ");
         if (ferStatus == 0) {
             statement = String.format(  "%s %n" +
                             "ON `%s`.%s %n",
