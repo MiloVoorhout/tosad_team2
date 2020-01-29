@@ -83,16 +83,18 @@ public class OracleGenerator {
                     statement,
                     trigger);
         } else {
+            int raiseNumber = 1000 - rule.getRuleID();
             completeTriggerCode = String.format("CREATE OR REPLACE TRIGGER %s %n" +
                                                 "%s" +
                                                 "BEGIN %n" +
                                                 "IF %s THEN %n" +
-                                                "raise_application_error(-20001, '%s'); %n" +
+                                                "raise_application_error(-20%s, '%s'); %n" +
                                                 "END IF; %n" +
                                                 "END;",
                     rule.getName(),
                     statement,
                     trigger,
+                    raiseNumber,
                     rule.getFailureMessage());
         }
         return completeTriggerCode;
