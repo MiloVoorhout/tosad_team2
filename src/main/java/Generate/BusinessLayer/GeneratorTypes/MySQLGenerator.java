@@ -84,16 +84,18 @@ public class MySQLGenerator {
                     statement,
                     trigger);
         } else {
+            int raiseNumber = 1000 - rule.getRuleID();
             completeTriggerCode = String.format("CREATE OR REPLACE TRIGGER %s %n" +
                             "%s" +
                             "BEGIN %n" +
                             "IF %s THEN %n" +
-                            "signal sqlstate '-20001' set message_text = '%s'; %n" +
+                            "signal sqlstate '-20%s' set message_text = '%s'; %n" +
                             "END IF; %n" +
                             "END;",
                     rule.getName(),
                     statement,
                     trigger,
+                    raiseNumber,
                     rule.getFailureMessage());
         }
 
