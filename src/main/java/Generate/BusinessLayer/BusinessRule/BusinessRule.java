@@ -6,7 +6,6 @@ public class BusinessRule {
     private int RuleID;
     private String Name;
     private int OperatorID;
-    private List<String> Value;
     private int AttributeID;
     private int SubAttributeID;
     private int BusinessRuleTypeID;
@@ -30,10 +29,6 @@ public class BusinessRule {
     public void setName(String ruleName) {Name = ruleName;}
 
     public int getOperatorID() { return OperatorID; }
-
-    public List<String> getValue() { return Value; }
-
-    public void setValue(List<String> value) { Value = value; }
 
     public int getAttributeID() { return AttributeID; }
 

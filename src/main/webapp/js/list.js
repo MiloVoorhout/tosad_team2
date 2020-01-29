@@ -27,9 +27,12 @@ subattrTr.hide();
 subattrTableTr.hide();
 
 function generateRule() {
+    forEachRowStatus = 0;
     const ruleStatement = $('#statementMethodSelect option:selected').html().toUpperCase();
     const dataBaseType = $('#databaseMethodeSelect option:selected').val();
     if (ruleStatement.slice(ruleStatement.length - 12) == "FOR EACH ROW") forEachRowStatus = 1;
+    console.log(forEachRowStatus);
+    console.log(ruleStatement.slice(ruleStatement.length - 12) == "FOR EACH ROW");
 
     $.get("generate/generate" +
         "?id=" + $('.listItem.active').attr("data-id") +
@@ -42,6 +45,7 @@ function generateRule() {
     });
 }
 function generatePackage() {
+    console.log(packageValues.val());
     if (packageName.val()) {
         if ($("#packageValues option:selected").length) {
             $.get("generate/generatePackage" +

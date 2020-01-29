@@ -1,6 +1,7 @@
 package Generate.BusinessLayer.daoImplementatie;
 
 import Generate.BusinessLayer.BusinessRule.BusinessRule;
+import Generate.BusinessLayer.BusinessRule.BusinessRuleFactory;
 import Generate.DatabaseLayer.DatabaseFacade;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -40,10 +41,12 @@ public class BusinessDAOImpl extends DAOFacade {
     public static BusinessRule getBusinessRuleTrigger(int id) throws SQLException {
 
         Connection conn = DatabaseFacade.getInstance().getConnection();
+
         String query  = "SELECT * FROM TOSAD.BUSINESSRULE WHERE ID =" + id;
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
-        BusinessRule ruleDefinition = null;
+//        BusinessRule ruleDefinition = null;
+        BusinessRule factoryRule = null;
 
         while (rs.next()) {
             int businessRuleID = rs.getInt("ID");
@@ -53,11 +56,14 @@ public class BusinessDAOImpl extends DAOFacade {
             int subAttributeID = rs.getInt("SUBATTRIBUTEID");
             int businessRuleTypeID = rs.getInt("BUSINESSRULETYPEID");
             String failureMessage = rs.getString("FAILUREMESSAGE");
-            ruleDefinition = new BusinessRule(businessRuleID, name, operatorID, attributeID, subAttributeID,
-                    businessRuleTypeID, failureMessage);
+            factoryRule = new BusinessRuleFactory(businessRuleID, name, operatorID, attributeID,
+                    subAttributeID, businessRuleTypeID, failureMessage).buildRule();
+//            BusinessRuleFactoryInterface rule = (BusinessRuleFactoryInterface) factoryRule.buildRule();
+//            ruleDefinition = new BusinessRule(businessRuleID, name, operatorID, attributeID, subAttributeID,
+//                    businessRuleTypeID, failureMessage);
         }
 
-        return ruleDefinition;
+        return factoryRule;
     }
 
     public static String getMenuItems() throws Exception {

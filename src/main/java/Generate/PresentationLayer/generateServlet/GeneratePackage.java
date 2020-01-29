@@ -21,6 +21,11 @@ public class GeneratePackage {
     ) throws Exception {
 
         // Split packageValues
+        System.out.println(packageValues);
+        String[] allRuleIDs = packageValues.split(",");
+        for (String s : allRuleIDs) {
+            System.out.println(s);
+        }
 
         return "aardappels";
     }
