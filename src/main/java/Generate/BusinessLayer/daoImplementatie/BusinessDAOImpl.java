@@ -96,15 +96,10 @@ public class BusinessDAOImpl extends DAOFacade {
         String query  = "SELECT br.ID, br.name, A3.NAME AS SUBATTRIBUTE, A3.TABLENAME AS SUBATTRIBUTETABLE, br.FAILURETYPE, br.FAILUREMESSAGE, o.NAME as OPERATOR, A2.NAME AS ATTRIBUTE_NAME, A2.TABLENAME AS ATTRIBUTE_TABLE, B.NAME AS BUSINESSRULETYPE FROM TOSAD.BUSINESSRULE br INNER JOIN TOSAD.ATTRIBUTE A2 on br.ATTRIBUTEID = A2.ID INNER JOIN TOSAD.OPERATOR O on br.OPERATORID = O.ID INNER JOIN TOSAD.BUSINESSRULETYPE B on br.BUSINESSRULETYPEID = B.ID LEFT JOIN TOSAD.ATTRIBUTE A3 ON br.SUBATTRIBUTEID = A3.ID WHERE br.ID = "+id;
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
-        System.out.println("minus");
 
         while (rs.next()) {
 
-            System.out.println(rs.getString("SUBATTRIBUTE"));
-            System.out.println(rs.getString("SUBATTRIBUTETABLE"));
-
             if (rs.getInt("FAILURETYPE") == 1) failureType = "Error";
-
             obj.put("id", rs.getInt("ID"));
             obj.put("operator", rs.getString("OPERATOR"));
             obj.put("attributeName", rs.getString("ATTRIBUTE_NAME"));
@@ -117,7 +112,6 @@ public class BusinessDAOImpl extends DAOFacade {
             obj.put("failureMessage", rs.getString("FAILUREMESSAGE"));
             arr.put(obj);
             obj = new JSONObject();
-            System.out.println("thros");
 
         }
         return arr.toString();
