@@ -50,16 +50,17 @@ function generatePackage() {
 
     if (packageName.val()) {
         if ($("#packageValues option:selected").length) {
-            $.get("generate/generatePackage" +
-                "?name=" + packageName.val() +
-                "&tableName=" + packageValues.val() +
-                "&packageMethodSelect=" + ruleStatement +
-                "&ferStatus=" + forEachRowStatus, function (array) {
-                packageModal.modal('toggle');
-                // const code = array[0]["code"].replace(/(?:\r\n|\r|\n)/g, '<br>');
-                modalTriggerCode.html(array[0]["code"]);
-                modalTrigger.modal('toggle');
-            });
+            if(/(^[a-z-_]+)$/.test(packageName.val())) {
+                $.get("generate/generatePackage" +
+                    "?name=" + packageName.val() +
+                    "&tableName=" + packageValues.val() +
+                    "&packageMethodSelect=" + ruleStatement +
+                    "&ferStatus=" + forEachRowStatus, function (array) {
+                    packageModal.modal('toggle');
+                    modalTriggerCode.html(array[0]["code"]);
+                    modalTrigger.modal('toggle');
+                });
+            } else createAlert('danger', 'Plese make the name like name_test', false, true);
         } else createAlert('danger', 'Please choose one or more rules for this package', false, true);
     } else createAlert('danger', 'Please enter a package name', false, true);
 }
