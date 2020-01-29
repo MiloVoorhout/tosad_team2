@@ -4,9 +4,6 @@ import Generate.BusinessLayer.GeneratorTypes.GeneratorTypesFacade;
 import Generate.BusinessLayer.daoImplementatie.DAOFacade;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import Generate.BusinessLayer.BusinessRule.BusinessRule;
-import Generate.BusinessLayer.GeneratorTypes.OracleGenerator;
-import Generate.BusinessLayer.GeneratorTypes.MySQLGenerator;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

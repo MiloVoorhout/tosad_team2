@@ -87,8 +87,11 @@ public class OracleGenerator {
             int raiseNumber = 1000 - rule.getRuleID();
             completeTriggerCode = String.format("CREATE OR REPLACE TRIGGER %s %n" +
                                                 "%s" +
+                                                "DECLARE %n" +
+                                                "l_passed BOOLEAN; %n" +
                                                 "BEGIN %n" +
-                                                "IF %s THEN %n" +
+                                                "l_passed := %s; %n" +
+                                                "IF l_passed THEN %n" +
                                                 "raise_application_error(-20%s, '%s'); %n" +
                                                 "END IF; %n" +
                                                 "END;",
