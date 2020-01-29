@@ -173,3 +173,5 @@ xcuserdata
 javac-services.0.log
 javac-services.0.log.lck
 test/
+
+src/main/webapp/js/generateBusinessRule.js

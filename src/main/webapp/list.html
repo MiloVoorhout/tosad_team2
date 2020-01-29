@@ -1,233 +1,236 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>TOSAD</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/bootstrap.min.js"></script>
-    <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
-    <link rel="manifest" href="img/favicon/manifest.json">
-    <meta name="msapplication-TileColor" content="#9B59B6">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#9B59B6">
-</head>
+    <head>
+        <title>TOSAD</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/libraries/jquery-3.4.1.min.js"></script>
+        <script src="js/libraries/popper.min.js"></script>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/libraries/bootstrap.min.js"></script>
+        <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+        <link rel="manifest" href="img/favicon/manifest.json">
+        <meta name="msapplication-TileColor" content="#9B59B6">
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <meta name="theme-color" content="#9B59B6">
+    </head>
 
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5 ">
-    <a class="navbar-brand" href="index.html">
-        <img src="img/logo_color.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-        TOSAD Business Rule Generator
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse " id="navbarNav">
-        <ul class="navbar-nav ">
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">Add Validation Rule</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Business Rules <span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
-    </div>
-</nav>
+    <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5 ">
+        <a class="navbar-brand" href="index.html">
+            <img src="img/logo_color.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+            TOSAD Business Rule Generator
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarNav">
+            <ul class="navbar-nav ">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Add Validation Rule</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Business Rules <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-<div class="container mb-5">
-    <div class="row">
-        <div class="col-sm">
-            <div class="card">
-                <h5 class="card-header">Business Rules</h5>
-                <div class="card-body">
-                    <p class="card-text"></p>
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="list-group" id="list-tab" role="tablist"></div>
-                        </div>
-                        <div class="col-8">
-                            <div class="tab-content" id="nav-tabContent">
-                                <table class="table table-borderless">
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">Rule Type</th>
-                                            <td id="ruleType">?</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Name</th>
-                                            <td id="ruleTypeName">?</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Table</th>
-                                            <td id="ruleTypeTable">?</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Attribute</th>
-                                            <td id="ruleTypeAttr">?</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Operator</th>
-                                            <td id="ruleTypeOperator">?</td>
-                                        </tr>
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-sm">
+                <div class="card">
+                    <h5 class="card-header">Business Rules</h5>
+                    <div class="card-body">
+                        <p class="card-text"></p>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="list-group" id="list-tab" role="tablist"></div>
+                            </div>
+                            <div class="col-8">
+                                <div class="tab-content" id="nav-tabContent">
+                                    <table class="table table-borderless">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Rule Type</th>
+                                                <td id="ruleType">?</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Name</th>
+                                                <td id="ruleTypeName">?</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Table</th>
+                                                <td id="ruleTypeTable">?</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Attribute</th>
+                                                <td id="ruleTypeAttr">?</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Operator</th>
+                                                <td id="ruleTypeOperator">?</td>
+                                            </tr>
 
-                                        <tr id="subattrTr">
-                                            <th scope="row">Sub-Attribute</th>
-                                            <td id="ruleTypeSubAttr">?</td>
-                                        </tr>
+                                            <tr id="subattrTr">
+                                                <th scope="row">Sub-Attribute</th>
+                                                <td id="ruleTypeSubAttr">?</td>
+                                            </tr>
 
-                                        <tr id="subattrTableTr">
-                                            <th scope="row">Sub-Attribute Table</th>
-                                            <td id="ruleTypeSubAttrTable">?</td>
-                                        </tr>
+                                            <tr id="subattrTableTr">
+                                                <th scope="row">Sub-Attribute Table</th>
+                                                <td id="ruleTypeSubAttrTable">?</td>
+                                            </tr>
 
-                                        <tr>
-                                            <th scope="row">Failure Severity</th>
-                                            <td id="ruleTypeFailureType">?</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Failure Message</th>
-                                            <td id="ruleTypeFailureMessage">?</td>
-                                        </tr>
+                                            <tr>
+                                                <th scope="row">Failure Severity</th>
+                                                <td id="ruleTypeFailureType">?</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Failure Message</th>
+                                                <td id="ruleTypeFailureMessage">?</td>
+                                            </tr>
 
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
 
-                                <table class="table table-borderless" id="values">
-                                    <tbody>
-                                        <tr>
-                                            <th>Value</th>
-                                            <th>Type</th>
-                                        </tr>
-                                        <!-- New rows -->
-                                    </tbody>
-                                </table>
+                                    <table class="table table-borderless" id="values">
+                                        <tbody>
+                                            <tr>
+                                                <th>Value</th>
+                                                <th>Type</th>
+                                            </tr>
+                                            <!-- New rows -->
+                                        </tbody>
+                                    </table>
 
-                                <table class="table table-borderless">
-                                    <tbody>
-                                        <tr>
-                                            <th>
-                                                <div class="form-group">
-                                                    <label for="databaseMethodeSelect">Language</label>
-                                                    <select class="form-control" id="databaseMethodeSelect" name="databaseMethodeSelect">
-                                                        <option value="1">Oracle SQL</option>
-                                                        <option value="2">MySQL</option>
-                                                    </select>
-                                                </div>
-                                            </th>
-                                            <th>
-                                                <div class="form-group">
-                                                    <label for="statementMethodSelect">Statement</label>
-                                                    <select class="form-control" id="statementMethodSelect" name="statementMethodSelect">
-                                                        <option value="1">before insert</option>
-                                                        <option value="2">before update</option>
-                                                        <option value="3">before delete</option>
-                                                        <option value="4">before insert/update/delete</option>
-                                                        <option value="5">before insert for each row</option>
-                                                        <option value="6">before update for each row</option>
-                                                        <option value="7">before insert for each row</option>
-                                                        <option value="8">before insert/update/delete for each row</option>
-                                                        <option value="9">after insert</option>
-                                                        <option value="10">after update</option>
-                                                        <option value="11">after delete</option>
-                                                        <option value="12">after insert/update/delete</option>
-                                                    </select>
-                                                </div>
-                                            </th>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
+                                    <table class="table table-borderless">
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    <div class="form-group">
+                                                        <label for="databaseMethodeSelect">Language</label>
+                                                        <select class="form-control" id="databaseMethodeSelect" name="databaseMethodeSelect">
+                                                            <option value="1">Oracle SQL</option>
+                                                            <option value="2">MySQL</option>
+                                                        </select>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="form-group">
+                                                        <label for="statementMethodSelect">Statement</label>
+                                                        <select class="form-control" id="statementMethodSelect" name="statementMethodSelect">
+                                                            <option value="1">before insert</option>
+                                                            <option value="2">before update</option>
+                                                            <option value="3">before delete</option>
+                                                            <option value="4">before insert/update/delete</option>
+                                                            <option value="5">before insert for each row</option>
+                                                            <option value="6">before update for each row</option>
+                                                            <option value="7">before insert for each row</option>
+                                                            <option value="8">before insert/update/delete for each row</option>
+                                                            <option value="9">after insert</option>
+                                                            <option value="10">after update</option>
+                                                            <option value="11">after delete</option>
+                                                            <option value="12">after insert/update/delete</option>
+                                                        </select>
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
+                        <button class="btn btn-success float-right ml-2" data-toggle="modal" onclick="generateRule()">Generate</button>
+                        <button class="btn btn-warning float-right ml-1" data-toggle="modal" data-target="#packageModal" id="packageBtn">Package</button>
                     </div>
-                    <button class="btn btn-success float-right ml-2" data-toggle="modal" onclick="generateRule()">Generate</button>
-                    <button class="btn btn-warning float-right ml-1" data-toggle="modal" data-target="#packageModal" id="packageBtn">Package</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Modals -->
-<div class="modal fade" id="generate_modal" tabindex="-1" role="dialog" aria-labelledby="generate_modal"
-     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="code_modalTitle">Trigger code</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="modal_code">
+    <!-- Modals -->
+    <div class="modal fade" id="generate_modal" tabindex="-1" role="dialog" aria-labelledby="generate_modal"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="code_modalTitle">Trigger code</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal_code">
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Dit is die modal Milan -->
-<div class="modal fade" id="packageModal" tabindex="-1" role="dialog" aria-labelledby="packageModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="packageModalLabel">Generate package</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+    <!-- Dit is die modal Milan -->
+    <div class="modal fade" id="packageModal" tabindex="-1" role="dialog" aria-labelledby="packageModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="packageModalLabel">Generate package</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form>
+
+                    <div class="modal-body">
+                            <div class="form-group">
+                                <label for="packageValues">Choose rules to generate</label>
+                                <select multiple class="form-control" id="packageValues" name="packageValues" style="height: 300px">
+                                </select>
+                                <div class="blockquote-footer">Hint: Hold "CTRL" to select multiple items</div>
+                            </div>
+
+                            <div class="form-group" id="packageMethod">
+                                <label for="packageMethodSelect">Method</label>
+                                <select class="form-control" id="packageMethodSelect" name="packageMethodSelect">
+                                    <option value="1">before insert</option>
+                                    <option value="2">before update</option>
+                                    <option value="3">before delete</option>
+                                    <option value="4">before insert/update/delete</option>
+                                    <option value="5">before insert for each row</option>
+                                    <option value="6">before update for each row</option>
+                                    <option value="7">before insert for each row</option>
+                                    <option value="8">before insert/update/delete for each row</option>
+                                    <option value="9">after insert</option>
+                                    <option value="10">after update</option>
+                                    <option value="11">after delete</option>
+                                    <option value="12">after insert/update/delete</option>
+                                </select>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" onclick="generatePackage()" class="btn btn-success">Generate</button>
+                    </div>
+                </form>
             </div>
-            <form>
-
-                <div class="modal-body">
-                        <div class="form-group">
-                            <label for="packageValues">Choose rules to generate</label>
-                            <select multiple class="form-control" id="packageValues" name="packageValues" style="height: 300px">
-                            </select>
-                            <div class="blockquote-footer">Hint: Hold "CTRL" to select multiple items</div>
-                        </div>
-
-                        <div class="form-group" id="packageMethod">
-                            <label for="packageMethodSelect">Method</label>
-                            <select class="form-control" id="packageMethodSelect" name="packageMethodSelect">
-                                <option value="1">before insert</option>
-                                <option value="2">before update</option>
-                                <option value="3">before delete</option>
-                                <option value="4">before insert/update/delete</option>
-                                <option value="5">before insert for each row</option>
-                                <option value="6">before update for each row</option>
-                                <option value="7">before insert for each row</option>
-                                <option value="8">before insert/update/delete for each row</option>
-                                <option value="9">after insert</option>
-                                <option value="10">after update</option>
-                                <option value="11">after delete</option>
-                                <option value="12">after insert/update/delete</option>
-                            </select>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success">Generate</button>
-                </div>
-            </form>
         </div>
     </div>
-</div>
 
-</body>
-<script src="js/test.js"></script>
-<script src="js/generateBusinessRule.js"></script>
+
+    <div id="alertContainer">
+
+    </div>
+
+    </body>
+    <script src="js/list.js"></script>
 </html>

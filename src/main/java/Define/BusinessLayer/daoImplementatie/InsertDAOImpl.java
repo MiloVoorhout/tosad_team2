@@ -9,6 +9,8 @@ import java.sql.Statement;
 
 public class InsertDAOImpl extends DAOFacade {
 
+
+
     public static String createRule(int rule_type_select, String rule_name, String tableSelect, String attributeSelect,
                                     int operator, int validationFailureSeverity, String failureMessage, int minimumValue,
                                     int maximumValue, int compareWith, String value, String interEntityTable,
@@ -18,13 +20,14 @@ public class InsertDAOImpl extends DAOFacade {
         int lastIDAttribute = 0;
         int lastIDBusinessRule = 0;
         int lastIDSubAttribute = 0;
+        String databaseName = "VBMG";
 
         // Create attribute
         String query_Attribute = "INSERT INTO TOSAD.ATTRIBUTE(NAME, TABLENAME, DATABASENAME) VALUES (?, ?, ?)";
         PreparedStatement stmt = conn.prepareStatement(query_Attribute);
         stmt.setString(1, attributeSelect);
         stmt.setString(2, tableSelect);
-        stmt.setString(3, "Oracle");
+        stmt.setString(3, databaseName);
         stmt.execute();
 
         // Set the ID from the inserted attribute
@@ -78,16 +81,14 @@ public class InsertDAOImpl extends DAOFacade {
         // If Business Rule = COMPARE
         if (rule_type_select == 2) {
 
-            if (interEntityTable != null) {
-                tableSelect = interEntityTable;
-            }
+            if (interEntityTable != null) tableSelect = interEntityTable;
 
             // Create a new (sub)attribute
             String query_SubAttribute = "INSERT INTO TOSAD.ATTRIBUTE(NAME, TABLENAME, DATABASENAME) VALUES (?, ?, ?)";
             stmt = conn.prepareStatement(query_SubAttribute);
             stmt.setString(1, value);
             stmt.setString(2, tableSelect);
-            stmt.setString(3, "Oracle");
+            stmt.setString(3, databaseName);
             stmt.execute();
 
             // Get the ID from the inserted (sub)attribute

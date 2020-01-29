@@ -14,7 +14,11 @@ import javax.ws.rs.core.MediaType;
 public class GeneratePackage {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public String getPackage(@QueryParam("id") int id) throws Exception {
+    public String getPackage(
+            @QueryParam("id") int id,
+            @QueryParam("packageValues") String packageValues,
+            @QueryParam("packageMethodSelect") int packageMethodSelect
+    ) throws Exception {
         return "aardappels";
     }
 }
