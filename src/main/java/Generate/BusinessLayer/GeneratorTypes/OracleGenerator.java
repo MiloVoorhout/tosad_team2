@@ -101,7 +101,7 @@ public class OracleGenerator {
         return completeTriggerCode;
     }
 
-    public static String generateTriggerCode(int id) throws Exception {
+    public static String generateTriggerCode(int id, int ferStatus) throws Exception {
         BusinessRule rule = DAOFacade.getBusinessRuleTrigger(id);
         Operator operator = DAOFacade.getOperatorInformation(rule.getOperatorID());
         Attribute attribute = DAOFacade.getAttributeData(rule.getAttributeID());
@@ -134,6 +134,18 @@ public class OracleGenerator {
                 return null;
         }
 
-        return triggerCode;
+        String attributeTekst = "";
+        int raiseNumber = 1000 - rule.getRuleID();
+        if (ferStatus == 1) {
+            attributeTekst = ":new.";
+        }
+
+        String triggerLine = String.format("%s%s THEN%n" +
+                                            "raise_application_error(-20%s, '%s'); %n",
+                                            attributeTekst,
+                                            triggerCode,
+                                            raiseNumber,
+                                            rule.getFailureMessage());
+        return triggerLine;
     }
 }

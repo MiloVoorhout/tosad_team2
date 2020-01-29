@@ -17,6 +17,8 @@ const subattrTableTr = $('#subattrTableTr');
 const ruleTypeSubAttrTable = $('#ruleTypeSubAttrTable');
 const packageName = $('#packageName');
 const modalCode = $('#modal_code');
+const modalTrigger = $('#packageGeneratorModal');
+const modalTriggerCode = $('#triggerPackageGeneratorCode');
 const generateModal = $('#generate_modal');
 const packageModal = $('#packageModal');
 const valueContainer = $('#valueContainer');
@@ -47,16 +49,18 @@ function generatePackage() {
     if (ruleStatement.slice(ruleStatement.length - 12) == "FOR EACH ROW") forEachRowStatus = 1;
 
     if (packageName.val()) {
-        $.get("generate/generatePackage" +
-            "?name=" + packageName.val() +
-            "&tableName=" + packageValues.val() +
-            "&packageMethodSelect=" + ruleStatement +
-            "&ferStatus=" + forEachRowStatus, function (array) {
-            console.log(array);
-            // createAlert('success', 'Package "'+ packageName.val() +'" succesfully created', false, true);
-            // form.trigger("reset");
-            // packageModal.modal('toggle');
-        });
+        if ($("#packageValues option:selected").length) {
+            $.get("generate/generatePackage" +
+                "?name=" + packageName.val() +
+                "&tableName=" + packageValues.val() +
+                "&packageMethodSelect=" + ruleStatement +
+                "&ferStatus=" + forEachRowStatus, function (array) {
+                packageModal.modal('toggle');
+                // const code = array[0]["code"].replace(/(?:\r\n|\r|\n)/g, '<br>');
+                modalTriggerCode.html(array[0]["code"]);
+                modalTrigger.modal('toggle');
+            });
+        } else createAlert('danger', 'Please choose one or more rules for this package', false, true);
     } else createAlert('danger', 'Please enter a package name', false, true);
 }
 
@@ -95,6 +99,7 @@ function getValues(id) {
 }
 
 function getAllRules(){
+    packageValues.empty();
     $.get("define/GetTableInfo/getAllTables", function (array) {
         $.each(array, function (i, val) {
             packageValues.append("<option value='"+ val['name'] +"'>" + val['name'] + "</option>");

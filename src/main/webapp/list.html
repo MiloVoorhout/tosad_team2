@@ -163,7 +163,6 @@
             </div>
         </div>
 
-        <!-- Dit is die modal Milan -->
         <div class="modal fade" id="packageModal" tabindex="-1" role="dialog" aria-labelledby="packageModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -204,6 +203,30 @@
                                     <option value="11">after delete</option>
                                     <option value="12">after insert/update/delete</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="generatePackage()" class="btn btn-success">Generate</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="packageGeneratorModal" tabindex="-1" role="dialog" aria-labelledby="packageGeneratorModalLabelModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="packageGeneratorModalLabel">Trigger package</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="packageName">The code:</label><br>
+                                <textarea readonly spellcheck="false" id="triggerPackageGeneratorCode" style="overflow-y: scroll; height: 500px; min-width: 100%; resize: none;"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">

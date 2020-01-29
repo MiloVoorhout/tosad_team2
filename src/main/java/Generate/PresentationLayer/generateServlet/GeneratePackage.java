@@ -21,60 +21,56 @@ public class GeneratePackage {
             @QueryParam("tableName") String tableName,
             @QueryParam("packageMethodSelect") String packageMethodSelect,
             @QueryParam("ferStatus") int ferStatus) throws Exception {
+        JSONObject obj = new JSONObject();
+        JSONArray arr = new JSONArray();
+
         ArrayList<Integer> allRuleIDS = DAOFacade.getTableRules(tableName);
         ArrayList<String> allTriggerStatements = new ArrayList<>();
         for (int i : allRuleIDS) {
-            allTriggerStatements.add(GeneratorTypesFacade.generateTriggerCodeOracle(i));
+            allTriggerStatements.add(GeneratorTypesFacade.generateTriggerCodeOracle(i, ferStatus));
         }
 
-        String ferTekst = "";
-        String attributeTekst = "";
+        String bigTrigger = "";
+        packageMethodSelect = packageMethodSelect.replace("/", " OR ");
         if (ferStatus == 1) {
-            ferTekst = "FOR EACH ROW %n";
-            attributeTekst = ":new.";
+            bigTrigger = String.format("CREATE OR REPLACE TRIGGER %s %n" +
+                            "%s %n" +
+                            "ON %s %n" +
+                            "FOR EACH ROW %n" +
+                            "BEGIN %n",
+                    packageName,
+                    packageMethodSelect,
+                    tableName);
+        } else {
+            bigTrigger = String.format("CREATE OR REPLACE TRIGGER %s %n" +
+                            "%s %n" +
+                            "ON %s %n" +
+                            "BEGIN %n",
+                    packageName,
+                    packageMethodSelect,
+                    tableName);
         }
 
         // Fill the big trigger
-        packageMethodSelect = packageMethodSelect.replace("/", " OR ");
-        String bigTrigger = String.format("CREATE OR REPLACE TRIGGER %s %n" +
-                                            "%s %n" +
-                                            "ON %s %n" +
-                                            "%s" +
-                                            "BEGIN %n",
-                                            packageName,
-                                            packageMethodSelect,
-                                            tableName,
-                                            ferTekst);
-
         for (int i = 0; i < allTriggerStatements.size(); i++) {
             String triggerStatement = allTriggerStatements.get(i);
             if(i == 0) {
-                bigTrigger += String.format("if %s%s then %n" +
-                                            "error is a %n",
-                                            attributeTekst,
+                bigTrigger += String.format("IF %s",
                                             triggerStatement);
             } else if (i == allTriggerStatements.size() - 1) {
-                bigTrigger += String.format("elsif %s%s then %n" +
-                                            "error is b %n" +
-                                            "end if; %n",
-                                            attributeTekst,
+                bigTrigger += String.format("ELSIF %s" +
+                                            "END IF; %n",
                                             triggerStatement);
             } else {
-                bigTrigger += String.format("elsif %s%s then %n" +
-                                            "error is c %n",
-                                            attributeTekst,
+                bigTrigger += String.format("ELSIF %s",
                                             triggerStatement);
             }
         }
-
         bigTrigger += "END; ";
-        System.out.println(bigTrigger);
-//        System.out.println(DAOFacade.getTableRules(tableName));
-//        String[] allRuleIDs = packageValues.split(",");
-//        for (String s : allRuleIDs) {
-//            System.out.println(s);
-//        }
 
-        return "aardappels";
+        obj.put("code", bigTrigger);
+        arr.put(obj);
+
+        return (arr.toString());
     }
 }

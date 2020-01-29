@@ -24,7 +24,6 @@ public class BusinessRuleFactory {
     }
 
     public BusinessRule buildRule() {
-        System.out.println("Checkpoint!!!");
         return new BusinessRule(this.RuleID, this.Name, this.OperatorID, this.AttributeID, this.SubAttributeID,
                 this.BusinessRuleTypeID, this.FailureMessage);
     }

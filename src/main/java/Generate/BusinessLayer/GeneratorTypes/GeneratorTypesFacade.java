@@ -22,8 +22,8 @@ public class GeneratorTypesFacade {
         return OracleGenerator.generatorInformation(rule, operation, ferStatus);
     }
 
-    public static String generateTriggerCodeOracle(int id) throws Exception {
+    public static String generateTriggerCodeOracle(int id, int ferStatus) throws Exception {
 
-        return OracleGenerator.generateTriggerCode(id);
+        return OracleGenerator.generateTriggerCode(id, ferStatus);
     }
 }
