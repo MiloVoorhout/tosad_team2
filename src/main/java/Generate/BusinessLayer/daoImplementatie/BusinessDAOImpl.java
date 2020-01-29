@@ -141,10 +141,11 @@ public class BusinessDAOImpl extends DAOFacade {
     public static String executeTrigger(String triggerCode) throws SQLException {
 
         Connection conn = DatabaseFacade.getInstance().getConnection();
-        String query  = "" + triggerCode + "";
         Statement stmt = conn.createStatement();
-        System.out.println(stmt.executeQuery(query));
+        stmt.execute(triggerCode);
 
+        conn.close();
+        stmt.close();
         return "true";
     }
 }

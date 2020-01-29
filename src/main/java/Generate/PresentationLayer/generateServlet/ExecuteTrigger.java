@@ -1,6 +1,9 @@
 package Generate.PresentationLayer.generateServlet;
 
+import Generate.BusinessLayer.GeneratorTypes.GeneratorTypesFacade;
 import Generate.BusinessLayer.daoImplementatie.DAOFacade;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -17,6 +20,12 @@ public class ExecuteTrigger {
 
         DAOFacade.executeTrigger(triggerCode);
 
-        return "true";
+        JSONObject obj = new JSONObject();
+        JSONArray arr = new JSONArray();
+
+        obj.put("status", "true");
+        arr.put(obj);
+
+        return (arr.toString());
     }
 }
