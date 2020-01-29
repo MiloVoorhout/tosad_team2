@@ -21,18 +21,15 @@ public class ModifyBusinessRule {
             @QueryParam("tableSelect") String tableSelect,
             @QueryParam("attributeSelect") String attributeSelect,
             @QueryParam("operator") int operator,
-            @QueryParam("validationFailureSeverity") int validationFailureSeverity,
             @QueryParam("failureMessage") String failureMessage,
             @QueryParam("minimumValue") int minimumValue,
             @QueryParam("maximumValue") int maximumValue,
-            @QueryParam("compareWith") int compareWith,
             @QueryParam("value") String value,
             @QueryParam("interEntityTable") String interEntityTable,
             @QueryParam("listValues") String listValues
     ) throws Exception {
 
-        return DAOFacade.modifyBusinessRule(ruleId, rule_type_select, rule_name, tableSelect, attributeSelect, operator,
-                validationFailureSeverity, failureMessage, minimumValue, maximumValue, compareWith, value,
-                interEntityTable, listValues);
+        return DAOFacade.modifyBusinessRule(ruleId, rule_type_select, rule_name, tableSelect, attributeSelect,
+                operator, failureMessage, minimumValue, maximumValue, value, interEntityTable, listValues);
     }
 }

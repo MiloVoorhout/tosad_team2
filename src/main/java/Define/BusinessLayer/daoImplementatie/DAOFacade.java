@@ -32,14 +32,12 @@ public class DAOFacade {
 
     // ModifyDAOImpl functions
     public static String modifyBusinessRule(int ruleId, int rule_type_select, String rule_name, String tableSelect,
-                                            String attributeSelect, int operator, int validationFailureSeverity,
-                                            String failureMessage, int minimumValue, int maximumValue, int compareWith,
-                                            String value, String interEntityTable, String listValues) throws Exception {
+                                            String attributeSelect, int operator, String failureMessage,
+                                            int minimumValue, int maximumValue, String value,
+                                            String interEntityTable, String listValues)
+            throws Exception {
 
         return ModifyDAOImpl.modifyBusinessRule(ruleId, rule_type_select, rule_name, tableSelect, attributeSelect,
-                operator, validationFailureSeverity, failureMessage, minimumValue, maximumValue, compareWith, value,
-                interEntityTable, listValues);
+                operator, failureMessage, minimumValue, maximumValue, value, interEntityTable, listValues);
     }
-
-
 }
