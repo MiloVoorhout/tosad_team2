@@ -3,8 +3,11 @@ package Generate.BusinessLayer.daoImplementatie;
 import Generate.BusinessLayer.Attribute.Attribute;
 import Generate.BusinessLayer.BusinessRule.BusinessRule;
 import Generate.BusinessLayer.ruleObjects.Operator;
+import Generate.DatabaseLayer.DatabaseFacade;
 
+import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -46,6 +49,11 @@ public class DAOFacade {
     public static ArrayList<Integer> getTableRules(String tableName) throws Exception {
 
         return BusinessDAOImpl.getTableRules(tableName);
+    }
+
+    public static String executeTrigger(String triggerCode) throws SQLException {
+
+        return BusinessDAOImpl.executeTrigger(triggerCode);
     }
 
 

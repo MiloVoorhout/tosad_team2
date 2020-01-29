@@ -222,90 +222,92 @@ listInputValue.keypress(function(event){
 form.submit(function (e) {
     e.preventDefault();
 
-    if (ruleType.val() === "4") {
-        $.get("define/newBusinessRule/create" +
-            "?rule_type_select=" + ruleType.val() +
-            "&rule_name=" + ruleName.val() +
-            "&tableSelect=" + tableSelect.val() +
-            "&otherValue=" + otherValue.val(), function () {
-            if (e) {
-                createAlert('success', 'Business Rule successfully created', false, true);
-                resetForm();
-            }
-        });
+    if(/(^[a-z-_]+)$/.test(ruleName.val())) {
+        if (ruleType.val() === "4") {
+            $.get("define/newBusinessRule/create" +
+                "?rule_type_select=" + ruleType.val() +
+                "&rule_name=" + ruleName.val() +
+                "&tableSelect=" + tableSelect.val() +
+                "&otherValue=" + otherValue.val(), function () {
+                if (e) {
+                    createAlert('success', 'Business Rule successfully created', false, true);
+                    resetForm();
+                }
+            });
 
-    } else {
-        if(!failureMessage.val()) {
-            createAlert('danger', 'Please enter a failure message', 'failure_handling', true);
         } else {
-            if(ruleType.val() === "1") {
-                $.get("define/newBusinessRule/create" +
-                    "?rule_type_select=" + ruleType.val() +
-                    "&rule_name=" + ruleName.val() +
-                    "&tableSelect=" + tableSelect.val() +
-                    "&attributeSelect=" + attributeSelect.val() +
-                    "&operator=" + operatorSelectRange.val() +
-                    "&minimumValue=" + minimumValue.val() +
-                    "&maximumValue=" + maximumValue.val() +
-                    "&validationFailureSeverity=" + validationFailureSeverity.val() +
-                    "&failureMessage=" + failureMessage.val(), function () {
-                    if (e) {
-                        createAlert('success', 'Business Rule successfully created', false, true);
-                        resetForm();
-                    }
-                });
-            }
-
-            if(ruleType.val() === "2") {
-
-                if (compareWithSelect.val() === "4" && tableSelect.val() === interEntityTableSelect.val()) {
-                    createAlert('danger', 'Please choose a different table to compare with',
-                        'rule_definition', true);
-                } else {
-                    if(compareWithSelect.val() === "1") {
-                        getValueType = "&value="+literalValueTextarea.val();
-                    } else if (compareWithSelect.val() === "2"){
-                        getValueType = "&value="+attributeEntitySelect.val();
-                    } else {
-                        getValueType = "&interEntityTable="+interEntityTableSelect.val()+
-                            "&value="+interEntityAttributeSelect.val();
-                    }
-
+            if (!failureMessage.val()) {
+                createAlert('danger', 'Please enter a failure message', 'failure_handling', true);
+            } else {
+                if (ruleType.val() === "1") {
                     $.get("define/newBusinessRule/create" +
                         "?rule_type_select=" + ruleType.val() +
                         "&rule_name=" + ruleName.val() +
                         "&tableSelect=" + tableSelect.val() +
                         "&attributeSelect=" + attributeSelect.val() +
-                        "&operator=" + operatorSelectCompare.val() +
-                        "&compareWith=" + compareWithSelect.val() +
-                        getValueType +
+                        "&operator=" + operatorSelectRange.val() +
+                        "&minimumValue=" + minimumValue.val() +
+                        "&maximumValue=" + maximumValue.val() +
                         "&validationFailureSeverity=" + validationFailureSeverity.val() +
                         "&failureMessage=" + failureMessage.val(), function () {
                         if (e) {
-                            createAlert('success', 'Business Rule successfully created',
-                                false, true);
+                            createAlert('success', 'Business Rule successfully created', false, true);
+                            resetForm();
+                        }
+                    });
+                }
+
+                if (ruleType.val() === "2") {
+
+                    if (compareWithSelect.val() === "4" && tableSelect.val() === interEntityTableSelect.val()) {
+                        createAlert('danger', 'Please choose a different table to compare with',
+                            'rule_definition', true);
+                    } else {
+                        if (compareWithSelect.val() === "1") {
+                            getValueType = "&value=" + literalValueTextarea.val();
+                        } else if (compareWithSelect.val() === "2") {
+                            getValueType = "&value=" + attributeEntitySelect.val();
+                        } else {
+                            getValueType = "&interEntityTable=" + interEntityTableSelect.val() +
+                                "&value=" + interEntityAttributeSelect.val();
+                        }
+
+                        $.get("define/newBusinessRule/create" +
+                            "?rule_type_select=" + ruleType.val() +
+                            "&rule_name=" + ruleName.val() +
+                            "&tableSelect=" + tableSelect.val() +
+                            "&attributeSelect=" + attributeSelect.val() +
+                            "&operator=" + operatorSelectCompare.val() +
+                            "&compareWith=" + compareWithSelect.val() +
+                            getValueType +
+                            "&validationFailureSeverity=" + validationFailureSeverity.val() +
+                            "&failureMessage=" + failureMessage.val(), function () {
+                            if (e) {
+                                createAlert('success', 'Business Rule successfully created',
+                                    false, true);
+                                resetForm();
+                            }
+                        });
+                    }
+                }
+
+                if (ruleType.val() === "3") {
+                    $.get("define/newBusinessRule/create" +
+                        "?rule_type_select=" + ruleType.val() +
+                        "&rule_name=" + ruleName.val() +
+                        "&tableSelect=" + tableSelect.val() +
+                        "&attributeSelect=" + attributeSelect.val() +
+                        "&operator=" + operatorSelectList.val() +
+                        "&listValues=" + listItems.val() +
+                        "&validationFailureSeverity=" + validationFailureSeverity.val() +
+                        "&failureMessage=" + failureMessage.val(), function () {
+                        if (e) {
+                            createAlert('success', 'Business Rule successfully created', false, true);
                             resetForm();
                         }
                     });
                 }
             }
-
-            if(ruleType.val() === "3") {
-                $.get("define/newBusinessRule/create" +
-                    "?rule_type_select=" + ruleType.val() +
-                    "&rule_name=" + ruleName.val() +
-                    "&tableSelect=" + tableSelect.val() +
-                    "&attributeSelect=" + attributeSelect.val() +
-                    "&operator=" + operatorSelectList.val() +
-                    "&listValues=" + listItems.val() +
-                    "&validationFailureSeverity=" + validationFailureSeverity.val() +
-                    "&failureMessage=" + failureMessage.val(), function () {
-                    if (e) {
-                        createAlert('success', 'Business Rule successfully created', false, true);
-                        resetForm();
-                    }
-                });
-            }
         }
-    }
+    } else createAlert('danger', 'Please make the name like name_test', false, true);
 });

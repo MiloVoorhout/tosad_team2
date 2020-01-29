@@ -46,6 +46,8 @@ function generateRule() {
         "&statement=" + ruleStatement +
         "&ferStatus=" + forEachRowStatus +
         "&dataBaseType=" + dataBaseType, function (array) {
+        sessionStorage.clear();
+        sessionStorage.setItem("triggerCode", array[0]["code"]);
         const code = array[0]["code"].replace(/(?:\r\n|\r|\n)/g, '<br>');
         modalCode.html(code);
         generateModal.modal('toggle');
@@ -68,7 +70,7 @@ function generatePackage() {
                     modalTriggerCode.html(array[0]["code"]);
                     modalTrigger.modal('toggle');
                 });
-            } else createAlert('danger', 'Plese make the name like name_test', false, true);
+            } else createAlert('danger', 'Please make the name like name_test', false, true);
         } else createAlert('danger', 'Please choose one or more rules for this package', false, true);
     } else createAlert('danger', 'Please enter a package name', false, true);
 }
@@ -129,6 +131,17 @@ function getAllRules(){
     $.get("define/GetTableInfo/getAllTables", function (array) {
         $.each(array, function (i, val) {
             packageValues.append("<option value='"+ val['name'] +"'>" + val['name'] + "</option>");
+        });
+    });
+}
+
+function executeTrigger() {
+    const triggerCode = sessionStorage.getItem("triggerCode");
+    triggerCode.replace(/(?:\r\n|\r|\n)/g, '');
+    console.log(triggerCode);
+    $.get("generate/executeTrigger?code=" + triggerCode, function (array) {
+        $.each(array, function (i, val) {
+            console.log(array);
         });
     });
 }
