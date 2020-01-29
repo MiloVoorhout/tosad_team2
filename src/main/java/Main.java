@@ -1,3 +1,5 @@
+import Define.DatabaseLayer.DatabaseFacade;
+
 import java.sql.*;
 
 public class Main {
@@ -38,6 +40,25 @@ public class Main {
 //        System.out.println(generator.generatorInformation(test4, "INSERT"));
 
 
+        Connection conn = DatabaseFacade.getInstance().getConnection();
+        int attributeId = 0;
+        int subAttributeId = 0;
+
+        String attributeIds  = "SELECT * FROM TOSAD.BUSINESSRULE where id = " + 100;
+        Statement stmt2 = conn.createStatement();
+        ResultSet rs = stmt2.executeQuery(attributeIds);
+        while(rs.next()) {
+            attributeId = rs.getInt("ATTRIBUTEID");
+            subAttributeId = rs.getInt("SUBATTRIBUTEID");
+        }
+        System.out.println(attributeId);
+        System.out.println(subAttributeId);
+
+        if (subAttributeId == 0){
+            System.out.println("het is null");
+        } else if (subAttributeId != 0) {
+            System.out.println("het is geen null");
+        }
     }
 
 
