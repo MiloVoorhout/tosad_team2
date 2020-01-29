@@ -29,12 +29,14 @@ public class CreateBusinessRule {
             @QueryParam("compareWith") int compareWith,
             @QueryParam("value") String value,
             @QueryParam("interEntityTable") String interEntityTable,
-            @QueryParam("listValues") String listValues
+            @QueryParam("listValues") String listValues,
+            @QueryParam("otherValue") String otherValue
+
 
     ) throws Exception {
 
         return DAOFacade.createRule(rule_type_select, rule_name, tableSelect, attributeSelect, operator,
                 validationFailureSeverity, failureMessage, minimumValue, maximumValue, compareWith, value,
-                interEntityTable, listValues);
+                interEntityTable, listValues, otherValue);
     }
 }

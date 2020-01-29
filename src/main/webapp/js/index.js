@@ -232,6 +232,7 @@ form.submit(function (e) {
                 resetForm();
             }
         });
+
     } else {
         if(!failureMessage.val()) {
             createAlert('danger', 'Please enter a failure message', 'failure_handling', true);

@@ -14,7 +14,7 @@ public class InsertDAOImpl extends DAOFacade {
     public static String createRule(int rule_type_select, String rule_name, String tableSelect, String attributeSelect,
                                     int operator, int validationFailureSeverity, String failureMessage, int minimumValue,
                                     int maximumValue, int compareWith, String value, String interEntityTable,
-                                    String listValues) throws Exception {
+                                    String listValues, String otherValue) throws Exception {
 
         Connection conn = DatabaseFacade.getInstance().getConnection();
         int lastIDAttribute = 0;
@@ -165,6 +165,52 @@ public class InsertDAOImpl extends DAOFacade {
                 stmt.setInt(3, lastIDBusinessRule);
                 stmt.execute();
             }
+        }
+
+        // If rule type = OTHER
+        if (rule_type_select == 4) {
+
+            // Create a new (sub)attribute
+            String query_SubAttribute = "INSERT INTO TOSAD.ATTRIBUTE(NAME, TABLENAME, DATABASENAME) VALUES (?, ?, ?)";
+            stmt = conn.prepareStatement(query_SubAttribute);
+            stmt.setString(1, value);
+            stmt.setString(2, tableSelect);
+            stmt.setString(3, databaseName);
+            stmt.execute();
+
+            // Get the ID from the inserted (sub)attribute
+            String query_LastIDSubAttribute  = "SELECT * FROM TOSAD.ATTRIBUTE where rowid=(select max(rowid) from TOSAD.ATTRIBUTE)";
+            stmt2 = conn.createStatement();
+            ResultSet rs2 = stmt2.executeQuery(query_LastIDSubAttribute);
+            while(rs2.next()) {
+                lastIDSubAttribute = rs2.getInt("ID");
+            }
+
+            // Insert a new Business Rule
+            String query_BusinessRule = "INSERT INTO TOSAD.BUSINESSRULE(ATTRIBUTEID, BUSINESSRULETYPEID, NAME) " +
+                    "VALUES (?, ?, ?)";
+            stmt = conn.prepareStatement(query_BusinessRule);
+            stmt.setInt(1, lastIDSubAttribute);
+            stmt.setInt(2, 6);
+            stmt.setString(3, rule_name);
+            stmt.execute();
+
+            // Get the ID from the inserted Business Rule
+            String query_LastIDBusinessRule  = "SELECT * FROM TOSAD.BUSINESSRULE where rowid=(select max(rowid) from TOSAD.BUSINESSRULE)";
+            Statement stmt3 = conn.createStatement();
+            ResultSet rs3 = stmt3.executeQuery(query_LastIDBusinessRule);
+            while(rs3.next()) {
+                lastIDBusinessRule = rs3.getInt("ID");
+            }
+
+            // Insert a new value
+            String query_minValue = "INSERT INTO TOSAD.VALUE(VALUE, TYPE, BUSINESSRULEID) VALUES(?, ?, ?)";
+            stmt = conn.prepareStatement(query_minValue);
+            stmt.setString(1, otherValue);
+            stmt.setInt(2, 6);
+            stmt.setInt(3, lastIDBusinessRule);
+            stmt.execute();
+
         }
         return "true";
     }
