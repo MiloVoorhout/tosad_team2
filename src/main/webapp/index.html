@@ -93,13 +93,13 @@
                                                     </select>
                                                 </div>
 
-                                                <div class="form-group">
+                                                <div class="form-group" id="attribute_select_container">
                                                     <label for="attribute_select">Attribute</label>
                                                     <select class="form-control" id="attribute_select" name="attribute_select">
                                                     </select>
                                                 </div>
 
-                                                <div class="form-group">
+                                                <div class="form-group" id="operator_select_container">
                                                     <label for="operator_select">Operator</label>
                                                     <select class="form-control" id="operator_select" name="operator_select">
                                                         <option value="1">Between</option>
@@ -203,6 +203,12 @@
 
                                                     <div class="blockquote-footer">Hint: The selected inter-entity attribute's
                                                         value will be used for comparison</div>
+                                                </div>
+
+                                                <div class="form-group" id="otherValueContainer">
+                                                    <label for="literalValueTextarea">PL/SQL Code</label>
+                                                    <textarea class="form-control" id="otherValue"
+                                                              rows="3" name="otherValue" ></textarea>
                                                 </div>
 
                                                 <hr>

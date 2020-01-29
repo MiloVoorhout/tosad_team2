@@ -47,18 +47,16 @@ function generatePackage() {
     if (ruleStatement.slice(ruleStatement.length - 12) == "FOR EACH ROW") forEachRowStatus = 1;
 
     if (packageName.val()) {
-        if ($("#packageValues option:selected").length) {
-            $.get("generate/generatePackage" +
-                "?name=" + packageName.val() +
-                "&tableName=" + packageValues.val() +
-                "&packageMethodSelect=" + ruleStatement +
-                "&ferStatus=" + forEachRowStatus, function (array) {
-                console.log(array);
-                // createAlert('success', 'Package "'+ packageName.val() +'" succesfully created', false, true);
-                // form.trigger("reset");
-                // packageModal.modal('toggle');
-            });
-        } else createAlert('danger', 'Please choose one or more rules for this package', false, true);
+        $.get("generate/generatePackage" +
+            "?name=" + packageName.val() +
+            "&tableName=" + packageValues.val() +
+            "&packageMethodSelect=" + ruleStatement +
+            "&ferStatus=" + forEachRowStatus, function (array) {
+            console.log(array);
+            // createAlert('success', 'Package "'+ packageName.val() +'" succesfully created', false, true);
+            // form.trigger("reset");
+            // packageModal.modal('toggle');
+        });
     } else createAlert('danger', 'Please enter a package name', false, true);
 }
 
