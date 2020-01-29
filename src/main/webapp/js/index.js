@@ -174,7 +174,6 @@ ruleType.on('change', function () {
         failureHandlingTab.removeClass('disabled');
         attributeSelectContainer.show();
     }
-
 });
 
 compareWithSelect.on('change', function () {
@@ -227,7 +226,7 @@ form.submit(function (e) {
             "?rule_type_select=" + ruleType.val() +
             "&rule_name=" + ruleName.val() +
             "&tableSelect=" + tableSelect.val() +
-            "&otherValue=" + maximumValue.val(), function () {
+            "&otherValue=" + otherValue.val(), function () {
             if (e) {
                 createAlert('success', 'Business Rule successfully created', false, true);
                 resetForm();
