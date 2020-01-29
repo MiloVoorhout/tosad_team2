@@ -59,7 +59,7 @@
                             <p class="card-text"></p>
                             <div class="row">
                                 <div class="col-4">
-                                    <div class="list-group" id="list-tab" role="tablist"></div>
+                                    <div class="list-group mb-3" id="list-tab" role="tablist"></div>
                                 </div>
                                 <div class="col-8">
                                     <div class="tab-content" id="nav-tabContent">
@@ -77,11 +77,11 @@
                                                     <th scope="row">Table</th>
                                                     <td id="ruleTypeTable">?</td>
                                                 </tr>
-                                                <tr>
+                                                <tr id="ruleTypeAttrContainer">
                                                     <th scope="row">Attribute</th>
                                                     <td id="ruleTypeAttr">?</td>
                                                 </tr>
-                                                <tr>
+                                                <tr id="ruleTypeOperatorContainer">
                                                     <th scope="row">Operator</th>
                                                     <td id="ruleTypeOperator">?</td>
                                                 </tr>
@@ -96,11 +96,11 @@
                                                     <td id="ruleTypeSubAttrTable">?</td>
                                                 </tr>
 
-                                                <tr>
+                                                <tr id="ruleTypeFailureTypeContainer">
                                                     <th scope="row">Failure Severity</th>
                                                     <td id="ruleTypeFailureType">?</td>
                                                 </tr>
-                                                <tr>
+                                                <tr id="ruleTypeFailureMessageContainer">
                                                     <th scope="row">Failure Message</th>
                                                     <td id="ruleTypeFailureMessage">?</td>
                                                 </tr>
@@ -111,7 +111,7 @@
                                         <table class="table table-borderless" id="values">
                                             <tbody id="valueContainer">
                                                 <tr>
-                                                    <th>Value</th>
+                                                    <th style="max-width: 250px">Value</th>
                                                     <th>Type</th>
                                                 </tr>
                                             </tbody>
@@ -120,7 +120,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-warning float-right ml-1" data-toggle="modal" data-target="#packageModal" id="packageBtn">Package</button>
+                            <button class="btn btn-warning float-left ml-1" data-toggle="modal" data-target="#packageModal" id="packageBtn">Package</button>
+                            <button class="btn btn-secondary float-right ml-1" id="editBtn">Edit</button>
                             <button class="btn btn-success float-right ml-2" data-toggle="modal" onclick="generateRule()">Generate</button>
                             <select class="form-control" id="statementMethodSelect" name="statementMethodSelect">
                                 <option value="1">before insert</option>

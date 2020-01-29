@@ -22,7 +22,15 @@ const modalTriggerCode = $('#triggerPackageGeneratorCode');
 const generateModal = $('#generate_modal');
 const packageModal = $('#packageModal');
 const valueContainer = $('#valueContainer');
+const editBtn = $('#editBtn');
 let forEachRowStatus = 0;
+
+const ruleTypeAttrContainer = $('#ruleTypeAttrContainer');
+const ruleTypeOperatorContainer = $('#ruleTypeOperatorContainer');
+const ruleTypeFailureTypeContainer = $('#ruleTypeFailureTypeContainer');
+const ruleTypeFailureMessageContainer = $('#ruleTypeFailureMessageContainer');
+
+
 
 subattrTr.hide();
 subattrTableTr.hide();
@@ -75,6 +83,21 @@ function getContent(id){
             ruleTypeOperator.html(val['operator']);
             ruleTypeFailureType.html(val['failureType']);
             ruleTypeFailureMessage.html(val['failureMessage']);
+
+            if(val['businessRuleType'] === 'Entity Other Rule'){
+                ruleTypeAttrContainer.hide();
+                ruleTypeOperatorContainer.hide();
+                subattrTr.hide();
+                subattrTableTr.hide();
+                ruleTypeFailureTypeContainer.hide();
+                ruleTypeFailureMessageContainer.hide();
+            } else {
+                ruleTypeAttrContainer.show();
+                ruleTypeOperatorContainer.show();
+                ruleTypeFailureTypeContainer.show();
+                ruleTypeFailureMessageContainer.show();
+            }
+
             if (val['subAttribute']) {
                 subattrTr.show();
                 subattrTableTr.show();
@@ -84,6 +107,8 @@ function getContent(id){
                 subattrTr.hide();
                 subattrTableTr.hide();
             }
+
+
             getValues(id);
         });
     });
@@ -92,7 +117,7 @@ function getContent(id){
 function getValues(id) {
     $.get("generate/getBusinessRules/getValues?id="+id, function (array) {
         valueContainer.empty();
-        valueContainer.append("<tr><th>Value</th><th>Type</th></tr>")
+        valueContainer.append("<tr><th>Value</th><th>Type</th></tr>");
         $.each(array, function (i, val) {
             valueContainer.append("<tr><td>"+ val['value'] +"</td><td>"+ val['type'] +"</td></tr>")
         });
@@ -116,6 +141,12 @@ $.get("generate/getBusinessRules/getMenuItems", function (array) {
         }
         else listTab.append('<button onclick="getContent('+ val["id"] +')" class="list-group-item list-group-item-action listItem" data-id="'+val['id']+'" id="list-'+val['id']+'-list" data-toggle="list" href="#list-'+val['id']+'" role="tab" aria-controls="list-'+val['id']+'">'+val['name']+'</button>');
     });
+});
+
+
+editBtn.click(function(e){
+   e.preventDefault();
+    window.location.href = 'edit.html?id='+$('.listItem.active').attr("data-id");
 });
 
 packageBtn.click(function(e){

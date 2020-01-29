@@ -31,6 +31,7 @@ const otherValue = $('#otherValue');
 const failureHandlingTab = $('#failure_handling-tab');
 let temporaryValue;
 let getValueType;
+
 var arrayObj = [
     compareWith,
     operatorSelectRange,

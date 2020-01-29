@@ -85,6 +85,7 @@ public class ValueDAOImpl extends DAOFacade{
             if (type == 2) typeString = "Maximum value";
             if (type == 3) typeString = "Compare value";
             if (type == 4) typeString = "List value";
+            if (type == 5) typeString = "Other value";
 
             obj.put("value", rs.getString("VALUE"));
             obj.put("type", typeString);

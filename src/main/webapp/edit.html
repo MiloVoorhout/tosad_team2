@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TOSAD</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/libraries/jquery-3.4.1.min.js"></script>
+        <script src="js/libraries/popper.min.js"></script>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/libraries/bootstrap.min.js"></script>
+        <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+        <link rel="manifest" href="img/favicon/manifest.json">
+        <meta name="msapplication-TileColor" content="#9B59B6">
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <meta name="theme-color" content="#9B59B6">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+            <a class="navbar-brand" href="#">
+                <img src="img/logo_color.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+                TOSAD Business Rule Generator
+            </a>
+            <button type="button" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Add Validation Rule <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="list.html">Business Rules</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="result"></div>
+
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card">
+                        <h5 class="card-header">Add Validation Rule</h5>
+                        <div class="card-body">
+                            <form id="main_form">
+                                <p class="card-text">Define the validation you want to perform with this rule and configure
+                                    the Validation Failure response.</p>
+                                <div id="properties">
+                                    <div class="form-group">
+                                        <label for="rule_name">Rule name</label>
+                                        <input type="text" class="form-control" id="rule_name" name="name" required >
+                                    </div>
+
+                                    <div class="form-group" id="attribute_select_container">
+                                        <label for="attribute_select">Attribute</label>
+                                        <select class="form-control" id="attribute_select" name="attribute_select">
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group" id="operator_select_container">
+                                        <label for="operator_select">Operator</label>
+                                        <select class="form-control" id="operator_select" name="operator_select">
+                                            <option value="1">Between</option>
+                                            <option value="2">NotBetween</option>
+                                        </select>
+
+                                        <select class="form-control" id="operator_select_compare" name="operator_select_compare">
+                                            <option value="3">Equals [=]</option>
+                                            <option value="4">NotEquals [!=]</option>
+                                            <option value="5">LessThan [<]</option>
+                                            <option value="6">GreaterThan[>]</option>
+                                            <option value="7">LessOrEqualTo[<=]</option>
+                                            <option value="8">GreaterOrEqualTo[>=]</option>
+                                        </select>
+
+                                        <select class="form-control" id="operator_select_list" name="operator_select_list">
+                                            <option value="9">In</option>
+                                            <option value="10">Not in</option>
+                                        </select>
+                                    </div>
+
+                                    <hr>
+
+                                    <!-- List -->
+                                    <div id="list">
+                                        <div class="form-group" id="newListItemValueContainer">
+                                            <label for="newListItemValue">Add a new value</label>
+                                            <input type="text" class="form-control" id="newListItemValue" placeholder="Example: list_item_name" name="listItems">
+                                            <div class="blockquote-footer">Hint: Press enter to add items to the list below</div>
+                                        </div>
+
+                                        <div class="form-group" id="listValuesContainer">
+                                            <label for="listValues">List items</label>
+                                            <select multiple class="form-control" id="listValues" name="listValues" >
+                                            </select>
+                                            <div class="blockquote-footer">Hint: Hold "CTRL" to select multiple items</div>
+
+                                        </div>
+                                        <div id="listActions">
+                                            <button type="button" class="btn btn-danger btn-sm" id="clearAllList">Clear all</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Range -->
+                                    <div class="form-group" id="range">
+                                        <label>Range</label>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <input type="number" class="form-control" id="minimum_value"
+                                                       placeholder="Minimum value" name="minval">
+                                                <div class="blockquote-footer">Hint: Enter valid values for the
+                                                    selected attribute's type</div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <input type="number" class="form-control" id="maximum_value" name="maxval"
+                                                       placeholder="Maximum value">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Literal Value -->
+                                    <div class="form-group" id="literalValue">
+                                        <label for="literalValueTextarea">Enter Literal Value (Attribute)</label>
+                                        <textarea class="form-control" id="literalValueTextarea"
+                                                  rows="3" name="literalValueTextarea" ></textarea>
+                                        <div class="blockquote-footer">Hint: Enter a valid value for the
+                                            selected attribute's type</div>
+                                    </div>
+
+                                    <!-- Entity Attribute -->
+                                    <div class="form-group" id="entityAttribute">
+                                        <label for="attributeEntitySelect">Select Entity (Tuple)</label>
+                                        <select class="form-control" id="attributeEntitySelect" name="attributeEntitySelect">
+                                        </select>
+                                        <div class="blockquote-footer">Hint: The selected entity attribute's
+                                            value will be used for comparison</div>
+                                    </div>
+
+                                    <!-- Inter-Entity  -->
+                                    <div class="form-group" id="interEntity">
+
+                                        <div class="form-group">
+                                            <label for="interEntityTableSelect">Inter-Entity Table</label>
+                                            <select class="form-control" id="interEntityTableSelect" name="interEntityTableSelect">
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="interEntityAttributeSelect">Inter-Entity Attribute</label>
+                                            <select class="form-control" id="interEntityAttributeSelect" name="interEntityAttributeSelect">
+                                            </select>
+                                        </div>
+
+                                        <div class="blockquote-footer">Hint: The selected inter-entity attribute's
+                                            value will be used for comparison</div>
+                                    </div>
+
+                                    <div class="form-group" id="otherValueContainer">
+                                        <label for="literalValueTextarea">PL/SQL Code</label>
+                                        <textarea class="form-control" id="otherValue"
+                                                  rows="3" name="otherValue" ></textarea>
+                                    </div>
+
+                                    <hr>
+
+                                    <input type="submit" class="btn btn-success float-right" value="Save changes" id="editSubmit" name="save">
+
+                                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#help_modal">
+                                        Help
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modals -->
+        <div class="modal fade" id="help_modal" tabindex="-1" role="dialog" aria-labelledby="help_modal"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="help_modalTitle">Help</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Wat random hulp tekst
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="alertContainer"></div>
+
+    </body>
+
+    <script src="js/main.js"></script>
+    <script src="js/edit.js"></script>
+
+</html>

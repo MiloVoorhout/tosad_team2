@@ -207,11 +207,12 @@ public class InsertDAOImpl extends DAOFacade {
             String query_minValue = "INSERT INTO TOSAD.VALUE(VALUE, TYPE, BUSINESSRULEID) VALUES(?, ?, ?)";
             stmt = conn.prepareStatement(query_minValue);
             stmt.setString(1, otherValue);
-            stmt.setInt(2, 6);
+            stmt.setInt(2, 5);
             stmt.setInt(3, lastIDBusinessRule);
             stmt.execute();
 
         }
+
         return "true";
     }
 }
