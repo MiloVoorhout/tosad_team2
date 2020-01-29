@@ -72,13 +72,22 @@ public class ValueDAOImpl extends DAOFacade{
         JSONArray arr = new JSONArray();
 
         Connection conn = DatabaseFacade.getInstance().getConnection();
-        String query  = "SELECT v.value, b.name AS TYPE FROM TOSAD.VALUE V INNER JOIN TOSAD.BUSINESSRULETYPE B ON V.TYPE = B.ID INNER JOIN TOSAD.ATTRIBUTE A2 on V.BUSINESSRULEID = A2.ID WHERE BUSINESSRULEID = "+id;
+        String query  = "SELECT value, type FROM TOSAD.VALUE V WHERE BUSINESSRULEID = "+id;
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
         while (rs.next()) {
+
+            int type =  rs.getInt("TYPE");
+            String typeString = "err";
+
+            if (type == 1) typeString = "Minimum value";
+            if (type == 2) typeString = "Maximum value";
+            if (type == 3) typeString = "Compare value";
+            if (type == 4) typeString = "List value";
+
             obj.put("value", rs.getString("VALUE"));
-            obj.put("type", rs.getString("TYPE"));
+            obj.put("type", typeString);
             arr.put(obj);
             obj = new JSONObject();
         }

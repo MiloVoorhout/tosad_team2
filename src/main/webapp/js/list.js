@@ -61,6 +61,7 @@ function generatePackage() {
         } else createAlert('danger', 'Please choose one or more rules for this package', false, true);
     } else createAlert('danger', 'Please enter a package name', false, true);
 }
+
 function getContent(id){
     $.get("generate/getBusinessRules/getContent?id="+id, function (array) {
         $.each(array, function (i, val) {
@@ -87,9 +88,9 @@ function getContent(id){
 
 function getValues(id) {
     $.get("generate/getBusinessRules/getValues?id="+id, function (array) {
+        valueContainer.empty();
+        valueContainer.append("<tr><th>Value</th><th>Type</th></tr>")
         $.each(array, function (i, val) {
-            valueContainer.empty();
-            valueContainer.append("<tr><th>Value</th><th>Type</th></tr>")
             valueContainer.append("<tr><td>"+ val['value'] +"</td><td>"+ val['type'] +"</td></tr>")
         });
     });
