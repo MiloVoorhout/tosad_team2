@@ -38,10 +38,10 @@ function generateRule() {
         "&statement=" + ruleStatement +
         "&ferStatus=" + forEachRowStatus +
         "&dataBaseType=" + dataBaseType, function (array) {
-        code = array[0]["code"];
+        let code = array[0]["code"];
         code = code.replace(/(?:\r\n|\r|\n)/g, '<br>');
-        modalCode.html(code);
-        generateModal.modal('toggle');
+        $('#modal_code').html(code);
+        $('#generate_modal').modal('toggle');
     });
 }
 
