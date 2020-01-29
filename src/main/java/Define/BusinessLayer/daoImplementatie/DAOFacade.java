@@ -12,11 +12,11 @@ public class DAOFacade {
     public static String createRule(int rule_type_select, String rule_name, String tableSelect, String attributeSelect,
                                     int operator, int validationFailureSeverity, String failureMessage, int minimumValue,
                                     int maximumValue, int compareWith, String value, String interEntityTable,
-                                    String listValues) throws Exception {
+                                    String listValues, String otherValue) throws Exception {
 
         return InsertDAOImpl.createRule(rule_type_select, rule_name, tableSelect, attributeSelect, operator,
                 validationFailureSeverity, failureMessage, minimumValue, maximumValue, compareWith, value,
-                interEntityTable, listValues);
+                interEntityTable, listValues, otherValue);
     }
 
     // TableDAOImpl functions
