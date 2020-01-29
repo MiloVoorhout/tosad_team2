@@ -27,3 +27,10 @@ a {
     height: 570px;
     overflow-y: scroll;
 }
+
+#databaseMethodeSelect, #statementMethodSelect {
+    display: inline-block !important;
+    width: auto;
+    margin: 0 auto auto 5px;
+    float: right;
+}

@@ -34,7 +34,7 @@ public class GetBusinessRules {
     @Produces({MediaType.APPLICATION_JSON})
     public String getBusinessRuleValue(@QueryParam("id") int id) throws Exception {
 
-        return DAOFacade.getBusinessRuleValue(id);
+            return DAOFacade.getBusinessRuleValue(id);
     }
 
 

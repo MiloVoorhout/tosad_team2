@@ -20,6 +20,7 @@ const packageName = $('#packageName');
 const modalCode = $('#modal_code');
 const generateModal = $('#generate_modal');
 const packageModal = $('#packageModal');
+const valueContainer = $('#valueContainer');
 let forEachRowStatus = 0;
 
 subattrTr.hide();
@@ -40,7 +41,6 @@ function generateRule() {
         generateModal.modal('toggle');
     });
 }
-
 function generatePackage() {
     if (packageName.val()) {
         if ($("#packageValues option:selected").length) {
@@ -56,7 +56,6 @@ function generatePackage() {
         } else createAlert('danger', 'Please choose one or more rules for this package', false, true);
     } else createAlert('danger', 'Please enter a package name', false, true);
 }
-
 function getContent(id){
     $.get("generate/getBusinessRules/getContent?id="+id, function (array) {
         $.each(array, function (i, val) {
@@ -67,6 +66,15 @@ function getContent(id){
             ruleTypeOperator.html(val['operator']);
             ruleTypeFailureType.html(val['failureType']);
             ruleTypeFailureMessage.html(val['failureMessage']);
+            if (val['subAttribute']) {
+                subattrTr.show();
+                subattrTableTr.show();
+                ruleTypeSubAttr.html(val['subAttribute']);
+                ruleTypeSubAttrTable.html(val['subAttributeTable']);
+            } else {
+                subattrTr.hide();
+                subattrTableTr.hide();
+            }
             getValues(id);
         });
     });
@@ -75,19 +83,9 @@ function getContent(id){
 function getValues(id) {
     $.get("generate/getBusinessRules/getValues?id="+id, function (array) {
         $.each(array, function (i, val) {
-
-            if (i === 0) {
-                if (val['subAttribute']) {
-                    subattrTr.show();
-                    subattrTableTr.show();
-                    ruleTypeSubAttr.html = val['subAttribute'];
-                    ruleTypeSubAttrTable.html = val['subAttributeTable'];
-                } else {
-                    subattrTr.hide();
-                    subattrTableTr.hide();
-                }
-                ruleTypeDB.html = val['databaseName'];
-            }
+            valueContainer.empty();
+            valueContainer.append("<tr><th>Value</th><th>Type</th></tr>")
+            valueContainer.append("<tr><td>"+ val['value'] +"</td><td>"+ val['type'] +"</td></tr>")
         });
     });
 }

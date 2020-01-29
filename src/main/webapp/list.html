@@ -109,7 +109,7 @@
                                         </table>
 
                                         <table class="table table-borderless" id="values">
-                                            <tbody>
+                                            <tbody id="valueContainer">
                                                 <tr>
                                                     <th>Value</th>
                                                     <th>Type</th>
@@ -118,45 +118,29 @@
                                             </tbody>
                                         </table>
 
-                                        <table class="table table-borderless">
-                                            <tbody>
-                                                <tr>
-                                                    <th>
-                                                        <div class="form-group">
-                                                            <label for="databaseMethodeSelect">Language</label>
-                                                            <select class="form-control" id="databaseMethodeSelect" name="databaseMethodeSelect">
-                                                                <option value="1">Oracle SQL</option>
-                                                                <option value="2">MySQL</option>
-                                                            </select>
-                                                        </div>
-                                                    </th>
-                                                    <th>
-                                                        <div class="form-group">
-                                                            <label for="statementMethodSelect">Statement</label>
-                                                            <select class="form-control" id="statementMethodSelect" name="statementMethodSelect">
-                                                                <option value="1">before insert</option>
-                                                                <option value="2">before update</option>
-                                                                <option value="3">before delete</option>
-                                                                <option value="4">before insert/update/delete</option>
-                                                                <option value="5">before insert for each row</option>
-                                                                <option value="6">before update for each row</option>
-                                                                <option value="7">before insert for each row</option>
-                                                                <option value="8">before insert/update/delete for each row</option>
-                                                                <option value="9">after insert</option>
-                                                                <option value="10">after update</option>
-                                                                <option value="11">after delete</option>
-                                                                <option value="12">after insert/update/delete</option>
-                                                            </select>
-                                                        </div>
-                                                    </th>
-                                                </tr>
-                                            </tbody>
-                                        </table>
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-success float-right ml-2" data-toggle="modal" onclick="generateRule()">Generate</button>
                             <button class="btn btn-warning float-right ml-1" data-toggle="modal" data-target="#packageModal" id="packageBtn">Package</button>
+                            <button class="btn btn-success float-right ml-2" data-toggle="modal" onclick="generateRule()">Generate</button>
+                            <select class="form-control" id="statementMethodSelect" name="statementMethodSelect">
+                                <option value="1">before insert</option>
+                                <option value="2">before update</option>
+                                <option value="3">before delete</option>
+                                <option value="4">before insert/update/delete</option>
+                                <option value="5">before insert for each row</option>
+                                <option value="6">before update for each row</option>
+                                <option value="7">before insert for each row</option>
+                                <option value="8">before insert/update/delete for each row</option>
+                                <option value="9">after insert</option>
+                                <option value="10">after update</option>
+                                <option value="11">after delete</option>
+                                <option value="12">after insert/update/delete</option>
+                            </select>
+                            <select class="form-control" id="databaseMethodeSelect" name="databaseMethodeSelect">
+                                <option value="1">Oracle SQL</option>
+                                <option value="2">MySQL</option>
+                            </select>
                         </div>
                     </div>
                 </div>
