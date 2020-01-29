@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BusinessDAOImpl extends DAOFacade {
 
@@ -115,5 +117,22 @@ public class BusinessDAOImpl extends DAOFacade {
 
         }
         return arr.toString();
+    }
+
+    public static ArrayList<Integer> getTableRules(String tableName) throws SQLException {
+        ArrayList<Integer> businessRuleIDs = new ArrayList<>();
+
+        Connection conn = DatabaseFacade.getInstance().getConnection();
+        String query  = "SELECT DISTINCT BUSINESSRULE.ID AS RULEID FROM TOSAD.ATTRIBUTE, TOSAD.BUSINESSRULE\n" +
+                        "WHERE ATTRIBUTEID = ATTRIBUTE.ID\n" +
+                        "AND TABLENAME LIKE '" + tableName + "'";
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        while (rs.next()) {
+            businessRuleIDs.add(rs.getInt("RULEID"));
+        }
+
+        return businessRuleIDs;
     }
 }

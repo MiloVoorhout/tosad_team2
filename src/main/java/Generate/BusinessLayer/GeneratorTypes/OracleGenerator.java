@@ -100,4 +100,40 @@ public class OracleGenerator {
         }
         return completeTriggerCode;
     }
+
+    public static String generateTriggerCode(int id) throws Exception {
+        BusinessRule rule = DAOFacade.getBusinessRuleTrigger(id);
+        Operator operator = DAOFacade.getOperatorInformation(rule.getOperatorID());
+        Attribute attribute = DAOFacade.getAttributeData(rule.getAttributeID());
+        Attribute subAttribute = DAOFacade.getAttributeData(rule.getSubAttributeID());
+        HashMap<Integer, String> values = DAOFacade.getValues(rule.getRuleID());
+        int typeID = rule.getBusinessRuleTypeID();
+        String triggerCode;
+
+        switch(typeID) {
+            case 1:
+                triggerCode = RuleTypesFacade.triggerCodeRangeRuleOracle(operator, attribute, values);
+                break;
+            case 2:
+                triggerCode = RuleTypesFacade.triggerCodeLitValueOracle(operator, attribute, values);
+                break;
+            case 3:
+                values = DAOFacade.getListValues(rule.getRuleID());
+                triggerCode = RuleTypesFacade.triggerCodeListRuleOracle(operator, attribute, values);
+                break;
+            case 4:
+                triggerCode = RuleTypesFacade.triggerCodeInterEntityCompareRuleOracle(operator, attribute, subAttribute);
+                break;
+            case 5:
+                triggerCode = RuleTypesFacade.triggerCodeSubAttributeOracle(operator, attribute, subAttribute);
+                break;
+            case 6:
+                triggerCode = RuleTypesFacade.triggerCodeEntityOtherRuleOracle(values);
+                break;
+            default:
+                return null;
+        }
+
+        return triggerCode;
+    }
 }

@@ -15,7 +15,6 @@ const subattrTr = $('#subattrTr');
 const ruleTypeSubAttr = $('#ruleTypeSubAttr');
 const subattrTableTr = $('#subattrTableTr');
 const ruleTypeSubAttrTable = $('#ruleTypeSubAttrTable');
-const packageMethodSelect = $('#packageMethodSelect');
 const packageName = $('#packageName');
 const modalCode = $('#modal_code');
 const generateModal = $('#generate_modal');
@@ -31,8 +30,6 @@ function generateRule() {
     const ruleStatement = $('#statementMethodSelect option:selected').html().toUpperCase();
     const dataBaseType = $('#databaseMethodeSelect option:selected').val();
     if (ruleStatement.slice(ruleStatement.length - 12) == "FOR EACH ROW") forEachRowStatus = 1;
-    console.log(forEachRowStatus);
-    console.log(ruleStatement.slice(ruleStatement.length - 12) == "FOR EACH ROW");
 
     $.get("generate/generate" +
         "?id=" + $('.listItem.active').attr("data-id") +
@@ -45,13 +42,17 @@ function generateRule() {
     });
 }
 function generatePackage() {
-    console.log(packageValues.val());
+    forEachRowStatus = 0;
+    const ruleStatement = $('#packageMethodSelect option:selected').html().toUpperCase();
+    if (ruleStatement.slice(ruleStatement.length - 12) == "FOR EACH ROW") forEachRowStatus = 1;
+
     if (packageName.val()) {
         if ($("#packageValues option:selected").length) {
             $.get("generate/generatePackage" +
                 "?name=" + packageName.val() +
-                "&packageValues=" + packageValues.val() +
-                "&packageMethodSelect=" + packageMethodSelect.val(), function (array) {
+                "&tableName=" + packageValues.val() +
+                "&packageMethodSelect=" + ruleStatement +
+                "&ferStatus=" + forEachRowStatus, function (array) {
                 console.log(array);
                 // createAlert('success', 'Package "'+ packageName.val() +'" succesfully created', false, true);
                 // form.trigger("reset");
@@ -95,9 +96,9 @@ function getValues(id) {
 }
 
 function getAllRules(){
-    $.get("generate/getBusinessRules/getMenuItems", function (array) {
+    $.get("define/GetTableInfo/getAllTables", function (array) {
         $.each(array, function (i, val) {
-            packageValues.append("<option value='"+ val['id'] +"'>" + val['name'] + "</option>");
+            packageValues.append("<option value='"+ val['name'] +"'>" + val['name'] + "</option>");
         });
     });
 }

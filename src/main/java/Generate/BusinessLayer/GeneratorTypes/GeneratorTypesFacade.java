@@ -1,6 +1,12 @@
 package Generate.BusinessLayer.GeneratorTypes;
 
+import Generate.BusinessLayer.Attribute.Attribute;
 import Generate.BusinessLayer.BusinessRule.BusinessRule;
+import Generate.BusinessLayer.RuleTypes.RuleTypesFacade;
+import Generate.BusinessLayer.daoImplementatie.DAOFacade;
+import Generate.BusinessLayer.ruleObjects.Operator;
+
+import java.util.HashMap;
 
 public class GeneratorTypesFacade {
 
@@ -14,5 +20,10 @@ public class GeneratorTypesFacade {
     public static String generatorInformation(BusinessRule rule, String operation, int ferStatus) throws Exception {
 
         return OracleGenerator.generatorInformation(rule, operation, ferStatus);
+    }
+
+    public static String generateTriggerCodeOracle(int id) throws Exception {
+
+        return OracleGenerator.generateTriggerCode(id);
     }
 }

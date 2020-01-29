@@ -5,6 +5,7 @@ import Generate.BusinessLayer.BusinessRule.BusinessRule;
 import Generate.BusinessLayer.ruleObjects.Operator;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DAOFacade {
@@ -42,6 +43,11 @@ public class DAOFacade {
         return BusinessDAOImpl.getContent(id);
     }
 
+    public static ArrayList<Integer> getTableRules(String tableName) throws Exception {
+
+        return BusinessDAOImpl.getTableRules(tableName);
+    }
+
 
     // OperatorDAOImpl functies
     public static Operator getOperatorInformation(int OperatorID) throws Exception {
@@ -70,5 +76,4 @@ public class DAOFacade {
 
         return ValueDAOImpl.getBusinessRuleValue(id);
     }
-
 }
