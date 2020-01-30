@@ -32,7 +32,7 @@ public class GeneratePackage {
         if (ferStatus == 1) {
             bigTrigger = String.format("CREATE OR REPLACE TRIGGER %s %n" +
                             "%s %n" +
-                            "ON %s %n" +
+                            "ON VBMG.%s %n" +
                             "FOR EACH ROW %n" +
                             "BEGIN %n",
                     packageName,
@@ -41,7 +41,7 @@ public class GeneratePackage {
         } else {
             bigTrigger = String.format("CREATE OR REPLACE TRIGGER %s %n" +
                             "%s %n" +
-                            "ON %s %n" +
+                            "ON VBMG.%s %n" +
                             "BEGIN %n",
                     packageName,
                     packageMethodSelect,

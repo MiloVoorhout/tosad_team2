@@ -66,6 +66,9 @@ function generatePackage() {
                     "&tableName=" + packageValues.val() +
                     "&packageMethodSelect=" + ruleStatement +
                     "&ferStatus=" + forEachRowStatus, function (array) {
+                    sessionStorage.clear();
+                    sessionStorage.setItem("triggerCode", array[0]["code"]);
+                    const code = array[0]["code"].replace(/(?:\r\n|\r|\n)/g, '<br>');
                     packageModal.modal('toggle');
                     modalTriggerCode.html(array[0]["code"]);
                     modalTrigger.modal('toggle');

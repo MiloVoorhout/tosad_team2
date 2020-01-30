@@ -186,10 +186,10 @@
                             <div class="form-group" id="packageMethod">
                                 <label for="packageMethodSelect">Method</label>
                                 <select class="form-control" id="packageMethodSelect" name="packageMethodSelect">
-                                    <option value="1">before insert for each row</option>
-                                    <option value="2">before update for each row</option>
-                                    <option value="3">before delete for each row</option>
-                                    <option value="4">before insert/update/delete for each row</option>
+                                    <option value="1">before insert</option>
+                                    <option value="2">before update</option>
+                                    <option value="3">before delete</option>
+                                    <option value="4">before insert/update/delete</option>
                                 </select>
                             </div>
                         </div>
@@ -218,7 +218,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" onclick="generatePackage()" class="btn btn-success">Generate</button>
+                            <button type="button" onclick="executeTrigger()" class="btn btn-success">Generate</button>
                         </div>
                     </form>
                 </div>
