@@ -58,42 +58,56 @@ var arrayInputs = [
 arrayObjects.forEach(function(item) { item.hide(); });
 arrayInputs.forEach(function(item) { item.prop('required', false); });
 
+function getAttr(value, name) {
+    $.get("define/GetTableInfo/GetAttributes?table="+value, function(array){
+        $.each( array, function( i, val ) {
+            attribute_select.append('<option value="'+ val['name'] +'">'+ val['name'] +'</option>');
+        });
+        attribute_select.val(name);
+    });
+}
+
 
 $.get("generate/getBusinessRules/getContent?id="+id, function (array) {
     $.each(array, function (i, val) {
 
-        alert(val['businessRuleType']);
+        rule_name.val(val['name']);
 
         if (val['businessRuleType'] === 'Attribute Range Rule') {
-            alert('TEST');
-
-            operatorSelectContainer.show();
-            operatorSelectRange.show();
-            operatorSelectRange.val(val['operatorID']);
-            range.show();
-            minimum_value.show();
-            minimum_value.prop('required',true);
-            maximum_value.show();
-            maximum_value.prop('required',true);
 
             $.get("generate/getBusinessRules/getValues?id="+id, function (array) {
                 $.each(array, function (i, val) {
-                    if (val['type'] === '1') minimum_value.val(val['value']);
-                    else if (val['type'] === '2') maximum_value.val(val['value']);
+                    if (val['type'] === 'Minimum value') minimum_value.val(val['value']);
+                    else if (val['type'] === 'Maximum value') maximum_value.val(val['value']);
                 });
             });
 
-            $.get("define/GetTableInfo/GetAttributes?table="+val['attributeTable'], function(array){
-                $.each( array, function( i, val ) {
-                    attribute_select.append('<option value="'+ val['name'] +'">'+ val['name'] +'</option>');
-                });
-            });
-
-            attribute_select.val(val['attributeID']);
-
-            rule_name.val(val['name']);
+            getAttr(val['attributeTable'], val['attributeName']);
+            operatorSelectRange.val(val['operatorID']);
+            operatorSelectContainer.show();
+            operatorSelectRange.show();
+            range.show();
+            minimum_value.show();
+            minimum_value.prop('required', true);
+            maximum_value.show();
+            maximum_value.prop('required', true);
 
         } else if (val['businessRuleType'] === 'Attribute Compare Rule') {
+            operatorSelectCompare.show();
+
+            $.get("generate/getBusinessRules/getValues?id="+id, function (array) {
+                $.each(array, function (i, val2) {
+                    alert(val['compareStatus']);
+                    if (val['compareStatus'] === 2) {
+                        literalValue.show();
+                        literalValueTextarea.val(val2['value']);
+                    } else if (val['compareStatus'] === '4') {
+                        attributeEntitySelect.show();
+                    } else {
+                        interEntity.show();
+                    }
+                });
+            });
 
         } else if (val['businessRuleType'] === 'Attribute List Rule') {
 
@@ -104,16 +118,22 @@ $.get("generate/getBusinessRules/getContent?id="+id, function (array) {
         } else if (val['businessRuleType'] === 'Entity Other Rule') {
 
         } else {
-            alert("Bitch get the fuck outta here");
+            alert("Error");
         }
-
-        // ruleType.html(val['businessRuleType']);
-        // ruleTypeName.html(val['name']);
-        // ruleTypeAttr.html(val['attributeName']);
-        // ruleTypeTable.html(val['attributeTable']);
-        // ruleTypeOperator.html(val['operator']);
-        // ruleTypeFailureType.html(val['failureType']);
-        // ruleTypeFailureMessage.html(val['failureMessage']);
-
     });
+});
+
+form.submit(function (e) {
+    e.preventDefault();
+
+    $.get("define/BusinessRule/modify" +
+        "?ruleId=" + id +
+        "&rule_name=" + rule_name.val() +
+        "&attributeSelect=" + attribute_select.val() +
+        "&operator=" + $("#operator_select").val() +
+        "&minimumValue=" + minimum_value.val() +
+        "&maximumValue=" + maximum_value.val()
+        , function () {
+            createAlert('success', 'Current business rule has been updated', false, true);
+        });
 });
