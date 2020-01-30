@@ -139,9 +139,6 @@ function executeTrigger() {
     const triggerCode = sessionStorage.getItem("triggerCode");
     triggerCode.replace(/(?:\r\n|\r|\n)/g, '');
     $.get("generate/executeTrigger?code=" + triggerCode, function (array) {
-        $.each(array, function (i, val) {
-            modalTrigger.toggle('toggle');
-        });
     });
 }
 

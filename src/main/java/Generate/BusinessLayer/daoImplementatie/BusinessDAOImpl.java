@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 public class BusinessDAOImpl extends DAOFacade {
 
@@ -47,7 +46,6 @@ public class BusinessDAOImpl extends DAOFacade {
         String query  = "SELECT * FROM TOSAD.BUSINESSRULE WHERE ID =" + id;
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
-//        BusinessRule ruleDefinition = null;
         BusinessRule factoryRule = null;
 
         while (rs.next()) {
@@ -60,9 +58,6 @@ public class BusinessDAOImpl extends DAOFacade {
             String failureMessage = rs.getString("FAILUREMESSAGE");
             factoryRule = new BusinessRuleFactory(businessRuleID, name, operatorID, attributeID,
                     subAttributeID, businessRuleTypeID, failureMessage).buildRule();
-//            BusinessRuleFactoryInterface rule = (BusinessRuleFactoryInterface) factoryRule.buildRule();
-//            ruleDefinition = new BusinessRule(businessRuleID, name, operatorID, attributeID, subAttributeID,
-//                    businessRuleTypeID, failureMessage);
         }
 
         return factoryRule;
@@ -142,11 +137,9 @@ public class BusinessDAOImpl extends DAOFacade {
     public static String executeTrigger(String triggerCode) throws SQLException {
 
         Connection conn = DatabaseFacade.getInstance().getConnection();
-        Statement stmt = conn.createStatement();
-        stmt.execute(triggerCode);
+        conn.createStatement().execute(triggerCode);
 
         conn.close();
-        stmt.close();
-        return "true";
+        return "Trigger ingevoerd";
     }
 }

@@ -1,6 +1,5 @@
 package Generate.PresentationLayer.generateServlet;
 
-import Generate.BusinessLayer.GeneratorTypes.GeneratorTypesFacade;
 import Generate.BusinessLayer.daoImplementatie.DAOFacade;
 import org.json.JSONArray;
 import org.json.JSONObject;
